@@ -92,9 +92,9 @@ function SpinWheel() {
     }, Math.floor(Math.random() * 4000) + 1);
   }
 
-  useEffect(() => {
-    spinWheelApi()
-  }, []);
+  // useEffect(() => {
+  //   spinWheelApi()
+  // }, []);
 
   const toggle = () => {
     setModal(!showModal)

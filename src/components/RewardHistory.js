@@ -12,9 +12,9 @@ import emptyRewardIcon from '../Assets/images/box-empty-request.svg'
 function RewardHistory() {
     const [getRewards, setRewards] = useState();
 
-    useEffect(() => {
-        getRewardListApi()
-    }, [])
+    // useEffect(() => {
+    //     getRewardListApi()
+    // }, [])
 
     const getRewardListApi = async () => {
         const response = await getRequestData(route["GET_REWARDS"]);
