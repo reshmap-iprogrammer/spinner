@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/spinner/static/css/main.8720392c.css",
+    "main.js": "/spinner/static/js/main.5bbc7b25.js",
+    "static/js/787.633816a4.chunk.js": "/spinner/static/js/787.633816a4.chunk.js",
+    "static/media/box-empty-request.svg": "/spinner/static/media/box-empty-request.439b55654ccd2b89d525bcaeeff30237.svg",
+    "static/media/spin.svg": "/spinner/static/media/spin.7ea8d600f406eee3c60ae6f3b0c63975.svg",
+    "static/media/pointer.svg": "/spinner/static/media/pointer.52278abb87abb08d70396cfb05b6c1b1.svg",
+    "static/media/gift.svg": "/spinner/static/media/gift.2da3c1bc1e95c11785e302a780ed6a94.svg",
+    "static/media/claim.svg": "/spinner/static/media/claim.4b7ae92885b55453140c7e898b055391.svg",
+    "static/media/Vi .svg": "/spinner/static/media/Vi .8e765a9f4aafd162dfa8270fca1dad2d.svg",
+    "index.html": "/spinner/index.html",
+    "static/media/Icon_Back.svg": "/spinner/static/media/Icon_Back.729c14d271ba3803f993f16ce17b3f61.svg",
+    "static/media/Icon_Info.svg": "/spinner/static/media/Icon_Info.70f20feaf7c9b07992ee6e84e206280e.svg",
+    "static/media/close.svg": "/spinner/static/media/close.e9a9ade2388fe63fcc980afef402b8a2.svg",
+    "main.8720392c.css.map": "/spinner/static/css/main.8720392c.css.map",
+    "main.5bbc7b25.js.map": "/spinner/static/js/main.5bbc7b25.js.map",
+    "787.633816a4.chunk.js.map": "/spinner/static/js/787.633816a4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8720392c.css",
+    "static/js/main.5bbc7b25.js"
+  ]
+}
