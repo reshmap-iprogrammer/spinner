@@ -1,0 +1,435 @@
+/* media query start from here */
+
+@media (min-width: 320px) and (max-width: 760px) {
+    * {
+        box-sizing: border-box;
+    }
+    body{
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #fffbf0 2%, #fff2f1 37%);
+    }
+    .wrapper {
+        overflow: hidden;
+    }
+    .wheel {
+        display: flex;
+        align-items: center;
+    }
+
+    .pleaseNoteText {
+        font-weight: 500;
+    }
+
+    .infoIcon {
+        background-color: #dfebfb;
+        display: flex;
+        padding: 10px;
+        padding-bottom: 0px;
+        border-radius: 6px;
+        margin-bottom: 30px;
+    }
+
+    .infoIconWrapper {
+        margin-right: 20px;
+    }
+
+    .modal .modal-dialog {
+        position: fixed;
+        top: auto;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .modal .modal-header {
+        border-bottom: 0 none;
+    }
+
+    .spinText {
+        font-weight: 500;
+    }
+
+    .modal-header .btn-close {
+        position: absolute;
+        top: -34px;
+        right: 18px;
+        background-color: white;
+        border-radius: 50%;
+    }
+
+    .spinToWinHeader {
+        display: flex;
+        margin-top: 24px;
+        margin-bottom: 10px;
+    }
+
+    .backIconImage {
+        margin-right: 20px;
+    }
+
+    .backIcon {
+        display: flex;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .rewardContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .partnerText {
+        color: white;
+    }
+
+    .rewardWrappper {
+        display: flex;
+        align-items: center;
+        background-color: #2f3043;
+        padding: 8px;
+    }
+
+    .rowWrapper {
+        display: flex;
+    }
+
+    .dataText {
+        font-weight: 500;
+    }
+
+    .dataTextWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .backbtn {
+        border-radius: 30px !important;
+        margin-bottom: 10px;
+    }
+    .backHomeButton {
+        background-color: #ee2737;
+        border-radius: 40px;
+    }
+    .backHomeText {
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .giftIcon {
+        width: 82.1px;
+        height: 68px;
+        margin: 20px 0 20px 0;
+    }
+
+    .data {
+        border: 1px dashed #ffbbac;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        padding: 10px;
+    }
+
+    .noRewardScreen {
+        height: 100vh;
+        display: flex;
+        align-Items: center;
+        justify-Content: center;
+    }
+
+    .rewardHistoryWrapper {
+        margin-top: 23px;
+    }
+
+    .spinwrapper {
+        margin: 0;
+        padding: 0;
+        background-color: #34495e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .spin-button {
+        width: 80px;
+        border-style: solid;
+        height: 80px;
+        background: #ffffff;
+        border-radius: 50%;
+        border-width: 2px;
+        border-color: rgba(232, 179, 77, 0.5);
+        align-items: 'center';
+        top: 50%;
+        left: 50%;
+        margin: -40px 0 0 -40px;
+        position: absolute;
+    }
+
+    .spinBtnText {
+        font-weight: bold;
+        font-size: 17 !important;
+        margin-top: 27px;
+    }
+
+    .start-rotate {
+        animation: start-rotate 0.7s linear infinite;
+    }
+
+    @keyframes start-rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .stop-rotate {
+        animation-play-state: paused;
+    }
+
+    ul:first-child {
+        background-color: #ee2737;
+    }
+
+    ul:nth-child(2) {
+        background-color: #ffc600;
+    }
+
+    ul:nth-child(3) {
+        background-color: #ee2737;
+    }
+
+    ul:nth-child(4) {
+        background-color: #ffc600;
+    }
+
+    ul:nth-child(5) {
+        background-color: #ee2737;
+    }
+
+    ul:nth-child(6) {
+        background-color: #ffc600;
+    }
+
+    ul:first-child {
+        transform: rotate(-180deg) skewY(-30deg);
+    }
+
+    ul:nth-child(2) {
+        transform: rotate(-120deg) skewY(-30deg);
+    }
+
+    ul:nth-child(3) {
+        transform: rotate(-60deg) skewY(-30deg);
+    }
+
+    ul:nth-child(4) {
+        transform: rotate(-0deg) skewY(-30deg);
+    }
+
+    ul:nth-child(5) {
+        transform: rotate(60deg) skewY(-30deg);
+    }
+
+    ul:nth-child(6) {
+        transform: rotate(120deg) skewY(-30deg);
+    }
+    .circleBorder {
+        background-color: transparent;
+        border-radius: 100%;
+        border: 3px solid #fcdedc;
+        width: 24.5em; 
+        height: 24.5em;
+        margin: 0 auto 45px;
+        position: relative;
+        
+    }
+
+    .circle {
+        width: 23em;
+        height: 23em;
+        position: relative;
+        padding: 0;
+        margin: 9px;
+        border-radius: 50%;
+        list-style: none;
+        overflow: hidden;        
+    }
+   
+    .spinToWinHeaderText {
+        font-size: 16px;
+        color: #2f3043;
+    }
+    .howToPlaySpin {
+        font-size: 16px;
+    }
+    .PlayHeader modal-title{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .circleBorder ul {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 50%;
+        transform-origin: 0% 100%;
+    }
+    .contantBox {
+        position: absolute;
+        left: -100%;
+        width: 200%;
+        height: 200%;
+        /* display: block; */
+        transform: skewY(35deg) rotate(30deg);
+        /* padding-top: 20px; */
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: normal;
+        text-align: center;
+        color: #2f3043;
+    }
+    .textBox {
+        max-width: 58px;
+        margin: 0 auto;
+    }
+    /* company logo opsition--- */
+    #spinId_0 img, 
+    #spinId_1 img, 
+    #spinId_2 img,
+    #spinId_3 img,
+    #spinId_4 img,
+    #spinId_5 img    {
+        transform: rotate(299deg);
+        width: 52px;
+        height: 52px;
+        margin: 10px 0 5px;
+        object-fit: cover;
+    }
+    #spinId_1 img {
+        transform: rotate(358deg);
+    }
+    #spinId_2 img{
+        transform: rotate(299deg);
+    }
+    #spinId_3 img{
+        transform: rotate(125deg);
+    }
+    #spinId_4 img{
+        transform: rotate(180deg);
+    }
+    #spinId_5 img {
+        transform: rotate(119deg);
+    }
+    .arrow {
+        position: absolute;
+        top: 6%;
+        left: 46.9%;
+        z-index: 1;
+    }
+    .howToPlayText {
+        font-size: 14px;
+        color: #2f3043;
+        font-weight: 500;
+    }
+    .emptyRewardImage {
+        width: 94px;
+        height: 83.4px;
+        margin-bottom: 24px;
+    }
+    .rewardHistoryText {
+        font-size: 16px;
+    }
+    .noRecordYetText {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+    .rechargeText {
+        font-size: 16px;
+        color: #2f3043;
+        margin-bottom: 42px;
+    }
+    .rechargeBtn {
+        color: #ee2737;
+        border-radius: 40px !important;
+    }
+    .rewardImageWrapper {
+        margin-bottom: 36px;
+    }
+    .rewardImage {
+        margin-right: 20px;
+    }
+    .spinImage {
+        margin-right: 20px;
+    }
+    .termsCondition {
+        color: #2f3043;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .modalWrapper .modal-content {
+        /* border: none; */
+    border-radius: 0px;
+    border-top-right-radius: 11px;
+    border-top-left-radius: 11px;
+    }
+    .closeIconWrapper {
+        display: flex;
+        justify-content: end;
+        position: relative;
+        top: -45px;
+        left: -12px;
+    }
+    .modalWrapper .btn-close {
+        display: none;
+    }
+    .offerNotApplicable {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2f3043;
+        margin: 28px 20px 16px 20px;
+        line-height: 1.17;
+    }
+    .offerNotApplication {
+        width: 61.4px;
+        height: 100px;
+    }
+    .applicableText {
+        font-size: 14px;
+        color: #595969;
+        margin: 16px 20px 30px 20px;
+    }
+}
+@media (min-width: 360px) and (max-width: 420px) {
+    .circleBorder {
+        background-color: transparent;
+        border-radius: 100%;
+        border: 3px solid #fcdedc;
+        width: 21.5em; 
+        height: 21.5em;
+        margin: 0 auto 45px;
+        position: relative;
+        
+    }
+    .circle {
+        width: 20rem;
+        height: 20rem;
+    }
+  
+}
+@media (min-width: 320px) and (max-width: 350px) {
+    .circle {
+        width: 18rem;
+        height: 18rem;
+    }
+    .spin-button {
+        top: 170px;
+        left: 37%;
+    }
+}
