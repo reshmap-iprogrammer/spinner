@@ -10,22 +10,22 @@ import React, { useEffect } from 'react'
 
 function App() {
   useEffect(() => {
-    document.addEventListener("message", function (data) {
-      console.log('helllllllllooooooooooo jjj')
-      alert("helloooo jjj");
-      console.log('helllllllllooooooooooo')
-    });
                  window.addEventListener("message", message => {
-               alert("hiiii")
-               console.log('90$ heyyyyyyyyyyyyyyyyyyyyy')
+               console.log('90$ heyyyyyyyyyyyyyyyyyyyyy', message)
              });
   })
+
+  const btnClick = () => {
+    window.ReactNativeWebView.postMessage('Data from WebView / Website');
+  }
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} />} />
         <Route path="/rewardHistory" element={<RewardHistory />} />
       </Routes>
+      <button onClick={btnClick}>Hi</button>
     </Router>
   );
 }
