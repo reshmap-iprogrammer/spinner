@@ -6,8 +6,20 @@ import {
   Route,
 } from 'react-router-dom';
 import RewardHistory from './components/RewardHistory';
+import React, { useEffect } from 'react'
 
 function App() {
+  useEffect(() => {
+    document.addEventListener("message", function (data) {
+      console.log('helllllllllooooooooooo jjj')
+      alert("helloooo jjj");
+      console.log('helllllllllooooooooooo')
+    });
+                 window.addEventListener("message", message => {
+               alert("hiiii")
+               console.log('90$ heyyyyyyyyyyyyyyyyyyyyy')
+             });
+  })
   return (
     <Router>
       <Routes>
