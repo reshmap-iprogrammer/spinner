@@ -21,11 +21,11 @@ function App() {
 
   return (
     <Router>
+      <button onClick={btnClick}>Hi</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} />} />
         <Route path="/rewardHistory" element={<RewardHistory />} />
       </Routes>
-      <button onClick={btnClick}>Hi</button>
     </Router>
   );
 }
