@@ -17,8 +17,24 @@ import axios from 'axios';
 
 function SpinWheel() {
 
+  useEffect(() => {
+    const fetchData = async () =>{
+      // setLoading(true);
+      try {
+        const {data: response} = await axios.get('http://65.0.242.66/api/getSpinWheelCouponBanners');
+        // setData(response);
+        console.log('object',response.limit)
+      } catch (error) {
+        console.error(error.message);
+      }
+      // setLoading(false);
+    }
+    fetchData()
+  })
+
   const [showModal, setModal] = useState(false);
   const [howToPlayModal, setHowToPlayModal] = useState(false)
+  const [Data, setData] = useState();
   const [spinValue, setSpinValue] = useState()
   const [name, setName] = useState('circle')
   const [spinnerValue, setSpinnerValue] = useState(null)
@@ -60,7 +76,9 @@ function SpinWheel() {
     let topArray = [];
     arrayData.map((item, index) => {
       let arrowData = document.getElementById(`spinId_${index}`)
+      // console.log('object', arrowData.innerHTML)
       const arrowDatas = arrowData.getBoundingClientRect()
+      //  console.log('objectdara', arrowDatas, index)
       if (arrowDatas.top < topData) {
         topData = arrowDatas.top
         indexData = index + 1
@@ -90,6 +108,7 @@ function SpinWheel() {
   }
 
   useEffect(() => {
+    // console.log('objectgetRe', getRequestData(`${route["GET_SPIN"]}`))
     spinWheelApi()
     return()=> {
       clearTimeout(timer);
@@ -114,18 +133,13 @@ function SpinWheel() {
   }
 
   const spinWheelApi = async () => {
-    const response = await getRequestData(route["GET_SPIN"]);
-    console.log('objectfd', response?.data?.SpinWheelCouponData)
-    const spinData = response?.data?.SpinWheelCouponData.map((item) => {
-      return(
-        <>
-        <p>{item}</p>
-        </>
-      )
-    })
-    setSpinValue(response?.data?.SpinWheelCouponData)
+  const response = await axios.get(
+      'https://dummy.restapiexample.com/api/v1/employees',
+    );
+    // const response = await getRequestData(`${route["GET_SPIN"]}`);
+    console.log('objectfd', response)
+    // setSpinValue(response)
   }
-  console.log('object',spinValue)
 
   const arrayValue = [
     {
@@ -169,14 +183,14 @@ function SpinWheel() {
           </div>
           <div className='circleBorder'>
           <div className={name} >
-            {spinValue?.map((item, index) =>
+            {arrayValue.map((item, index) =>
             (<ul spellCheck='false' id={`spinId_${index}`} key={item} >
               <div className='contantBox'>
                 <div>
-                <img src={item?.image} height={30} width={30}/>
+                <img src={item.image} height={30} width={30}/>
                 </div>
                 <div className='textBox'>
-                {item?.description}
+                {item.State}
                 </div>
               </div>
             </ul>)
@@ -186,6 +200,7 @@ function SpinWheel() {
             <p className='spinBtnText text-center' >SPIN</p>
           </div>
           </div>
+          {/* <button className='spin-button' onClick={startRotation}>SPIN</button> */}
         </div>
         <div className='infoIcon'>
           <div className='infoIconWrapper'>
