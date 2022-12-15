@@ -11,6 +11,7 @@ import React, { useEffect } from 'react'
 function App() {
   useEffect(() => {
                  window.addEventListener("message", message => {
+                  alert(message.data)
                console.log('90$ heyyyyyyyyyyyyyyyyyyyyy', message)
              });
   })
