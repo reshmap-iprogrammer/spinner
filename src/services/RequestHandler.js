@@ -3,8 +3,8 @@ import { route } from "./ApiRoutes";
 
 export const getRequestData = async (route, params = null) => {
     try {
-      let options = { params };
       const response = await axios.get(route);
+      console.log('objecteews', response)
       return response;
     } catch (error) {
       if (

@@ -12,15 +12,17 @@ import emptyRewardIcon from '../Assets/images/box-empty-request.svg'
 function RewardHistory() {
     const [getRewards, setRewards] = useState();
 
-    // useEffect(() => {
-    //     getRewardListApi()
-    // }, [])
+    useEffect(() => {
+        getRewardListApi()
+    }, [])
 
     const getRewardListApi = async () => {
         const response = await getRequestData(route["GET_REWARDS"]);
         console.log('responseObject', response?.data?.SpinWheelRewardHistoryData)
         setRewards(response?.data?.SpinWheelRewardHistoryData)
     }
+
+    console.log('objectreward',)
 
     const navigate = useNavigate();
     return (

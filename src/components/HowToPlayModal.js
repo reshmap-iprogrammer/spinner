@@ -25,7 +25,7 @@ function HowToPlayModal({toggle, howToPlayModal}) {
             </div>
             <a href='' className='termsCondition'>terms and conditions</a>
           </ModalBody>
-        </Modal>
+          </Modal>
     </div>
   )
 }
