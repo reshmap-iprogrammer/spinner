@@ -13,6 +13,7 @@ function App() {
     document.addEventListener("message", function(data) {
       alert("hi");
       alert(data.data);
+      alert(data.data.msidin);
       });
 
       window.addEventListener("message", message => {
