@@ -9,20 +9,20 @@ import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
 
 function App() {
-  useEffect(() => {
-                 window.addEventListener("message", message => {
-                  alert(message)
-               console.log('90$ heyyyyyyyyyyyyyyyyyyyyy', message)
-             });
-  })
+  // useEffect(() => {
+  //                window.addEventListener("message", message => {
+  //                 alert(message)
+  //              console.log('90$ heyyyyyyyyyyyyyyyyyyyyy', message)
+  //            });
+  // })
 
-  const btnClick = () => {
-    window.ReactNativeWebView.postMessage('Data from WebView / Website');
-  }
+  // const btnClick = () => {
+  //   window.ReactNativeWebView.postMessage('Data from WebView / Website');
+  // }
 
   return (
     <Router>
-      <button onClick={btnClick}>Hi</button>
+      {/* <button onClick={btnClick}>Hi</button> */}
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} />} />
         <Route path="/rewardHistory" element={<RewardHistory />} />
@@ -32,3 +32,6 @@ function App() {
 }
 
 export default App;
+
+
+

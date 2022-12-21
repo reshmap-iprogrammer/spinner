@@ -1,0 +1,250 @@
+@media (min-width: 320px) and (max-width: 760px) {
+    :root {
+        --wheel-font: "Lato", "Quicksand", sans-serif;
+        --wheel-size: 400px;
+        --wheel-slice-spacing: 0px;
+        --wheel-border-size: 0px;
+        --wheel-color: #ee2737;
+        --neutral-color: #ffc600;
+        /* --neutral-color: YELLOW; */
+        --PI: 3.14159265358979;
+        --nb-item: 0;
+        --item-nb: 0;
+        --selected-item: 0;
+        --nb-turn: 5;
+        --spinning-duration: 4s;
+        --reset-duration: 0.25s;
+    }
+
+    /* 
+      Wheel container = outer pink circle */
+    .wheel-container {
+        display: block;
+        position: relative;
+        box-sizing: content-box;
+        width: calc(var(--wheel-size) + 2 * var(--wheel-border-size));
+        height: calc(var(--wheel-size) + 2 * var(--wheel-border-size));
+        padding: 12px;
+        margin: auto;
+        background-color: #fff2f1;
+        border: 3px solid #fcdedc;
+        border-radius: 50%;
+        user-select: none;
+        margin-bottom: 44px;
+        overflow: hidden;
+    }
+
+    /* Selection triangle = 1 pink + 1 white */
+    .wheel-container::before,
+    .wheel-container::after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 0;
+        width: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        /* border: solid transparent 20px; */
+        border-left-width: 0;
+    }
+
+    .wheel-container::before {
+        right: 0px;
+        border-right-color: var(--wheel-color);
+    }
+
+    .wheel-container::after {
+        right: -5px;
+        border-right-color: var(--neutral-color);
+    }
+
+    /* Wheel */
+    .wheel {
+        display: block;
+        position: relative;
+        box-sizing: content-box;
+        margin: auto;
+        width: var(--wheel-size);
+        height: var(--wheel-size);
+        overflow: hidden;
+        border-radius: 50%;
+        border: solid var(--wheel-color) var(--wheel-border-size);
+        background-color: var(--wheel-color);
+        transition: transform var(--reset-duration);
+        transform: rotate(0deg);
+        cursor: pointer;
+    }
+
+    .wheel.spinning {
+        transition: transform var(--spinning-duration);
+        transform: rotate(calc(var(--nb-turn) * 415deg + (-360deg * var(--selected-item) / var(--nb-item, 1))));
+    }
+
+    /* wheel center = white circle in the center */
+    .wheel::after {
+        display: block;
+        position: absolute;
+        content: "";
+        background-color: var(--neutral-color);
+        width: 25px;
+        height: 25px;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+    }
+
+    /* Element on the wheel */
+    .wheel-item {
+        display: block;
+        position: absolute;
+        box-sizing: border-box;
+        /* position of the item */
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        transform-origin: center left;
+        transform: translateY(-50%) rotate(calc(var(--item-nb) * (360deg / var(--nb-item, 1))));
+        /* text */
+        color: var(--neutral-color);
+        text-align: right;
+        padding: 0 25px 0 50px;
+        font-family: var(--wheel-font);
+    }
+
+    /* Element background = lighter pink triangle */
+    .wheel-item:before {
+        content: " ";
+        display: block;
+        position: absolute;
+        box-sizing: border-box;
+        z-index: -1;
+        width: 0;
+        height: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding-left: 0px;
+        /* opacity: 0.25; */
+        --slice-max-width: calc(var(--PI) * var(--wheel-size) + var(--wheel-size) / 2);
+        --slice-width: calc((var(--slice-max-width) / var(--nb-item)) - var(--wheel-slice-spacing));
+        border: solid transparent calc(var(--slice-width) / 2);
+        border-left: solid transparent 0;
+        /* depth of the triangle = from the center of the wheel to the border = 300px / 2 */
+        border-right: solid var(--neutral-color) calc(var(--wheel-size) / 2);
+        
+
+
+    }
+
+    .spinButton {
+        width: 80px;
+        border-style: solid;
+        height: 80px;
+        background: #ffffff;
+        border-radius: 50%;
+        border-width: 2px;
+        border-color: rgba(232, 179, 77, 0.5);
+        align-items: 'center';
+        top: 50%;
+        left: 50%;
+        margin: -40px 0 0 -40px;
+        position: absolute;
+        z-index: 999;
+    }
+
+    .textWrapper {}
+
+    .wheelWrapper .wheel-item:nth-child(odd) .textWrapper {
+        color: white;
+        
+    }
+    .wheelWrapper .wheel-item:nth-child(odd):before{
+    border: solid transparent 0 ;
+    }
+    
+
+    .wheelWrapper .wheel-item:nth-child(even) .textWrapper {
+        color: #000;
+    }
+    .contentWrapper {
+        position: absolute;
+        width: 80px;
+        margin: 0 auto;
+        top: -47px;
+        left: 102px;
+    }
+
+    #spinId_0 .contentWrapper {
+        transform: rotate(93deg);
+    }
+    #spinId_1 .contentWrapper {
+        transform: rotate(93deg);
+    }
+    #spinId_2 .contentWrapper {
+        transform: rotate(93deg);
+    }
+    #spinId_3 .contentWrapper {
+        transform: rotate(93deg);
+    }
+    #spinId_4 .contentWrapper {
+        transform: rotate(93deg);
+    }
+    #spinId_5 .contentWrapper {
+        transform: rotate(93deg);
+    }
+    #spinId_6 .contentWrapper {
+        top: -33px;
+        transform: rotate(93deg);
+    }
+    #spinId_7 .contentWrapper {
+        
+        transform: rotate(93deg);
+    }
+
+     .textWrapper p,.textWrapper span{
+        font-size: 12px;
+        text-align: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    
+}
+@media (min-width: 360px) and (max-width: 420px) {
+    :root {
+        --wheel-size: 310px;
+        --wheel-slice-spacing: 0px;
+        --wheel-border-size: 0px;
+        --wheel-color: #ee2737;
+        --neutral-color: #ffc600;
+        /* --neutral-color: YELLOW; */
+        --PI: 3.14159265358979;
+        --nb-item: 0;
+        --item-nb: 0;
+        --selected-item: 0;
+        --nb-turn: 5;
+        --spinning-duration: 4s;
+        --reset-duration: 0.25s;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 350px){
+    :root {
+        --wheel-size: 250px;
+        --wheel-slice-spacing: 0px;
+        --wheel-border-size: 0px;
+        --wheel-color: #ee2737;
+        --neutral-color: #ffc600;
+        /* --neutral-color: YELLOW; */
+        --PI: 3.14159265358979;
+        --nb-item: 0;
+        --item-nb: 0;
+        --selected-item: 0;
+        --nb-turn: 5;
+        --spinning-duration: 4s;
+        --reset-duration: 0.25s;
+    }
+}

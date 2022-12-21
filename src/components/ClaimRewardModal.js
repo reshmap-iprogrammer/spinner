@@ -1,11 +1,12 @@
 import React from 'react'
 import giftIcon from '../Assets/images/gift.svg'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+import closeIcon from '../Assets/images/close.svg'
 
-function ClaimRewardModal() {
+function ClaimRewardModal({showModal, toggle, getRewards, reward}) {
   return (
     <div>
-       <Modal className='modalWrapper' isOpen={howToPlayModal} toggle={toggle}>
+       <Modal className='modalWrapper' isOpen={showModal} toggle={toggle}>
         <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32}/>
         </div>
@@ -17,12 +18,12 @@ function ClaimRewardModal() {
       }} className="rewardModalHeader">hey there</ModalHeader>
       <ModalBody>
         <div>
-          <p className='text-center rewardProceed'>your reward was processed on 13 Sep 2022</p>
+          <p className='text-center justify-content-center d-flex rewardProceed'>your reward was processed on <p className='fw-bold'>{getRewards}</p></p>
           <div className='data'>
           <div className='dataTextWrapper'>
             <img src={giftIcon} height={100} className="giftIcon"/>
           </div>
-          <h5 style={{ textAlign: 'center' }}>1 GB data for 1 day</h5>
+          <h5 style={{ textAlign: 'center' }}>{reward}</h5>
         </div>
         <div className='backHomeButton'>
         <p className='text-center text-white p-3 backHomeText'>back home</p>

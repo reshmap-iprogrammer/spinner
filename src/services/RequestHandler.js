@@ -4,7 +4,7 @@ import { route } from "./ApiRoutes";
 export const getRequestData = async (route, params = null) => {
     try {
       const response = await axios.get(route);
-      console.log('objecteews', response)
+      // console.log('objecteews', response)
       return response;
     } catch (error) {
       if (

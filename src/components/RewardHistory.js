@@ -7,22 +7,47 @@ import infoIcon from '../Assets/images/Icon_Info.svg'
 import { getRequestData } from '../services/RequestHandler';
 import { route } from '../services/ApiRoutes';
 import emptyRewardIcon from '../Assets/images/box-empty-request.svg'
+import moment from 'moment';
+import ClaimRewardModal from './ClaimRewardModal';
 
 
 function RewardHistory() {
     const [getRewards, setRewards] = useState();
+    const [showModal, setModal] = useState(false);
 
-    // useEffect(() => {
-    //     getRewardListApi()
-    // }, [])
+    const toggle = () => {
+        setModal(!showModal)
+      }
 
-    // const getRewardListApi = async () => {
-    //     const response = await getRequestData(route["GET_REWARDS"]);
-    //     console.log('responseObject', response?.data?.SpinWheelRewardHistoryData)
-    //     setRewards(response?.data?.SpinWheelRewardHistoryData)
-    // }
+    useEffect(() => {
+        getRewardListApi()
+    }, [])
 
-    console.log('objectreward',)
+    const getRewardListApi = async () => {
+        const response = await getRequestData(route["GET_REWARDS"]);
+        console.log('responseObject', response?.data?.SpinWheelRewardHistoryData)
+        setRewards(response?.data?.SpinWheelRewardHistoryData)
+    }
+
+    const rewardValue = getRewards?.map((item, index) => {
+        return (
+            <>
+            <p>{moment(item?.created_at).format('DD MMM, YY')}</p>
+            </>
+        )
+    })
+
+    const reward = getRewards?.map((item, index) => {
+        return (
+            <>
+            <p>{item?.description}</p>
+            </>
+        )
+    })
+
+    const openRewardModal = () => {
+        toggle();
+    }
 
     const navigate = useNavigate();
     return (
@@ -33,43 +58,46 @@ function RewardHistory() {
                     <p className='rewardHistoryText'>reward history</p>
                 </div>
             </Container>
-            {getRewards && getRewards?.length ? (
-                <>
-            <div className="rewardWrappper">
-                <Container className='rewardContainer'>
-                    <div className='partnerText'>
-                        partner
-                    </div>
-                    <div className='partnerText'>issue date</div>
-                </Container>
-            </div>
-                    <Container>
-                        <div className='    d-flex justify-content-between mt-3'>
-                            <div className='rowWrapper'>
-                                <div>
-                                    {/* <img src={getRewards.image} height={20} /> */}
+            {getRewards && getRewards.length && getRewards?.map((item, index) => {
+                return (
+                    <>
+                        <div className="rewardWrappper">
+                            <Container className='rewardContainer'>
+                                <div className='partnerText'>
+                                    partner
                                 </div>
-                                <div>
-                                    <p className='mb-0'>Pizza Hut</p>
-                                    <p>200PTM02522w99MAX</p>
-                                    {/* <p className='mb-0'>{getRewards?.slot_name}</p> */}
-                                    {/* <p>{getRewards?.description}</p> */}
-                                </div>
-                            </div>
-                            <div className='d-flex justify-content-between'>
-                                <p style={{ marginRight: '20px' }}>13 sep, 22</p>
-                                <img src={infoIcon} height={20} />
-                            </div>
+                                <div className='partnerText'>issue date</div>
+                            </Container>
                         </div>
-                    </Container>
-                </>
-            ) : (
+                        <Container>
+                            <div className=' d-flex justify-content-between mt-3' onClick={openRewardModal}>
+                                <div className='rowWrapper'>
+                                    <div className='reward_logo_image'>
+                                        <img src={item?.logo_image} height={32} width={32}/>
+                                    </div>
+                                    <div>
+                                        <p className='mb-0'>{item?.slot_name}</p>
+                                        {/* <p>{item?.coupon_code}</p> */}
+                                        <p>{item?.description}</p>
+                                    </div>
+                                </div>
+                                <div className='d-flex justify-content-between'>
+                                    <p style={{ marginRight: '20px' }}>{moment(item?.created_at).format('DD MMM, YY')}</p>
+                                    <img src={infoIcon} height={20} />
+                                </div>
+                            </div>
+                        </Container>
+                    </>
+                )
+            })}
+
+            {!getRewards && (
                 <>
                     {/* display when no records to display */}
                     <div className='noRewardScreen'>
                         <div>
                             <div className='text-center'>
-                            <img src={emptyRewardIcon} className="emptyRewardImage"/>
+                                <img src={emptyRewardIcon} className="emptyRewardImage" />
                             </div>
                             <p className='text-center noRecordYetText'>no rewards yet? no problem!</p>
                             <p className='text-center rechargeText'>Recharge now and win rewards!</p>
@@ -78,8 +106,7 @@ function RewardHistory() {
                     </div>
                 </>
             )}
-
-
+            <ClaimRewardModal toggle={toggle} showModal={showModal} getRewards={rewardValue} reward={reward}/>
         </>
     )
 }

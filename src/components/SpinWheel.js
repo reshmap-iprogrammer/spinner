@@ -1,124 +1,53 @@
-import React, { useState, useEffect } from 'react'
-import './Styles.css'
-import { Container } from "reactstrap";
+import React, { useEffect, useState } from 'react'
+import { Container } from 'reactstrap';
+import { route } from '../services/ApiRoutes';
+import { getRequestData } from '../services/RequestHandler';
+import "./index.css";
 import infoIcon from '../Assets/images/Icon_Info.svg'
 import backIcon from '../Assets/images/Icon_Back.svg'
 import { Link } from "react-router-dom";
 import CommonModal from './CommonModal';
 import HowToPlayModal from './HowToPlayModal';
-import { getRequestData } from '../services/RequestHandler';
-import { route } from '../services/ApiRoutes';
-import myntraImage from '../Assets/images/Myntra@2x.png'
-import viImage from '../Assets/images/Vi .svg'
-import sonyLive from '../Assets/images/Sony LIV@2x.png'
-import nuaImage from '../Assets/images/Nua@2x.png'
+import './Styles.css'
 import spinArrowImage from '../Assets/images/pointer.svg'
-import axios from 'axios';
 
 function SpinWheel() {
-
-  useEffect(() => {
-    const fetchData = async () =>{
-      // setLoading(true);
-      try {
-        const {data: response} = await axios.get('http://65.0.242.66/api/getSpinWheelCouponBanners');
-        // setData(response);
-        console.log('object',response.limit)
-      } catch (error) {
-        console.error(error.message);
-      }
-      // setLoading(false);
-    }
-    fetchData()
-  })
-
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [places, setPlaces] = useState()
   const [showModal, setModal] = useState(false);
   const [howToPlayModal, setHowToPlayModal] = useState(false)
-  const [Data, setData] = useState();
-  const [spinValue, setSpinValue] = useState()
-  const [name, setName] = useState('circle')
-  const [spinnerValue, setSpinnerValue] = useState(null)
 
   let timer;
-  const spinWheelWin = () => {
-    let spinData = document.getElementById('spinArrow');
-    const spinDatas = spinData.getBoundingClientRect()
-    const leftPosition = spinDatas.left + (spinDatas.width / 2)
-    console.log('objectres', leftPosition)
-    const arrayData = [
-      {
-        "State": "Flat 100 off*",
-        "image": myntraImage
-      },
-      {
-        "State": "₹ 150 gift voucher",
-        "image": nuaImage
-      },
-      {
-        "State": "30% off max ₹100",
-        "image": myntraImage
-      },
-      {
-        "State": "1 GB data for 1 day",
-        "image": viImage
-      },
-      {
-        "State": "28 days subscription",
-        "image": sonyLive
-      },
-      {
-        "State": "5GB data for 7 days",
-        "image": viImage
-      },
-    ]
-    let topData = Infinity
-    let indexData = 0
-    let topArray = [];
-    arrayData.map((item, index) => {
-      let arrowData = document.getElementById(`spinId_${index}`)
-      // console.log('object', arrowData.innerHTML)
-      const arrowDatas = arrowData.getBoundingClientRect()
-      //  console.log('objectdara', arrowDatas, index)
-      if (arrowDatas.top < topData) {
-        topData = arrowDatas.top
-        indexData = index + 1
-      }
-      console.log('objectres', indexData)
-      topArray.push({index: index, value: arrowDatas?.top});
-      console.log('left', arrowDatas.left, arrowDatas.right, arrowDatas.top, index + 1)
-    })
-    topArray.sort((a,b) => a.value - b.value);
-    let winner = topArray[0];
-    console.log("Winner", winner.value, arrayValue.state);
-    setSpinnerValue(arrayValue[winner?.index]?.State, indexData)
-    setTimeout(() => {
-      toggle();
-    }, 1000);
-    console.log('topData', indexData)
-  }
-
-  const startRotation = () => {
-    setName('circle start-rotate')
-    timer = setTimeout(() => {
-      setName('circle start-rotate stop-rotate')
-      setTimeout(() => {
-        spinWheelWin();
-      }, 1000)
-    }, Math.floor(Math.random() * 4000) + 1);
-  }
-
   useEffect(() => {
-    // console.log('objectgetRe', getRequestData(`${route["GET_SPIN"]}`))
     spinWheelApi()
-    return()=> {
+    return () => {
       clearTimeout(timer);
- }
+    }
   }, []);
+
+
+  const spinWheelApi = async () => {
+    const response = await getRequestData(route["GET_SPIN"]);
+    setPlaces(response?.data?.SpinWheelCouponData)
+  }
+
+  const selectItem = (props) => {
+    if (selectedItem === null) {
+      const selectedItem = 7;
+      if (props.onSelectItem) {
+        props.onSelectItem(selectedItem);
+      }
+      setSelectedItem(selectedItem);
+    } else {
+      setSelectedItem(null);
+      setTimeout(selectedItem, 500);
+    }
+  }
 
   const toggle = () => {
     setModal(!showModal)
     // if(!showModal){
-    //   play()
+    // play()
     // }
     // setHowToPlayModal(!howToPlayModal)
   }
@@ -128,88 +57,71 @@ function SpinWheel() {
     audio.play();
   }
 
+  const startRotation = () => {
+    setTimeout(() => {
+      toggle();
+    }, 4000);
+  }
+
   const playtoggle = () => {
     setHowToPlayModal(!howToPlayModal)
   }
 
-  const spinWheelApi = async () => {
-  const response = await axios.get(
-      'https://dummy.restapiexample.com/api/v1/employees',
-    );
-    // const response = await getRequestData(`${route["GET_SPIN"]}`);
-    console.log('objectfd', response)
-    // setSpinValue(response)
-  }
-
-  const arrayValue = [
-    {
-      "State": "Flat 100 off*",
-      "image": myntraImage
-    },
-    {
-      "State": "₹ 150 gift voucher",
-      "image": nuaImage
-    },
-    {
-      "State": "30% off max ₹100",
-      "image": myntraImage
-    },
-    {
-      "State": "1 GB data for 1 day",
-      "image": viImage
-    },
-    {
-      "State": "28 days subscription",
-      "image": sonyLive
-    },
-    {
-      "State": "5GB data for 7 days",
-      "image": viImage
-    },
-  ]
-
+  const wheelVars = {
+    "--nb-item": places?.length,
+    "--selected-item": selectedItem
+  };
+  const spinning = selectedItem !== null ? "spinning" : "";
 
   return (
-    <>
-      <Container>
-        <div className='wrapper'>
-        <div className='spinToWinHeader'>
-          <img src={backIcon} height={25} className="backIconImage" />
-          <p className='spinToWinHeaderText'>spin to win</p>
-        </div>
-        <div  >
-          <div className='arrow' id="spinArrow" >
-            <img src={spinArrowImage}/>
-          </div>
-          <div className='circleBorder'>
-          <div className={name} >
-            {arrayValue.map((item, index) =>
-            (<ul spellCheck='false' id={`spinId_${index}`} key={item} >
-              <div className='contantBox'>
-                <div>
-                <img src={item.image} height={30} width={30}/>
-                </div>
-                <div className='textBox'>
-                {item.State}
-                </div>
-              </div>
-            </ul>)
-            )}
-          </div>
-          <div className='spin-button' onClick={startRotation}>
+    <Container>
+      <div className='spinToWinHeader'>
+        <img src={backIcon} height={25} className="backIconImage" />
+        <p className='spinToWinHeaderText'>spin to win</p>
+      </div>
+      <div className='arrow' id="spinArrow" >
+        <img src={spinArrowImage} />
+      </div>
+      <div className="wheel-container">
+        <div
+          style={wheelVars}
+          onClick={selectItem}
+        >
+          <div className='spinButton' onClick={startRotation}>
             <p className='spinBtnText text-center' >SPIN</p>
           </div>
+          <div className={`wheelWrapper wheel ${spinning}`}>
+            {places?.map((item, index) => (
+              <>
+                <div
+                  className="wheel-item"
+                  key={`spinId_${index}`}
+                  style={{ "--item-nb": index }}
+                  id={`spinId_${index}`}
+                >
+                  <div className='contentWrapper'>
+
+                    <div className='text-center'>
+                      <img src={item?.logo_image} height={30} width={30} />
+                    </div>
+                    <div className='textWrapper text-center'>
+                      <p className='fw-bold'>{item.title}</p>
+                      <span className=''>{item.sub_title}</span>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ))}
           </div>
-          {/* <button className='spin-button' onClick={startRotation}>SPIN</button> */}
         </div>
-        <div className='infoIcon'>
-          <div className='infoIconWrapper'>
-            <img src={infoIcon} height={20} />
-          </div>
-          <p><span className='pleaseNoteText'>Please Note - </span> Spin the wheel only once every 48 hours. To spin the wheel again, recharge after 48 hours.</p>
+
+      </div>
+      <div className='infoIcon'>
+        <div className='infoIconWrapper'>
+          <img src={infoIcon} height={20} />
         </div>
-        </div>
-      </Container>
+        <p><span className='pleaseNoteText'>Please Note - </span> Spin the wheel only once every 48 hours. To spin the wheel again, recharge after 48 hours.</p>
+      </div>
       <Container>
         <div onClick={(event) => {
           event.preventDefault();
@@ -222,9 +134,9 @@ function SpinWheel() {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={spinnerValue} />
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={selectedItem} />
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
-    </>
+    </Container>
   )
 }
 

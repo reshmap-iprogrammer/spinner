@@ -26,7 +26,7 @@
         display: flex;
         padding: 10px;
         padding-bottom: 0px;
-        border-radius: 6px;
+        border-radius: 10px;
         margin-bottom: 30px;
     }
 
@@ -34,7 +34,7 @@
         margin-right: 20px;
     }
 
-    .modal .modal-dialog {
+    .modalWrapper.modal-dialog {
         position: fixed;
         top: auto;
         right: 0;
@@ -178,10 +178,17 @@
     }
 
     .start-rotate {
-        animation: start-rotate 0.7s linear infinite;
+        animation: start-rotate 2s linear infinite;
+    }
+    .spin-rotate {
+        animation:  start-rotate 0.7s linear 1.5;
     }
 
+
     @keyframes start-rotate {
+        0% {
+            transform: rotate(0deg);
+        }
         100% {
             transform: rotate(360deg);
         }
@@ -216,27 +223,27 @@
     }
 
     ul:first-child {
-        transform: rotate(-180deg) skewY(-30deg);
+        transform: rotate(-150deg) skewY(-30deg);
     }
-
+    
     ul:nth-child(2) {
-        transform: rotate(-120deg) skewY(-30deg);
+        transform: rotate(-90deg) skewY(-30deg);
     }
 
     ul:nth-child(3) {
-        transform: rotate(-60deg) skewY(-30deg);
+        transform: rotate(-30deg) skewY(-30deg);
     }
 
     ul:nth-child(4) {
-        transform: rotate(-0deg) skewY(-30deg);
+        transform: rotate(30deg) skewY(-30deg);
     }
 
     ul:nth-child(5) {
-        transform: rotate(60deg) skewY(-30deg);
+        transform: rotate(90deg) skewY(-30deg);
     }
 
     ul:nth-child(6) {
-        transform: rotate(120deg) skewY(-30deg);
+        transform: rotate(150deg) skewY(-30deg);
     }
     .circleBorder {
         background-color: transparent;
@@ -257,7 +264,8 @@
         margin: 9px;
         border-radius: 50%;
         list-style: none;
-        overflow: hidden;        
+        overflow: hidden; 
+        /* transform: rotate(152deg); */
     }
    
     .spinToWinHeaderText {
@@ -295,7 +303,7 @@
         color: #2f3043;
     }
     .textBox {
-        max-width: 58px;
+        /* max-width: 58px; */
         margin: 0 auto;
     }
     /* company logo opsition--- */
@@ -305,30 +313,14 @@
     #spinId_3 img,
     #spinId_4 img,
     #spinId_5 img    {
-        transform: rotate(299deg);
-        width: 52px;
-        height: 52px;
-        margin: 10px 0 5px;
+        width: 38px;
+        height: 37px;
+        margin: 10px auto 5px;
         object-fit: cover;
-    }
-    #spinId_1 img {
-        transform: rotate(358deg);
-    }
-    #spinId_2 img{
-        transform: rotate(299deg);
-    }
-    #spinId_3 img{
-        transform: rotate(125deg);
-    }
-    #spinId_4 img{
-        transform: rotate(180deg);
-    }
-    #spinId_5 img {
-        transform: rotate(119deg);
     }
     .arrow {
         position: absolute;
-        top: 6%;
+        top: 7.5%;
         left: 46.9%;
         z-index: 1;
     }
@@ -374,7 +366,6 @@
         font-weight: 500;
     }
     .modalWrapper .modal-content {
-        /* border: none; */
     border-radius: 0px;
     border-top-right-radius: 11px;
     border-top-left-radius: 11px;
@@ -417,6 +408,9 @@
     .rewardProceed {
         font-size: 16px;
         color: #2f3043;
+    }
+    .reward_logo_image {
+        margin-right: 12px;
     }
 }
 @media (min-width: 360px) and (max-width: 420px) {
