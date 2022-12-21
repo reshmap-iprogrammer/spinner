@@ -10,11 +10,15 @@ import React, { useEffect } from 'react'
 
 function App() {
   useEffect(() => {
-                 window.addEventListener("message", message => {
-                  alert(message)
-                  alert(message.data)
-               console.log('90$ heyyyyyyyyyyyyyyyyyyyyy', message)
-             });
+    document.addEventListener("message", function(data) {
+      alert("hi");
+      alert(data.data);
+      });
+
+      window.addEventListener("message", message => {
+        alert("hiiii")
+        alert("helooooooooooo")
+        });
   })
 
   const btnClick = () => {
