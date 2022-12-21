@@ -20,7 +20,7 @@ function App() {
         alert("hiiii")
         alert("helooooooooooo")
         });
-  })
+  }, [])
 
   const btnClick = () => {
     window.ReactNativeWebView.postMessage('Data from WebView / Website');
