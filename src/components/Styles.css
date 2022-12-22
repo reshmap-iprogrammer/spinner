@@ -320,7 +320,7 @@
     }
     .arrow {
         position: absolute;
-        top: 7.5%;
+        top: 6.5%;
         left: 46.9%;
         z-index: 1;
     }
@@ -427,6 +427,9 @@
     .circle {
         width: 20rem;
         height: 20rem;
+    }
+    .arrow {
+        top: 8.5%;
     }
   
 }

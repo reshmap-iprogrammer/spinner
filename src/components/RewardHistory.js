@@ -14,10 +14,11 @@ import ClaimRewardModal from './ClaimRewardModal';
 function RewardHistory() {
     const [getRewards, setRewards] = useState();
     const [showModal, setModal] = useState(false);
+    const [rewardData, setRewardData] = useState()
 
     const toggle = () => {
         setModal(!showModal)
-      }
+    }
 
     useEffect(() => {
         getRewardListApi()
@@ -25,27 +26,11 @@ function RewardHistory() {
 
     const getRewardListApi = async () => {
         const response = await getRequestData(route["GET_REWARDS"]);
-        console.log('responseObject', response?.data?.SpinWheelRewardHistoryData)
         setRewards(response?.data?.SpinWheelRewardHistoryData)
     }
 
-    const rewardValue = getRewards?.map((item, index) => {
-        return (
-            <>
-            <p>{moment(item?.created_at).format('DD MMM, YY')}</p>
-            </>
-        )
-    })
-
-    const reward = getRewards?.map((item, index) => {
-        return (
-            <>
-            <p>{item?.description}</p>
-            </>
-        )
-    })
-
-    const openRewardModal = () => {
+    const openRewardModal = (item) => {
+        setRewardData(item)
         toggle();
     }
 
@@ -58,32 +43,34 @@ function RewardHistory() {
                     <p className='rewardHistoryText'>reward history</p>
                 </div>
             </Container>
+            <div className="rewardWrappper">
+                <Container className='rewardContainer'>
+                    <div className='partnerText'>
+                        partner
+                    </div>
+                    <div className='partnerText'>issue date</div>
+                </Container>
+            </div>
             {getRewards && getRewards.length && getRewards?.map((item, index) => {
                 return (
                     <>
-                        <div className="rewardWrappper">
-                            <Container className='rewardContainer'>
-                                <div className='partnerText'>
-                                    partner
-                                </div>
-                                <div className='partnerText'>issue date</div>
-                            </Container>
-                        </div>
-                        <Container>
-                            <div className=' d-flex justify-content-between mt-3' onClick={openRewardModal}>
-                                <div className='rowWrapper'>
-                                    <div className='reward_logo_image'>
-                                        <img src={item?.logo_image} height={32} width={32}/>
+                        <Container className='rewardListwrapper'>
+                            <div >
+                                <div className=' d-flex justify-content-between mt-3' onClick={() => openRewardModal(item)}>
+                                    <div className='rowWrapper'>
+                                        <div className='reward_logo_image'>
+                                            <img src={item?.logo_image} height={32} width={32} />
+                                        </div>
+                                        <div>
+                                            <p className='mb-0'>{item?.slot_name ? item?.slot_name : item?.coupon_code}</p>
+                                            {/* <p>{item?.coupon_code}</p> */}
+                                            <p>{item?.description}</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className='mb-0'>{item?.slot_name}</p>
-                                        {/* <p>{item?.coupon_code}</p> */}
-                                        <p>{item?.description}</p>
+                                    <div className='d-flex justify-content-between'>
+                                        <p style={{ marginRight: '20px' }}>{moment(item?.created_at).format('DD MMM, YY')}</p>
+                                        <img src={infoIcon} height={20} />
                                     </div>
-                                </div>
-                                <div className='d-flex justify-content-between'>
-                                    <p style={{ marginRight: '20px' }}>{moment(item?.created_at).format('DD MMM, YY')}</p>
-                                    <img src={infoIcon} height={20} />
                                 </div>
                             </div>
                         </Container>
@@ -106,7 +93,50 @@ function RewardHistory() {
                     </div>
                 </>
             )}
-            <ClaimRewardModal toggle={toggle} showModal={showModal} getRewards={rewardValue} reward={reward}/>
+            {/* {getRewards && getRewards?.length ? (
+                <>
+                    <div className="rewardWrappper">
+                        <Container className='rewardContainer'>
+                            <div className='partnerText'>
+                                partner
+                            </div>
+                            <div className='partnerText'>issue date</div>
+                        </Container>
+                    </div>
+                    <Container>
+                        <div className=' d-flex justify-content-between mt-3'>
+                            <div className='rowWrapper'>
+                                <div>
+                                </div>
+                                <div>
+                                    <p className='mb-0'>Pizza Hut</p>
+                                    <p>200PTM02522w99MAX</p>
+                                    
+                                </div>
+                            </div>
+                            <div className='d-flex justify-content-between'>
+                                <p style={{ marginRight: '20px' }}>13 sep, 22</p>
+                                <img src={infoIcon} height={20} />
+                            </div>
+                        </div>
+                    </Container>
+                </>
+            ) : (
+                <>
+                    <div className='noRewardScreen'>
+                        <div>
+                            <div className='text-center'>
+                                <img src={emptyRewardIcon} className="emptyRewardImage" />
+                            </div>
+                            <p className='text-center noRecordYetText'>no rewards yet? no problem!</p>
+                            <p className='text-center rechargeText'>Recharge now and win rewards!</p>
+                            <Button size="lg" block color="danger" className='rechargeBtn'>recharge now</Button>
+                        </div>
+                    </div>
+                </>
+            )} */}
+
+            <ClaimRewardModal toggle={toggle} showModal={showModal} getRewards={rewardData} />
         </>
     )
 }

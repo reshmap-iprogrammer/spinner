@@ -13,13 +13,15 @@ import spinArrowImage from '../Assets/images/pointer.svg'
 
 function SpinWheel() {
   const [selectedItem, setSelectedItem] = useState(null);
-  const [places, setPlaces] = useState()
+  const [spinnerValues, setSpinnerValues] = useState()
   const [showModal, setModal] = useState(false);
-  const [howToPlayModal, setHowToPlayModal] = useState(false)
+  const [howToPlayModal, setHowToPlayModal] = useState(false);
+  const [rewardCount, setRewardCount] = useState()
 
   let timer;
   useEffect(() => {
-    spinWheelApi()
+    spinWheelApi();
+    getRewardCount();
     return () => {
       clearTimeout(timer);
     }
@@ -28,15 +30,26 @@ function SpinWheel() {
 
   const spinWheelApi = async () => {
     const response = await getRequestData(route["GET_SPIN"]);
-    setPlaces(response?.data?.SpinWheelCouponData)
+    setSpinnerValues(response?.data?.SpinWheelCouponData)
+  }
+
+  const getRewardCount = async () => {  
+    const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
+    setRewardCount(rewardResponse?.data?.user_reward_count)
   }
 
   const selectItem = (props) => {
     if (selectedItem === null) {
-      const selectedItem = 7;
-      if (props.onSelectItem) {
-        props.onSelectItem(selectedItem);
-      }
+      const selectedItem =  rewardCount
+      let filteredItem = spinnerValues?.filter((_,i)=> i == selectedItem)
+      setRewardCount(filteredItem.map((item, i) => {
+        return (
+          <>
+          <img src={item?.overlay_image} height={120} width={'100%'} className="mb-3"/>
+          <p>{item?.description}</p>
+          </>
+        )
+      }))
       setSelectedItem(selectedItem);
     } else {
       setSelectedItem(null);
@@ -68,7 +81,7 @@ function SpinWheel() {
   }
 
   const wheelVars = {
-    "--nb-item": places?.length,
+    "--nb-item": spinnerValues?.length,
     "--selected-item": selectedItem
   };
   const spinning = selectedItem !== null ? "spinning" : "";
@@ -91,7 +104,7 @@ function SpinWheel() {
             <p className='spinBtnText text-center' >SPIN</p>
           </div>
           <div className={`wheelWrapper wheel ${spinning}`}>
-            {places?.map((item, index) => (
+            {spinnerValues?.map((item, index) => (
               <>
                 <div
                   className="wheel-item"
@@ -134,7 +147,7 @@ function SpinWheel() {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={selectedItem} />
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount}/>
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
     </Container>
   )
