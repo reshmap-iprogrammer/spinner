@@ -10,14 +10,14 @@ import React, { useEffect } from 'react'
 
 function App() {
 
-  useEffect(() => {
-    return () => {
-      document.addEventListener("message", function(data) {
-        alert("hi");
-        alert(data.data);
-        });
-  }
-  }, [])
+  // useEffect(() => {
+  //   return () => {
+  //     document.addEventListener("message", function(data) {
+  //       alert("hi");
+  //       alert(data.data);
+  //       });
+  // }
+  // }, [])
 
 
   const btnClick = () => {

@@ -15,7 +15,7 @@ import { useParams } from 'react-router-dom';
 
 function SpinWheel() {
   const { userData } = useParams();
-  alert(userData)
+  alert("userData", userData)
   const [selectedItem, setSelectedItem] = useState(null);
   const [spinnerValues, setSpinnerValues] = useState()
   const [showModal, setModal] = useState(false);
