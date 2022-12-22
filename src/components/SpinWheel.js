@@ -10,8 +10,12 @@ import CommonModal from './CommonModal';
 import HowToPlayModal from './HowToPlayModal';
 import './Styles.css'
 import spinArrowImage from '../Assets/images/pointer.svg'
+import { useParams } from 'react-router-dom';
+
 
 function SpinWheel() {
+  const { userData } = useParams();
+  alert(userData)
   const [selectedItem, setSelectedItem] = useState(null);
   const [spinnerValues, setSpinnerValues] = useState()
   const [showModal, setModal] = useState(false);

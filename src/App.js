@@ -9,17 +9,16 @@ import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
 
 function App() {
-  // useEffect(() => {
-  //   document.addEventListener("message", function(data) {
-  //     alert("hi");
-  //     alert(data.data);
-  //     });
 
-  //     window.addEventListener("message", message => {
-  //       alert("hiiii")
-  //       alert("helooooooooooo")
-  //       });
-  // })
+  useEffect(() => {
+    return () => {
+      document.addEventListener("message", function(data) {
+        alert("hi");
+        alert(data.data);
+        });
+  }
+  }, [])
+
 
   const btnClick = () => {
     window.ReactNativeWebView.postMessage('Data from WebView / Website');
