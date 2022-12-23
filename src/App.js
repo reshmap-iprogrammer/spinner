@@ -10,9 +10,9 @@ import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
 
 function App() {
-  let value = useParams();
+  let msidin  = useParams();
 
-  alert("msidi", value)
+  alert("msidi", msidin)
 
   // useEffect(() => {
   //   return () => {
