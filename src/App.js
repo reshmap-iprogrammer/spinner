@@ -7,8 +7,11 @@ import {
 } from 'react-router-dom';
 import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
+import { useParams } from "react-router";
 
 function App() {
+
+  let { msidin } = useParams();
 
   // useEffect(() => {
   //   return () => {
