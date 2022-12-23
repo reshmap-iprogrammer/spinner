@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 
 
 function RewardHistory() {
-    const {msidin} = useParams();
+    const msidin = useParams();
     alert("data", msidin)
     const [getRewards, setRewards] = useState();
     const [showModal, setModal] = useState(false);
