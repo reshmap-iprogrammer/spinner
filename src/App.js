@@ -24,7 +24,6 @@ let linkData = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGFo
           alert(decryptedData.msisdn)
   }
 
-
   // useEffect(() => {
   //   return () => {
   //     document.addEventListener("message", function(data) {
