@@ -5,17 +5,21 @@ import {
   Routes,
   Route,
   useParams,
-  useSearchParams,
-  useLocation
+  useSearchParams
 } from 'react-router-dom';
 import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
 
 function App() {
-  // let [searchParams, setSearchParams] = useSearchParams()
-  // const term = searchParams.get("msidin")
-  let {msidin}  = useParams();
-  alert(JSON.stringify(msidin))
+let msidin = document.location.href.split('=')?.[1]
+  // let {msidin}  = useParams();
+  alert(msidin)
+
+  let bytes = CryptoJS.AES.decrypt(linkData,'VE1LLVNFRUQtRU5DLURFQw==')
+    let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+
+    alert(decryptedData)
+    alert(decryptedData.msisdn)
 
   // useEffect(() => {
   //   return () => {
@@ -35,9 +39,8 @@ function App() {
     <Router>
       {/* <button onClick={btnClick}>Hi</button> */}
       <Routes>
-        <Route path="/" element={<SpinWheel tagline={''} />} >
+        <Route path="/" element={<SpinWheel tagline={''} />} />
         <Route path=":msidin" element={<RewardHistory />} />
-        </Route>
       </Routes>
     </Router>
   );
