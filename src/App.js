@@ -11,7 +11,10 @@ import React, { useEffect } from 'react'
 
 function App() {
   let {msidin}  = useParams();
-  alert("msidin",msidin)
+  useEffect (() => {
+  alert(msidin)
+  })
+  
 
   // useEffect(() => {
   //   return () => {
