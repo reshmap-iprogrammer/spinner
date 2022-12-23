@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
+import CryptoJS from 'crypto-js'
 
 function App() {
 let msidin = document.location.href.split('=')?.[1]
