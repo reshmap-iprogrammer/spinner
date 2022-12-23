@@ -5,7 +5,8 @@ import {
   Routes,
   Route,
   useParams,
-  useSearchParams
+  useSearchParams,
+  useLocation
 } from 'react-router-dom';
 import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
@@ -13,7 +14,7 @@ import React, { useEffect } from 'react'
 function App() {
   // let [searchParams, setSearchParams] = useSearchParams()
   // const term = searchParams.get("msidin")
-  let msidin  = useParams();
+  let {msidin}  = useParams();
   alert(JSON.stringify(msidin))
 
   // useEffect(() => {
@@ -34,8 +35,9 @@ function App() {
     <Router>
       {/* <button onClick={btnClick}>Hi</button> */}
       <Routes>
-        <Route path="/" element={<SpinWheel tagline={''} />} />
+        <Route path="/" element={<SpinWheel tagline={''} />} >
         <Route path=":msidin" element={<RewardHistory />} />
+        </Route>
       </Routes>
     </Router>
   );
