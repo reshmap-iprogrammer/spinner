@@ -11,15 +11,14 @@ import { useParams } from "react-router-dom";
 
 function App() {
   const {msidin} = useParams();
-  alert("data", msidin)
-  // useEffect(() => {
-  //   return () => {
-  //     document.addEventListener("message", function(data) {
-  //       alert("hi");
-  //       alert(data.data);
-  //       });
-  // }
-  // }, [])
+  // alert("data", msidin)
+  useEffect(() => {
+    return () => {
+      document.addEventListener("message", function(data) {
+        alert(data.msidin);
+        });
+  }
+  }, [])
 
 
   const btnClick = () => {
