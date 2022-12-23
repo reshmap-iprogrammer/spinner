@@ -5,16 +5,16 @@ import {
   Routes,
   Route,
   useParams,
+  useSearchParams
 } from 'react-router-dom';
 import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
 
 function App() {
-  let {msidin}  = useParams();
-  useEffect (() => {
+  // let [searchParams, setSearchParams] = useSearchParams()
+  // const term = searchParams.get("msidin")
+  let msidin  = useParams();
   alert(msidin)
-  })
-  
 
   // useEffect(() => {
   //   return () => {
