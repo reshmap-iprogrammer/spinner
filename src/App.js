@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     return () => {
       document.addEventListener("message", function(data) {
+        alert("i", data)
         alert(data.msidin);
         });
   }
