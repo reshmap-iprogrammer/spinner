@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom";
 
 function RewardHistory() {
     const {msidin} = useParams();
-    console.log("data", msidin)
+    alert("data", msidin)
     const [getRewards, setRewards] = useState();
     const [showModal, setModal] = useState(false);
     const [rewardData, setRewardData] = useState()
