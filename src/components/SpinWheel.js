@@ -10,14 +10,12 @@ import CommonModal from './CommonModal';
 import HowToPlayModal from './HowToPlayModal';
 import './Styles.css'
 import spinArrowImage from '../Assets/images/pointer.svg'
-import { useSearchParams } from "react-router-dom"
+import { useParams } from 'react-router-dom';
 
 
 function SpinWheel() {
-  let [searchParams, setSearchParams] = useSearchParams()
-  const msidin = searchParams.get("msidin")
-  // const { msidin } = useParams();
-  alert("userData", msidin)
+  const { msidin } = useParams();
+  alert("userData", JSON.stringify(msidin))
   const [selectedItem, setSelectedItem] = useState(null);
   const [spinnerValues, setSpinnerValues] = useState()
   const [showModal, setModal] = useState(false);
