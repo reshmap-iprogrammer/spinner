@@ -12,7 +12,7 @@ import React, { useEffect } from 'react'
 function App() {
   let { msidin } = useParams();
 
-  alert("msidi", parseInt(msidin))
+  alert("msidi", JSON.stringify(msidin))
 
   // useEffect(() => {
   //   return () => {
