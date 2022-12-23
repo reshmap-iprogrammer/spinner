@@ -7,17 +7,19 @@ import {
 } from 'react-router-dom';
 import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
+import { useParams } from "react-router-dom";
 
 function App() {
-
-  // useEffect(() => {
-  //   return () => {
-  //     document.addEventListener("message", function(data) {
-  //       alert("hi");
-  //       alert(data.data);
-  //       });
-  // }
-  // }, [])
+  const {msidin} = useParams();
+  console.log("data", msidin)
+  useEffect(() => {
+    return () => {
+      document.addEventListener("message", function(data) {
+        // alert("hi");
+        alert(data.data);
+        });
+  }
+  }, [])
 
 
   const btnClick = () => {
@@ -26,7 +28,7 @@ function App() {
 
   return (
     <Router>
-      {/* <button onClick={btnClick}>Hi</button> */}
+      <button onClick={btnClick}>Hi</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} />} />
         <Route path="/rewardHistory" element={<RewardHistory />} />
