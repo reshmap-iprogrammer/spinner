@@ -9,12 +9,9 @@ import { route } from '../services/ApiRoutes';
 import emptyRewardIcon from '../Assets/images/box-empty-request.svg'
 import moment from 'moment';
 import ClaimRewardModal from './ClaimRewardModal';
-import { useParams } from "react-router-dom";
 
 
 function RewardHistory() {
-    const {msidin} = useParams();
-    alert("data", msidin)
     const [getRewards, setRewards] = useState();
     const [showModal, setModal] = useState(false);
     const [rewardData, setRewardData] = useState()
