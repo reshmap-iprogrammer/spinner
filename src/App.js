@@ -15,12 +15,15 @@ function App() {
 let linkData = document.location.href.split('=')?.[1]
   // let {msidin}  = useParams();
   alert(linkData)
+  if(linkData){
 
-  let bytes = CryptoJS.AES.decrypt(linkData,'VE1LLVNFRUQtRU5DLURFQw==')
-    let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+    let bytes = CryptoJS.AES.decrypt(linkData,'VE1LLVNFRUQtRU5DLURFQw==')
+      let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+      
+          alert(decryptedData)
+          alert(decryptedData.msisdn)
+  }
 
-    alert(decryptedData)
-    alert(decryptedData.msisdn)
 
   // useEffect(() => {
   //   return () => {
