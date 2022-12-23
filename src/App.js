@@ -12,9 +12,9 @@ import React, { useEffect } from 'react'
 import CryptoJS from 'crypto-js'
 
 function App() {
-let msidin = document.location.href.split('=')?.[1]
+let linkData = document.location.href.split('=')?.[1]
   // let {msidin}  = useParams();
-  alert(msidin)
+  alert(linkData)
 
   let bytes = CryptoJS.AES.decrypt(linkData,'VE1LLVNFRUQtRU5DLURFQw==')
     let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
