@@ -9,7 +9,9 @@ import {
 } from 'react-router-dom';
 import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
-import CryptoJS from 'crypto-js'
+// import CryptoJS from "crypto-js";
+var CryptoJS = require("crypto-js");
+
 
 function App() {
 // let linkData = document.location.href.split('=')?.[1]
@@ -18,11 +20,12 @@ let linkData = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGFo
   alert(linkData)
   if(linkData){
 
-    let bytes = (CryptoJS.AES.decrypt("U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGFokCDCSDGMInageg%2FuuhYo98OCgA%3D%3D",'VE1LLVNFRUQtRU5DLURFQw=='))
-      let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+    let bytes = CryptoJS.AES.decrypt(linkData,'VE1LLVNFRUQtRU5DLURFQw==')
+      let decryptedData = bytes.toString(CryptoJS.enc.Utf8)
           alert(decryptedData)
-          alert(decryptedData.msisdn)
+          // alert(decryptedData.msisdn)
   }
+
 
   // useEffect(() => {
   //   return () => {
