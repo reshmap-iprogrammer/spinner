@@ -21,8 +21,8 @@ let linkData = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGFo
   // if(linkData){
 
     let bytes = CryptoJS.AES.decrypt("U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGFokCDCSDGMInageg%2FuuhYo98OCgA%3D%3D",'VE1LLVNFRUQtRU5DLURFQw==')
-      // let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-          alert(bytes)
+      let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+          alert(decryptedData)
           // alert(decryptedData.msisdn)
   // }
 
