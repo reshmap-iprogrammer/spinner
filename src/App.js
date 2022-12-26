@@ -16,7 +16,6 @@ function App() {
 
   useEffect(() => {
     document.addEventListener("message", function(data) {
-      alert("hi");
       alert(data.data);
       });
 
