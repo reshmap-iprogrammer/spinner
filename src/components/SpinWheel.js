@@ -34,8 +34,10 @@ function SpinWheel() {
     setSpinnerValues(response?.data?.SpinWheelCouponData)
   }
 
-  const getRewardCount = async () => {  
-    const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
+  const getRewardCount = async () => { 
+    const rewardResponse = await getRequestData(
+      `${route["GET_REWARD_HISTORY"]}?user_profile_id=9082454538?spin_id=1?claim_status=0?rank=0`
+    ); 
     setRewardCount(rewardResponse?.data?.user_reward_count)
   }
 

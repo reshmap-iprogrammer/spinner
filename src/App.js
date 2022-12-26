@@ -29,10 +29,10 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
 
   return (
     <Router>
-      {/* <button onClick={btnClick}>Hi</button> */}
+      <button onClick={btnClick}>Hi</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} />} />
-        <Route path=":msidin" element={<RewardHistory />} />
+        <Route path="/rewardHistory" element={<RewardHistory />} />
       </Routes>
     </Router>
   );
