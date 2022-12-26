@@ -15,13 +15,17 @@ import CryptoJS from "crypto-js";
 function App() {
 
   useEffect(() => {
-    return () => {
-      document.addEventListener("message", function(data) {
-        alert("Hello")
-        alert(data);
+    document.addEventListener("message", function(data) {
+      alert("hi");
+      alert(data.data);
+      });
+
+      window.addEventListener("message", message => {
+        alert("hiiii")
+        alert("helooooooooooo")
+        alert(message)
         });
-  }
-  }, [])
+  })
 
 
 // let linkData = document.location.href.split('=')?.[1]
