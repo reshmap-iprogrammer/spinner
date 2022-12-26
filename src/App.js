@@ -10,6 +10,8 @@ import {
 import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
 import CryptoJS from "crypto-js";
+import { getRequestData } from './services/RequestHandler';
+import { route } from './services/ApiRoutes';
 
 
 function App() {
@@ -18,13 +20,9 @@ function App() {
     document.addEventListener("message", function(data) {
       alert(data.data);
       });
-
-      window.addEventListener("message", message => {
-        alert("hiiii")
-        alert("helooooooooooo")
-        alert(message)
-        });
   })
+
+  
 
 
 // let linkData = document.location.href.split('=')?.[1]
@@ -36,9 +34,9 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
           // alert(decryptedData.msisdn)
 
 
-
-  const btnClick = () => {
-    window.ReactNativeWebView.postMessage('Data from WebView / Website');
+  const btnClick = async () => {
+    const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
+    window.ReactNativeWebView.postMessage('Data from WebView / Website',rewardResponse?.data?.user_reward_count);
   }
 
   return (
