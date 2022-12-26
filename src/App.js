@@ -13,7 +13,7 @@ import CryptoJS from "crypto-js";
 
 
 function App() {
-  
+
   useEffect(() => {
     return () => {
       document.addEventListener("message", function(data) {
@@ -28,8 +28,8 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
     let linkData = decodeURIComponent(linkDatas); 
     let bytes = CryptoJS.AES.decrypt(linkData,'VE1LLVNFRUQtRU5DLURFQw==')
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-          alert(JSON.stringify(decryptedData))
-          alert(decryptedData.msisdn)
+          // alert(JSON.stringify(decryptedData))
+          // alert(decryptedData.msisdn)
 
 
 
