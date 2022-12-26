@@ -37,8 +37,8 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
   const btnClick = async () => {
     const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
     // window.ReactNativeWebView.postMessage('Data from WebView / Website');
-    console.log('object123',typeof(rewardResponse?.data));
-    window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data));
+    console.log('object123',rewardResponse?.data);
+    window.ReactNativeWebView.postMessage(JSON.stringify({data: 214}));
   }
 
   return (
