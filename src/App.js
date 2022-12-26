@@ -13,6 +13,16 @@ import CryptoJS from "crypto-js";
 
 
 function App() {
+  
+  useEffect(() => {
+    return () => {
+      document.addEventListener("message", function(data) {
+        alert("i", data)
+        alert(data.data);
+        });
+  }
+  }, [])
+
 // let linkData = document.location.href.split('=')?.[1]
 let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGFokCDCSDGMInageg%2FuuhYo98OCgA%3D%3D"
     let linkData = decodeURIComponent(linkDatas); 
