@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     return () => {
       document.addEventListener("message", function(data) {
-        alert(data);
+        alert('data');
         });
   }
   }, [])
