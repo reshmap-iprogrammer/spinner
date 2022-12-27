@@ -45,6 +45,7 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
      axios.get(
 			route["GET_SPIN"]
 		  ).then ((res)=>{
+        alert(JSON.stringify(res))
            if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(JSON.stringify(res));
     }
