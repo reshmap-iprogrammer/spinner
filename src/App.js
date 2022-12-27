@@ -43,7 +43,7 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
     const message = JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]);
     // setMessage(message);
     setTimeout(() => {  
-      alert(message)
+      alert("message")
     }, 1000);
        if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(message);
