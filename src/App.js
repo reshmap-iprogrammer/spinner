@@ -12,6 +12,7 @@ import React, { useEffect, useState } from 'react'
 import CryptoJS from "crypto-js";
 import { getRequestData } from './services/RequestHandler';
 import { route } from './services/ApiRoutes';
+import axios from 'axios';
 
 
 function App() {
@@ -39,12 +40,15 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
     // const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
     // const message = JSON.stringify(rewardResponse?.data);
     // setMessage(message);
-    const rewardResponse = await getRequestData(route["GET_SPIN"]);
-    const message = JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]);
+    // const rewardResponse = await getRequestData(route["GET_SPIN"]);
+    // const message = JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]);
+     axios.get(
+			"https://jsonplaceholder.typicode.com/posts"
+		  ).then ((res)=>{
+        alert(JSON.stringify(res))
+      });
+		  
     // setMessage(message);
-    setTimeout(() => {  
-      alert("message")
-    }, 1000);
        if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(message);
     }
