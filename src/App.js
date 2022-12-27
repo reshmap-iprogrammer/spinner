@@ -37,8 +37,7 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
 
 
   const btnClick = () => {
-    const message = {"slot_name":"Sony Liv"}
-    window.ReactNativeWebView.postMessage(JSON.stringify({"slot_name":"Sony Liv"}));
+    window.ReactNativeWebView.postMessage(JSON.stringify({"slot_name":"Sony Liv","title":"28 day of","sub_title":"Sony LIV Premium Mobile subscription","overlay_image":"https://vodafoneideaappimages-dev.s3.dualstack.ap-south-1.amazonaws.com/spinTheWheel/spin_the_wheel_overlay_banner1.jpg","detail":"","coupon_code":"","reward_type":"Subscription","description":"Sony LIV Premium Mobile subscription for 28 days","rank":1,"logo_image":"https://vodafoneideaappimages-dev.s3.dualstack.ap-south-1.amazonaws.com/spinTheWheel/spin_the_wheel_logo_banner1.png","internal_link":"sonyLiv","external_link":"","quantity":20,"prize_count":null,"is_big_prize":0,"status":1,"expiry_date":null}));
     // const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
     // const message = JSON.stringify(rewardResponse?.data);
     // setMessage(message);
