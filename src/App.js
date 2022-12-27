@@ -45,9 +45,9 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
      axios.get(
 			"http://65.0.242.66/api/getSpinWheelCouponBanners"
 		  ).then ((res)=>{
-        alert(JSON.stringify(res?.data?.SpinWheelCouponData[0]))
+        alert(JSON.stringify(res?.data))
            if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(JSON.stringify(res?.data?.SpinWheelCouponData[0]));
+      window.ReactNativeWebView.postMessage(JSON.stringify(res?.data));
     }
       });
 		  
