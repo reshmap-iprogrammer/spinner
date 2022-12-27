@@ -8,13 +8,15 @@ import {
   useSearchParams
 } from 'react-router-dom';
 import RewardHistory from './components/RewardHistory';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import CryptoJS from "crypto-js";
 import { getRequestData } from './services/RequestHandler';
 import { route } from './services/ApiRoutes';
 
 
 function App() {
+
+  const [message, setMessage] = useState(null)
 
   useEffect(() => {
     document.addEventListener("message", function(data) {
@@ -37,15 +39,21 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
   const btnClick = async () => {
     const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
     const message = JSON.stringify(rewardResponse?.data);
-    if (window.ReactNativeWebView && message?.length > 0) {
-      window.ReactNativeWebView.postMessage(message);
-    }
+    setMessage(message);
+    
     // window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data));
     // if(rewardResponse?.data){
     //   // window.ReactNativeWebView.postMessage('Data from WebView / Website');
     //   // window.parent.postMessage("Data to app")
     // }
   }
+
+  useEffect(() => {
+    if (window.ReactNativeWebView && message?.length > 0) {
+      window.ReactNativeWebView.postMessage(message);
+    }
+  }, [message])
+  
 
   return (
     <Router>
