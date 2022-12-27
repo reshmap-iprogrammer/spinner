@@ -45,7 +45,9 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
      axios.get(
 			"https://jsonplaceholder.typicode.com/posts"
 		  ).then ((res)=>{
-        alert(JSON.stringify(res))
+           if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage(JSON.stringify(res));
+    }
       });
 		  
     // setMessage(message);
