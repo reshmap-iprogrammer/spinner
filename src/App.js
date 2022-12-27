@@ -36,7 +36,7 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
           // alert(decryptedData.msisdn)
 
 
-  const btnClick = async () => {
+  const btnClick =  () => {
     // const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
     // const message = JSON.stringify(rewardResponse?.data);
     // setMessage(message);
@@ -59,11 +59,12 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
   }, [])
   
 
-  // useEffect(() => {
-  //   if (window.ReactNativeWebView && message?.length > 0) {
-  //     window.ReactNativeWebView.postMessage(message);
-  //   }
-  // }, [message])
+  useEffect(() => {
+    // if (window.ReactNativeWebView && message?.length > 0) {
+    //   window.ReactNativeWebView.postMessage(message);
+    // }
+    console.log('object', message)
+  }, [message])
   
 
   return (
