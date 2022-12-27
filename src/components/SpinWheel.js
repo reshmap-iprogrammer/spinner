@@ -37,6 +37,9 @@ function SpinWheel() {
   const getRewardCount = async () => {  
     const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
     setRewardCount(rewardResponse?.data?.user_reward_count)
+    // if(rewardResponse?.data){
+    //   window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data))
+    // }
   }
 
   const selectItem = (props) => {
