@@ -46,11 +46,6 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
        if (window.ReactNativeWebView && message) {
       window.ReactNativeWebView.postMessage(message);
     }
-    // window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data));
-    // if(rewardResponse?.data){
-    //   // window.ReactNativeWebView.postMessage('Data from WebView / Website');
-    //   // window.parent.postMessage("Data to app")
-    // }
   }
 
   useEffect(async() => {
@@ -62,9 +57,6 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
   
 
   useEffect(() => {
-    // if (window.ReactNativeWebView && message?.length > 0) {
-    //   window.ReactNativeWebView.postMessage(message);
-    // }
     console.log('object', message)
   }, [message])
   
