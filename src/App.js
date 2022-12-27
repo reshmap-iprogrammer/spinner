@@ -41,7 +41,7 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
     // const message = JSON.stringify(rewardResponse?.data);
     // setMessage(message);
     
-       if (window.ReactNativeWebView) {
+       if (window.ReactNativeWebView && message?.length > 0) {
       window.ReactNativeWebView.postMessage(message);
     }
     // window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data));
