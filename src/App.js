@@ -38,7 +38,8 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
     const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
     // window.ReactNativeWebView.postMessage('Data from WebView / Website');
     console.log('object123',rewardResponse?.data);
-    window.ReactNativeWebView.postMessage(rewardResponse?.data);
+    // window.ReactNativeWebView.postMessage("Data");
+    document.ReactNativeWebView.postMessage("Data")
   }
 
   return (
