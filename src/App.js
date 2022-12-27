@@ -49,9 +49,9 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
       });
 		  
     // setMessage(message);
-       if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(message);
-    }
+    //    if (window.ReactNativeWebView) {
+    //   window.ReactNativeWebView.postMessage(message);
+    // }
   }
 
   // useEffect(async() => {
