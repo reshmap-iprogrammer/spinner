@@ -43,11 +43,11 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
     // const rewardResponse = await getRequestData(route["GET_SPIN"]);
     // const message = JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]);
      axios.get(
-			route["GET_SPIN"]
+			"https://jsonplaceholder.typicode.com/posts"
 		  ).then ((res)=>{
-        alert(JSON.stringify(res?.data?.SpinWheelCouponData[0]))
+        alert(JSON.stringify(res))
            if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(JSON.stringify(res?.data?.SpinWheelCouponData[0]));
+      window.ReactNativeWebView.postMessage(JSON.stringify(res));
     }
       });
 		  
