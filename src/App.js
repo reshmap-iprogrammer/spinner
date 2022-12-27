@@ -46,7 +46,7 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
 
 
      axios.get(
-			"https://jsonplaceholder.typicode.com/todos"
+			"http://jsonplaceholder.typicode.com/todos"
 		  ).then ((res)=>{
         console.log('object',JSON.stringify(res?.data[0]) )
         // alert(JSON.stringify(JSON.stringify(res?.data?.SpinWheelCouponData[0])))
