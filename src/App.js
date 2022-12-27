@@ -55,8 +55,8 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
 
   useEffect(async() => {
     const rewardResponse = await getRequestData(route["GET_SPIN"]);
-    const message = JSON.stringify(rewardResponse?.data?.SpinWheelCouponData);
-    setMessage(rewardResponse?.data?.SpinWheelCouponData);
+    const message = JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]);
+    setMessage(message);
     
   }, [])
   
