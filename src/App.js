@@ -40,8 +40,10 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
     // const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
     // const message = JSON.stringify(rewardResponse?.data);
     // setMessage(message);
+
+    alert(message)
     
-       if (window.ReactNativeWebView && message?.length > 0) {
+       if (window.ReactNativeWebView && message) {
       window.ReactNativeWebView.postMessage(message);
     }
     // window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data));
@@ -52,9 +54,9 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
   }
 
   useEffect(async() => {
-    const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
-    const message = JSON.stringify(rewardResponse?.data);
-    setMessage(message);
+    const rewardResponse = await getRequestData(route["GET_SPIN"]);
+    const message = JSON.stringify(rewardResponse?.data?.SpinWheelCouponData);
+    setMessage(rewardResponse?.data?.SpinWheelCouponData);
     
   }, [])
   
