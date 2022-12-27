@@ -36,7 +36,7 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
           // alert(decryptedData.msisdn)
 
 
-  const btnClick = async () => {
+  const btnClick = () => {
     // const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
     // const message = JSON.stringify(rewardResponse?.data);
     // setMessage(message);
@@ -45,9 +45,9 @@ let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGF
      axios.get(
 			route["GET_SPIN"]
 		  ).then ((res)=>{
-        alert(JSON.stringify(res))
+        alert(JSON.stringify(res?.data?.SpinWheelCouponData[0]))
            if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(JSON.stringify(res));
+      window.ReactNativeWebView.postMessage(JSON.stringify(res?.data?.SpinWheelCouponData[0]));
     }
       });
 		  
