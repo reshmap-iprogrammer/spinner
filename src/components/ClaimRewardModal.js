@@ -1,10 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 import giftIcon from '../Assets/images/gift.svg'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import closeIcon from '../Assets/images/close.svg'
 import moment from 'moment';
+import { getRequestData } from '../services/RequestHandler';
+import { route } from '../services/ApiRoutes';
 
 function ClaimRewardModal({showModal, toggle, getRewards}) {
+
+  const [claimReward, setClaimReward] = useState('')
+
+  const claimRewards =async () => {
+    const claimRewardResponse = await getRequestData(
+      `${route["CLAIM_REWARDS"]}?id=1`
+    );
+    setClaimReward(claimRewardResponse?.data?.message)
+    console.log('object', claimRewardResponse?.data?.message)
+  }
+
   return (
     <div>
        <Modal className='modalWrapper' isOpen={showModal} toggle={toggle}>
@@ -26,7 +39,7 @@ function ClaimRewardModal({showModal, toggle, getRewards}) {
           </div>
           <h5 style={{ textAlign: 'center' }}>{getRewards?.description}</h5>
         </div>
-        <div className='backHomeButton'>
+        <div className='backHomeButton' onClick={claimRewards}>
         <p className='text-center text-white p-3 backHomeText'>back home</p>
         </div>
         </div>

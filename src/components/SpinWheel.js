@@ -35,7 +35,9 @@ function SpinWheel() {
   }
 
   const getRewardCount = async () => {  
-    const rewardResponse = await getRequestData(route["GET_REWARD_HISTORY"]);
+    const rewardResponse = await getRequestData(
+      `${route["GET_REWARD_HISTORY"]}?user_profile_id=9082454538&spin_id=1&claim_status=0&rank=0`
+    );
     setRewardCount(rewardResponse?.data?.user_reward_count)
     // if(rewardResponse?.data){
     //   window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data))
@@ -99,6 +101,9 @@ function SpinWheel() {
       <div className='arrow' id="spinArrow" >
         <img src={spinArrowImage} />
       </div>
+      {/* To disable spinner */}
+      {/* <div className='disableSpin'>
+      </div> */}
       <div className="wheel-container">
         <div
           style={wheelVars}
