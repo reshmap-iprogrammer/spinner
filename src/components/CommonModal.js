@@ -4,6 +4,11 @@ import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
 
 function CommonModal({showModal, toggle, spinnerValue, image}) {
+  const claimReaward = () => {
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage(JSON.stringify(spinnerValue))
+}
+  }
   return (
     <div>
     <Modal className='modalWrapper' isOpen={showModal} toggle={toggle}>
@@ -30,7 +35,7 @@ function CommonModal({showModal, toggle, spinnerValue, image}) {
           <img src={infoIcon} height={20} />
           <p>This will be reflect in your account within 24 hrs</p>
         </div>
-        <div className='backHomeButton'>
+        <div className='backHomeButton' onClick={claimReaward}>
         <p className='text-center text-white p-3 backHomeText'>back home</p>
         </div>
         {/* <Button size="lg" block  className='backbtn'>back home</Button> */}

@@ -412,18 +412,8 @@
     .reward_logo_image {
         margin-right: 12px;
     }
-    .disableSpin {
-        background-color: #d9d9d9;
-        top: 89px;
-        position: absolute;
-        left: 38px;
-        right: 0;
-        height: 400px;
-        border-radius: 240px;
-        z-index: 1;
-        padding: 0;
-        width: 403px;
-        opacity: 0.95;
+    .rewardList {
+        padding: 12px 16px;
     }
 }
 @media (min-width: 360px) and (max-width: 420px) {

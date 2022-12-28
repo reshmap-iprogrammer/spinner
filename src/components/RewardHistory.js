@@ -56,17 +56,17 @@ function RewardHistory() {
             {getRewards && getRewards.length && getRewards?.map((item, index) => {
                 return (
                     <>
-                        <Container className='rewardListwrapper'>
+                        <div className='rewardListwrapper'>
                             <div >
-                                <div className=' d-flex justify-content-between mt-3' onClick={() => openRewardModal(item)}>
+                                <div className=' d-flex justify-content-between rewardList' onClick={() => openRewardModal(item)}>
                                     <div className='rowWrapper'>
                                         <div className='reward_logo_image'>
                                             <img src={item?.logo_image} height={32} width={32} />
                                         </div>
                                         <div>
                                             <p className='mb-0'>{item?.slot_name ? item?.slot_name : item?.coupon_code}</p>
-                                            {/* <p>{item?.coupon_code}</p> */}
-                                            <p>{item?.description}</p>
+                                            <p className='mb-0'>{item?.coupon_code}</p>
+                                            {/* <p>{item?.description}</p> */}
                                         </div>
                                     </div>
                                     <div className='d-flex justify-content-between'>
@@ -75,7 +75,7 @@ function RewardHistory() {
                                     </div>
                                 </div>
                             </div>
-                        </Container>
+                        </div>
                     </>
                 )
             })}

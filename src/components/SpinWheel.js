@@ -98,12 +98,10 @@ function SpinWheel() {
         <img src={backIcon} height={25} className="backIconImage" />
         <p className='spinToWinHeaderText'>spin to win</p>
       </div>
+      <div className='disableSpinner'>
       <div className='arrow' id="spinArrow" >
         <img src={spinArrowImage} />
       </div>
-      {/* To disable spinner */}
-      {/* <div className='disableSpin'>
-      </div> */}
       <div className="wheel-container">
         <div
           style={wheelVars}
@@ -137,6 +135,7 @@ function SpinWheel() {
           </div>
         </div>
 
+      </div>
       </div>
       <div className='infoIcon'>
         <div className='infoIconWrapper'>

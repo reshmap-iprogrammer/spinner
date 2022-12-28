@@ -216,12 +216,30 @@
     }
     .rewardListwrapper:nth-child(odd) {
         background-color: #fefaf6;
-        margin-bottom: -16px;
+        /* margin-bottom: -16px; */
     }
     .rewardListwrapper:nth-child(even) {
         background-color: #fff2f1;
         margin-bottom: -16px;
     }
+    /* 
+    .WheelWrapperdisableSpinner {
+        filter: grayscale(100%);
+        opacity: 0.5;
+    } 
+    .wheelContainerDisable {
+        border: 3px solid #d9d9d9;
+    }
+    .arrowDisable{
+        filter: grayscale(100%);
+        opacity: 0.6;
+    }
+    .spinButtonDisable {
+        border-color: #d9d9d9;
+        background: #d9d9d9;
+    }
+    
+    */
 }
 @media (min-width: 360px) and (max-width: 420px) {
     :root {

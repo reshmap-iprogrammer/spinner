@@ -12,10 +12,9 @@ function ClaimRewardModal({showModal, toggle, getRewards}) {
 
   const claimRewards =async () => {
     const claimRewardResponse = await getRequestData(
-      `${route["CLAIM_REWARDS"]}?id=1`
+      `${route["CLAIM_REWARDS"]}?id=${getRewards?.spin_id}`
     );
     setClaimReward(claimRewardResponse?.data?.message)
-    console.log('object', claimRewardResponse?.data?.message)
   }
 
   return (
