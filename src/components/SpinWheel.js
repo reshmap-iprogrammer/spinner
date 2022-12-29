@@ -183,7 +183,7 @@ function SpinWheel() {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount} spinData={spinData} />
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount} spinData={spinData} flagData={flagData} />
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
     </Container>
   )
