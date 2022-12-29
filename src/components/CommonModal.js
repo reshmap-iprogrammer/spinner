@@ -28,9 +28,6 @@ function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagDat
       }
         <ModalBody>
           <div className='data'>
-            {/* <div className='dataTextWrapper'>
-            <img src={image} height={30} width={30} className="giftIcon"/>
-          </div> */}
             <h5 >{spinnerValue}</h5>
           </div>
           <div className='d-flex justify-content-center'>
