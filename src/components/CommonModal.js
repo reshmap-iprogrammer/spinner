@@ -3,10 +3,14 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
 
-function CommonModal({showModal, toggle, spinnerValue, image}) {
+function CommonModal({showModal, toggle, spinnerValue, image, spinData}) {
   const claimReaward = () => {
+    // console.log('object',spinData[0]?.props?.children?.props?.children )
+    // const claimData = spinData.map((item, index) => {
+    //   console.log('object', item)
+    // })
     if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(JSON.stringify(spinnerValue))
+      window.ReactNativeWebView.postMessage(spinData[0]?.props?.children?.props?.children)
 }
   }
   return (

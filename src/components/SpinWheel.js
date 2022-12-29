@@ -17,12 +17,14 @@ function SpinWheel() {
   const [spinnerValues, setSpinnerValues] = useState()
   const [showModal, setModal] = useState(false);
   const [howToPlayModal, setHowToPlayModal] = useState(false);
-  const [rewardCount, setRewardCount] = useState()
+  const [rewardCount, setRewardCount] = useState();
+  const [spinData, setSpinData] = useState('')
 
   let timer;
   useEffect(() => {
     spinWheelApi();
     getRewardCount();
+    getFlag();
     return () => {
       clearTimeout(timer);
     }
@@ -39,9 +41,14 @@ function SpinWheel() {
       `${route["GET_REWARD_HISTORY"]}?user_profile_id=9082454538&spin_id=1&claim_status=0&rank=0`
     );
     setRewardCount(rewardResponse?.data?.user_reward_count)
+    setSpinData(rewardResponse?.data?.user_reward_count)
     // if(rewardResponse?.data){
     //   window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data))
     // }
+  }
+
+  const getFlag  = async () => {
+    const getFlagresponse  = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=9075727698&primary_msisdn=9075727698&secondary_msisdn=&circle=0007&name=vaibhav&status=1`)
   }
 
   const selectItem = (props) => {
@@ -52,6 +59,13 @@ function SpinWheel() {
         return (
           <>
           <img src={item?.overlay_image} height={120} width={'100%'} className="mb-3"/>
+          <p>{item?.description}</p>
+          </>
+        )
+      }))
+      setSpinData(filteredItem.map((item, i) => {
+        return (
+          <>
           <p>{item?.description}</p>
           </>
         )
@@ -155,7 +169,7 @@ function SpinWheel() {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount}/>
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount} spinData={spinData}/>
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
     </Container>
   )
