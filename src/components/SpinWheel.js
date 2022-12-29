@@ -10,7 +10,7 @@ import CommonModal from './CommonModal';
 import HowToPlayModal from './HowToPlayModal';
 import './Styles.css'
 import spinArrowImage from '../Assets/images/pointer.svg'
-
+import copyIcon from '../Assets/images/Icon_Copy.svg'
 
 function SpinWheel() {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -18,7 +18,8 @@ function SpinWheel() {
   const [showModal, setModal] = useState(false);
   const [howToPlayModal, setHowToPlayModal] = useState(false);
   const [rewardCount, setRewardCount] = useState();
-  const [spinData, setSpinData] = useState('')
+  const [spinData, setSpinData] = useState('');
+  const [flagData, setFlagData] = useState('')
 
   let timer;
   useEffect(() => {
@@ -36,37 +37,50 @@ function SpinWheel() {
     setSpinnerValues(response?.data?.SpinWheelCouponData)
   }
 
-  const getRewardCount = async () => {  
+  const getRewardCount = async () => {
     const rewardResponse = await getRequestData(
       `${route["GET_REWARD_HISTORY"]}?user_profile_id=9082454538&spin_id=1&claim_status=0&rank=0`
     );
     setRewardCount(rewardResponse?.data?.user_reward_count)
     setSpinData(rewardResponse?.data?.user_reward_count)
-    // if(rewardResponse?.data){
-    //   window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data))
-    // }
   }
 
-  const getFlag  = async () => {
-    const getFlagresponse  = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=9075727698&primary_msisdn=9075727698&secondary_msisdn=&circle=0007&name=vaibhav&status=1`)
+  const getFlag = async () => {
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=9075727698&primary_msisdn=9075727698&secondary_msisdn=&circle=0007&name=vaibhav&status=1`);
+    setFlagData(getFlagresponse?.data?.reward_history_flag)
   }
 
   const selectItem = (props) => {
     if (selectedItem === null) {
-      const selectedItem =  rewardCount
-      let filteredItem = spinnerValues?.filter((_,i)=> i == selectedItem)
+      const selectedItem = rewardCount
+      let filteredItem = spinnerValues?.filter((_, i) => i == selectedItem)
       setRewardCount(filteredItem.map((item, i) => {
         return (
           <>
-          <img src={item?.overlay_image} height={120} width={'100%'} className="mb-3"/>
-          <p>{item?.description}</p>
+            <img src={item?.overlay_image} height={120} width={'100%'} className="mb-3 ovelayImage" />
+            <div className='overlayWrapper'>
+              <p className='descriptionText'>{item?.description}</p>
+              <p className='deatilsText'>{item?.detail}</p>
+            </div>
+            <div className='detailhorizontalLine'></div>
+            <div className='d-flex justify-content-between overlayWrapper'>
+              <div>
+                <p className='descriptionText'>{item?.coupon_code}</p>
+                <p className='deatilsText'>valid till {item?.expiry_date}</p>
+              </div>
+              <div>
+                <img src={copyIcon} height={24} width={24} />
+                <p className='copyIconText'>tap to copy</p>
+              </div>
+            </div>
+
           </>
         )
       }))
       setSpinData(filteredItem.map((item, i) => {
         return (
           <>
-          <p>{item?.description}</p>
+            <p>{item?.description}</p>
           </>
         )
       }))
@@ -113,43 +127,43 @@ function SpinWheel() {
         <p className='spinToWinHeaderText'>spin to win</p>
       </div>
       <div className='disableSpinner'>
-      <div className='arrow' id="spinArrow" >
-        <img src={spinArrowImage} />
-      </div>
-      <div className="wheel-container">
-        <div
-          style={wheelVars}
-          onClick={selectItem}
-        >
-          <div className='spinButton' onClick={startRotation}>
-            <p className='spinBtnText text-center' >SPIN</p>
-          </div>
-          <div className={`wheelWrapper wheel ${spinning}`}>
-            {spinnerValues?.map((item, index) => (
-              <>
-                <div
-                  className="wheel-item"
-                  key={`spinId_${index}`}
-                  style={{ "--item-nb": index }}
-                  id={`spinId_${index}`}
-                >
-                  <div className='contentWrapper'>
+        <div className='arrow' id="spinArrow" >
+          <img src={spinArrowImage} />
+        </div>
+        <div className="wheel-container">
+          <div
+            style={wheelVars}
+            onClick={selectItem}
+          >
+            <div className='spinButton' onClick={startRotation}>
+              <p className='spinBtnText text-center' >SPIN</p>
+            </div>
+            <div className={`wheelWrapper wheel ${spinning}`}>
+              {spinnerValues?.map((item, index) => (
+                <>
+                  <div
+                    className="wheel-item"
+                    key={`spinId_${index}`}
+                    style={{ "--item-nb": index }}
+                    id={`spinId_${index}`}
+                  >
+                    <div className='contentWrapper'>
 
-                    <div className='text-center'>
-                      <img src={item?.logo_image} height={30} width={30} />
-                    </div>
-                    <div className='textWrapper text-center'>
-                      <p className='fw-bold'>{item.title}</p>
-                      <span className=''>{item.sub_title}</span>
+                      <div className='text-center'>
+                        <img src={item?.logo_image} height={30} width={30} />
+                      </div>
+                      <div className='textWrapper text-center'>
+                        <p className='fw-bold'>{item.title}</p>
+                        <span className=''>{item.sub_title}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </>
-            ))}
+                </>
+              ))}
+            </div>
           </div>
-        </div>
 
-      </div>
+        </div>
       </div>
       <div className='infoIcon'>
         <div className='infoIconWrapper'>
@@ -169,7 +183,7 @@ function SpinWheel() {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount} spinData={spinData}/>
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount} spinData={spinData} />
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
     </Container>
   )

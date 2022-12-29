@@ -1,14 +1,10 @@
 import React from 'react'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {Modal, ModalHeader, ModalBody} from 'reactstrap';
 import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
 
 function CommonModal({showModal, toggle, spinnerValue, image, spinData}) {
   const claimReaward = () => {
-    // console.log('object',spinData[0]?.props?.children?.props?.children )
-    // const claimData = spinData.map((item, index) => {
-    //   console.log('object', item)
-    // })
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(spinData[0]?.props?.children?.props?.children)
 }
@@ -33,7 +29,7 @@ function CommonModal({showModal, toggle, spinnerValue, image, spinData}) {
           {/* <div className='dataTextWrapper'>
             <img src={image} height={30} width={30} className="giftIcon"/>
           </div> */}
-          <h5 style={{ textAlign: 'center' }}>{spinnerValue}</h5>
+          <h5 >{spinnerValue}</h5>
         </div>
         <div className='d-flex justify-content-center'>
           <img src={infoIcon} height={20} />
@@ -42,7 +38,6 @@ function CommonModal({showModal, toggle, spinnerValue, image, spinData}) {
         <div className='backHomeButton' onClick={claimReaward}>
         <p className='text-center text-white p-3 backHomeText'>back home</p>
         </div>
-        {/* <Button size="lg" block  className='backbtn'>back home</Button> */}
         <p style={{ textAlign: 'center' }}>you may also view this later in reward history</p>
       </ModalBody>
     </Modal>
