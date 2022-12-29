@@ -10,7 +10,7 @@ const baseUrl = baseUrlObj[CURRENT_ENVIROMENT]
 export const route = { 
     GET_SPIN:  'https://vilcmsdev.viapplogs.net/api/getSpinWheelCouponBanners',
     GET_REWARDS: 'https://vilcmsdev.viapplogs.net/api/getSpinWheelRewardHistory',
-    GET_REWARD_HISTORY_FLAG: 'http://65.0.242.66/api/getUserRewardHistoryFlag',
+    GET_REWARD_HISTORY_FLAG: 'https://vilcmsdev.viapplogs.net/api/getUserRewardHistoryFlag',
     GET_REWARD_HISTORY: 'https://vilcmsdev.viapplogs.net/api/addSpinTheWheelRewardHistory',
     CLAIM_REWARDS: 'https://vilcmsdev.viapplogs.net/api/addSpinTheWheelRewardHistory'
 }
