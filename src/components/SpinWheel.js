@@ -171,8 +171,8 @@ function SpinWheel() {
                         <img src={item?.logo_image} height={30} width={30} />
                       </div>
                       <div className='textWrapper text-center'>
-                        <p className='fw-bold'>{item.title}</p>
-                        <span className=''>{item.sub_title}</span>
+                        <p className='fw-bold text-truncate text-center' style={{maxWidth: '50px',marginLeft:'13px'}}>{item.title}</p>
+                        <span className='text-truncate text-center' >{item.sub_title}</span>
                       </div>
                     </div>
                   </div>

@@ -20,7 +20,10 @@ function App() {
     });
   })
 
-  // let linkData = document.location.href.split('=')?.[1]
+  console.log('object',document.location)
+
+  // let linkDatas = document.location.href.split('=')?.[1]
+
   let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGFokCDCSDGMInageg%2FuuhYo98OCgA%3D%3D"
   let linkData = decodeURIComponent(linkDatas);
   let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')

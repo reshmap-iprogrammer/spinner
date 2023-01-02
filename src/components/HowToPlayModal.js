@@ -4,6 +4,7 @@ import './Styles.css'
 import spinImage from '../Assets/images/spin.svg'
 import rewardImage from '../Assets/images/claim.svg'
 import closeIcon from '../Assets/images/close.svg'
+import { Link } from 'react-router-dom';
 
 
 function HowToPlayModal({toggle, howToPlayModal}) {
@@ -23,7 +24,7 @@ function HowToPlayModal({toggle, howToPlayModal}) {
               <img src={rewardImage} className="rewardImage"/>
             <p className='mb-0'>Claim your reward</p>
             </div>
-            <a href='' className='termsCondition'>terms and conditions</a>
+            <Link to="https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf" className='termsCondition'>terms and conditions</Link>
           </ModalBody>
           </Modal>
     </div>
