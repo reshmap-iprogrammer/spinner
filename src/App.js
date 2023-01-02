@@ -24,10 +24,12 @@ function App() {
 
  
   let linkDatas = JSON.stringify(document.location.href.split('=')?.[1])
+  alert('objectre',linkDatas)
   let linkData = decodeURIComponent(linkDatas);
+  alert('object', linkData)
   let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-  let decryptedData = bytes.toString(CryptoJS.enc.Utf8)
-  alert(JSON.stringify(decryptedData))
+  // let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+  // alert(JSON.stringify(decryptedData))
   // alert(decryptedData.msisdn)
 
 
