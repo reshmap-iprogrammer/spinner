@@ -19,7 +19,7 @@ function ClaimRewardModal({showModal, toggle, getRewards}) {
 
   return (
     <div>
-       <Modal className='modalWrapper' isOpen={showModal} toggle={toggle}>
+       <Modal className='modalWrapper' isOpen={showModal} toggle={toggle} backdrop="static">
         <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32}/>
         </div>

@@ -177,7 +177,8 @@
 
     #spinId_0 .contentWrapper {
         transform: rotate(93deg);
-        top: -83px
+        /* top: -83px; */
+        top: -53px
     }
     #spinId_1 .contentWrapper {
         transform: rotate(93deg);
@@ -197,7 +198,7 @@
         transform: rotate(93deg);
     }
     #spinId_6 .contentWrapper {
-        top: -54px;
+        top: -49px;
         transform: rotate(93deg);
     }
     #spinId_7 .contentWrapper {

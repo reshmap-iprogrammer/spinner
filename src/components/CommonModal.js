@@ -4,6 +4,7 @@ import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
 
 function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagData }) {
+  
   const claimReaward = () => {
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(spinData[0]?.props?.children?.props?.children)
@@ -11,7 +12,7 @@ function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagDat
   }
   return (
     <div>
-      <Modal className='modalWrapper' isOpen={showModal} toggle={toggle}>
+      <Modal className='modalWrapper' isOpen={showModal} toggle={toggle} backdrop="static">
         <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32} />
         </div>
@@ -30,10 +31,11 @@ function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagDat
           <div className='data'>
             <h5 >{spinnerValue}</h5>
           </div>
-          <div className='d-flex justify-content-center'>
+          {flagData === 1 ? <div className='d-flex justify-content-center'>
             <img src={infoIcon} height={20} />
             <p>This will be reflect in your account within 24 hrs</p>
-          </div>
+          </div>: '' }
+          
           {flagData === 0 ? <><div className='backHomeButton' onClick={claimReaward}>
             <p className='text-center text-white p-3 backHomeText'>claim reward</p>
           </div></> : <>

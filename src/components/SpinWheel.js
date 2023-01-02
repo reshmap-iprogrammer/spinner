@@ -11,6 +11,9 @@ import HowToPlayModal from './HowToPlayModal';
 import './Styles.css'
 import spinArrowImage from '../Assets/images/pointer.svg'
 import copyIcon from '../Assets/images/Icon_Copy.svg'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { useNavigate } from 'react-router-dom';
+
 
 function SpinWheel() {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -19,7 +22,9 @@ function SpinWheel() {
   const [howToPlayModal, setHowToPlayModal] = useState(false);
   const [rewardCount, setRewardCount] = useState();
   const [spinData, setSpinData] = useState('');
-  const [flagData, setFlagData] = useState('')
+  const [flagData, setFlagData] = useState('');
+  const [isCopied, setCopied] = useState(false);
+  const navigate = useNavigate();
 
   let timer;
   useEffect(() => {
@@ -30,6 +35,10 @@ function SpinWheel() {
       clearTimeout(timer);
     }
   }, []);
+
+  const copy = () => {
+    setCopied(true)
+  }
 
 
   const spinWheelApi = async () => {
@@ -65,15 +74,19 @@ function SpinWheel() {
             <div className='detailhorizontalLine'></div>
             <div className='d-flex justify-content-between overlayWrapper'>
               <div>
-                <p className='descriptionText'>{item?.coupon_code}</p>
+                <p className='descriptionText mb-1'>{item?.coupon_code}</p>
                 <p className='deatilsText'>valid till {item?.expiry_date}</p>
               </div>
-              <div>
-                <img src={copyIcon} height={24} width={24} />
-                <p className='copyIconText'>tap to copy</p>
+              <div className='cursor-pointer' >
+                <div className='d-flex justify-content-center'>
+                  <img src={copyIcon} height={24} width={24} />
+                </div>
+                <CopyToClipboard text={item?.coupon_code}
+                  onCopy={copy}>
+                  <p className='copyIconText'>{isCopied ? "Copied!" : "tap to copy"}</p>
+                </CopyToClipboard>
               </div>
             </div>
-
           </>
         )
       }))
@@ -123,7 +136,7 @@ function SpinWheel() {
   return (
     <Container>
       <div className='spinToWinHeader'>
-        <img src={backIcon} height={25} className="backIconImage" />
+        <img src={backIcon} height={25} className="backIconImage" onClick={() => navigate(-1)} />
         <p className='spinToWinHeaderText'>spin to win</p>
       </div>
       <div className='disableSpinner'>
@@ -135,9 +148,12 @@ function SpinWheel() {
             style={wheelVars}
             onClick={selectItem}
           >
-            <div className='spinButton' onClick={startRotation}>
-              <p className='spinBtnText text-center' >SPIN</p>
-            </div>
+            {selectedItem === null || selectItem < 1 ? <div className='spinButton' onClick={startRotation}>
+              <button className='spinBtnText text-center' >SPIN</button>
+            </div> :   <div className='spinButton' onClick={startRotation}>
+              <button disabled className='spinBtnText text-center' >SPIN</button>
+            </div>}
+           
             <div className={`wheelWrapper wheel ${spinning}`}>
               {spinnerValues?.map((item, index) => (
                 <>
