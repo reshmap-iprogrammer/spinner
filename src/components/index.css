@@ -221,7 +221,7 @@
     }
     .rewardListwrapper:nth-child(even) {
         background-color: #fff2f1;
-        margin-bottom: -16px;
+        /* margin-bottom: -16px; */
     }
     /* 
     .WheelWrapperdisableSpinner {

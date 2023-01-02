@@ -40,6 +40,8 @@ function SpinWheel() {
     setCopied(true)
   }
 
+  {console.log('objectisCopied', isCopied)}
+
 
   const spinWheelApi = async () => {
     const response = await getRequestData(route["GET_SPIN"]);
@@ -48,7 +50,7 @@ function SpinWheel() {
 
   const getRewardCount = async () => {
     const rewardResponse = await getRequestData(
-      `${route["GET_REWARD_HISTORY"]}?user_profile_id=9082454538&spin_id=1&claim_status=0&rank=0`
+      `${route["GET_REWARD_HISTORY"]}?user_profile_id=9082454535&spin_id=1&claim_status=0&rank=0`
     );
     setRewardCount(rewardResponse?.data?.user_reward_count)
     setSpinData(rewardResponse?.data?.user_reward_count)
