@@ -32,6 +32,7 @@ function SpinWheel() {
   let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
   let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
   let msisdn = JSON.parse(decryptedData.msisdn)
+  alert(JSON.stringify(decryptedData))
   let circleId = JSON.stringify(decryptedData.circleId);
   let claimStatus = JSON.stringify(decryptedData.claim_status)
 
