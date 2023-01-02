@@ -378,7 +378,7 @@
         position: relative;
         top: -45px;
         right: 10px;
-        border: 1px solid red;
+        left: auto;
     }
     .modalWrapper .btn-close {
         display: none;
