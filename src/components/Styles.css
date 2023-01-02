@@ -442,6 +442,9 @@
         font-weight: 500;
         color:#2f3043;
     }
+    .rewardHistoryDate {
+        margin-left: 4px;
+    }
 }
 
 @media (min-width: 360px) and (max-width: 420px) {

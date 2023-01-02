@@ -5,6 +5,7 @@ import closeIcon from '../Assets/images/close.svg'
 import moment from 'moment';
 import { getRequestData } from '../services/RequestHandler';
 import { route } from '../services/ApiRoutes';
+import './Styles.css'
 
 function ClaimRewardModal({showModal, toggle, getRewards}) {
 
@@ -31,7 +32,7 @@ function ClaimRewardModal({showModal, toggle, getRewards}) {
       }} className="rewardModalHeader">hey there</ModalHeader>
       <ModalBody>
         <div>
-          <p className='text-center justify-content-center d-flex rewardProceed'>your reward was processed on <p className='fw-bold'> {moment(getRewards?.created_at).format('DD MMM YYYY')}</p></p>
+          <p className='text-center justify-content-center d-flex rewardProceed'>your reward was processed on <p className='fw-bold rewardHistoryDate'> {moment(getRewards?.created_at).format('DD MMM YYYY')}</p></p>
           <div className='data'>
           <div className='dataTextWrapper'>
             <img src={giftIcon} height={100} className="giftIcon"/>
