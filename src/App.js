@@ -22,12 +22,11 @@ function App() {
 
   
 
- 
+  let linkDatas = document.location.href.split('=')?.[1]
+  alert(JSON.stringify(document.location.href.split('=')?.[1]))
   // let linkDatas = JSON.stringify(document.location.href.split('=')?.[1])
-  // alert('objectre',linkDatas)
-  let linkData = decodeURIComponent(JSON.stringify(document.location.href.split('=')?.[1]));
-  alert('object', linkData)
-  let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+  // let linkData = decodeURIComponent(linkDatas);
+  // let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
   // let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
   // alert(JSON.stringify(decryptedData))
   // alert(decryptedData.msisdn)
