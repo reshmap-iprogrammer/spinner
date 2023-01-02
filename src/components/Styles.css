@@ -326,6 +326,9 @@
         left: 44.9%;
         z-index: 1;
     }
+    .disableArrow {
+        top: -3.5%;
+    }
     .howToPlayText {
         font-size: 14px;
         color: #2f3043;
@@ -465,6 +468,9 @@
     .arrow {
         top: 8.5%;
     }
+    .disableArrow {
+        top: -3.5% !important;
+    }
   
 }
 @media (min-width: 320px) and (max-width: 350px) {
@@ -475,5 +481,8 @@
     .spin-button {
         top: 170px;
         left: 37%;
+    }
+    .disableArrow {
+        top: -3.5% !important;
     }
 }

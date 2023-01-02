@@ -58,7 +58,7 @@ function RewardHistory() {
                     <>
                         <div className='rewardListwrapper'>
                             <div >
-                                <div className=' d-flex justify-content-between rewardList' onClick={() => openRewardModal(item)}>
+                                <div className=' d-flex justify-content-between rewardList' >
                                     <div className='rowWrapper'>
                                         <div className='reward_logo_image'>
                                             <img src={item?.logo_image} height={32} width={32} />
@@ -71,7 +71,7 @@ function RewardHistory() {
                                     </div>
                                     <div className='d-flex justify-content-between'>
                                         <p style={{ marginRight: '20px' }}>{moment(item?.created_at).format('DD MMM, YY')}</p>
-                                        <img src={infoIcon} height={20} />
+                                        <img src={infoIcon} height={20}  onClick={() => openRewardModal(item)}/>
                                     </div>
                                 </div>
                             </div>

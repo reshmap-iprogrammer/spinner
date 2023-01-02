@@ -6,6 +6,8 @@ import moment from 'moment';
 import { getRequestData } from '../services/RequestHandler';
 import { route } from '../services/ApiRoutes';
 import './Styles.css'
+import { useNavigate } from 'react-router-dom';
+
 
 function ClaimRewardModal({showModal, toggle, getRewards}) {
 
@@ -17,6 +19,8 @@ function ClaimRewardModal({showModal, toggle, getRewards}) {
     );
     setClaimReward(claimRewardResponse?.data?.message)
   }
+
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -32,16 +36,20 @@ function ClaimRewardModal({showModal, toggle, getRewards}) {
       }} className="rewardModalHeader">hey there</ModalHeader>
       <ModalBody>
         <div>
-          <p className='text-center justify-content-center d-flex rewardProceed'>your reward was processed on <p className='fw-bold rewardHistoryDate'> {moment(getRewards?.created_at).format('DD MMM YYYY')}</p></p>
+          {getRewards?.claim_status === 0 ? <p className='text-center'>here is your reward</p> : <p className='text-center justify-content-center d-flex rewardProceed'>your reward was processed on <p className='fw-bold rewardHistoryDate'> {moment(getRewards?.created_at).format('DD MMM YYYY')}</p></p>}
           <div className='data'>
           <div className='dataTextWrapper'>
             <img src={giftIcon} height={100} className="giftIcon"/>
           </div>
           <h5 style={{ textAlign: 'center' }}>{getRewards?.description}</h5>
         </div>
-        <div className='backHomeButton' onClick={claimRewards}>
-        <p className='text-center text-white p-3 backHomeText'>back home</p>
-        </div>
+        {getRewards?.claim_status === 0  ? <><div className='backHomeButton' onClick={claimRewards}>
+            <p className='text-center text-white p-3 backHomeText'>claim reward</p>
+          </div></> : <>
+            <div className='backHomeButton' onClick={() => navigate(-1)}>
+              <p className='text-center text-white p-3 backHomeText'>back home</p>
+            </div>
+          </>}
         </div>
       </ModalBody>
         </Modal>

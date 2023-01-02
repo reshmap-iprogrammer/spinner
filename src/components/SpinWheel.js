@@ -40,9 +40,6 @@ function SpinWheel() {
     setCopied(true)
   }
 
-  {console.log('objectisCopied', isCopied)}
-
-
   const spinWheelApi = async () => {
     const response = await getRequestData(route["GET_SPIN"]);
     setSpinnerValues(response?.data?.SpinWheelCouponData)
@@ -50,7 +47,7 @@ function SpinWheel() {
 
   const getRewardCount = async () => {
     const rewardResponse = await getRequestData(
-      `${route["GET_REWARD_HISTORY"]}?user_profile_id=9172408767&spin_id=1&claim_status=0&rank=0`
+      `${route["GET_REWARD_HISTORY"]}?user_profile_id=9156576878&spin_id=1&claim_status=0&rank=0`
     );
     setRewardCount(rewardResponse?.data?.user_reward_count)
     setSpinData(rewardResponse?.data?.user_reward_count)
@@ -92,7 +89,7 @@ function SpinWheel() {
           </>
         )
       }))
-      setSpinData(filteredItem.map((item, i) => {
+      setSpinData(filteredItem.map((item, i) => { 
         return (
           <>
             <p>{item?.description}</p>
@@ -141,8 +138,8 @@ function SpinWheel() {
         <img src={backIcon} height={25} className="backIconImage" onClick={() => navigate(-1)} />
         <p className='spinToWinHeaderText'>spin to win</p>
       </div>
-      <div className='disableSpinner'>
-        <div className='arrow' id="spinArrow" >
+      <div className={flagData === 1 ? 'WheelWrapperdisableSpinner' : 'disableSpinner'}>
+        <div className= 'arrow' id="spinArrow" >
           <img src={spinArrowImage} />
         </div>
         <div className="wheel-container">
