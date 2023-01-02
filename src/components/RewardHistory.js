@@ -9,6 +9,7 @@ import { route } from '../services/ApiRoutes';
 import emptyRewardIcon from '../Assets/images/box-empty-request.svg'
 import moment from 'moment';
 import ClaimRewardModal from './ClaimRewardModal';
+import CryptoJS from "crypto-js";
 
 
 function RewardHistory() {
@@ -24,9 +25,15 @@ function RewardHistory() {
         getRewardListApi()
     }, [])
 
+    let linkDatas = "U2FsdGVkX19sESFoX3uSxMSg9zOEHugGWVFhYpWW2hIIL5RFNzh8bXEFv5Lult9P%2BYRI%2FoX7aGvG0tYIH3ypew%3D%3D"
+    let linkData = decodeURIComponent((linkDatas));
+    let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+    let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+    let msisdn = JSON.parse(decryptedData.msisdn)
+
     const getRewardListApi = async () => {
         const response = await getRequestData(
-            `${route["GET_REWARDS"]}?user_profile_id=9082454538`
+            `${route["GET_REWARDS"]}?user_profile_id=${msisdn}`
           );
         setRewards(response?.data?.SpinWheelRewardHistoryData)
     }
