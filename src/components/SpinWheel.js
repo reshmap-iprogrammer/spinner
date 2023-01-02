@@ -13,6 +13,7 @@ import spinArrowImage from '../Assets/images/pointer.svg'
 import copyIcon from '../Assets/images/Icon_Copy.svg'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useNavigate } from 'react-router-dom';
+import CryptoJS from "crypto-js";
 
 
 function SpinWheel() {
