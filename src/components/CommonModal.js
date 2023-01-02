@@ -1,10 +1,11 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
 
 function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagData }) {
-  
+  const [loading, setLoading] = useState(false);
+
   const claimReaward = () => {
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(spinData[0]?.props?.children?.props?.children)

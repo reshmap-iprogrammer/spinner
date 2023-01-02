@@ -377,7 +377,7 @@
         justify-content: end;
         position: relative;
         top: -45px;
-        left: -12px;
+        right: 10px;
     }
     .modalWrapper .btn-close {
         display: none;
