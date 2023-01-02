@@ -381,7 +381,7 @@
         left: auto;
     }
     .modalWrapper .btn-close {
-        display: none;
+        display: none; 
     }
     .offerNotApplicable {
         font-size: 24px;
