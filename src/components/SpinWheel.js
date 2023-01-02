@@ -156,7 +156,7 @@ function SpinWheel() {
             style={wheelVars}
             onClick={selectItem}
           >
-            {selectedItem === null || selectItem < 1 ? <div className='spinButton' onClick={startRotation}>
+            {(selectedItem === null || selectItem < 1) && flagData === 0 ? <div className='spinButton' onClick={startRotation}>
               <button className='spinBtnText text-center' >SPIN</button>
             </div> :   <div className='spinButton' onClick={startRotation}>
               <button disabled className='spinBtnText text-center' >SPIN</button>
