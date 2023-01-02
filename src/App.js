@@ -25,9 +25,9 @@ function App() {
   let linkDatas = document.location.href.split('=')?.[1]
   alert(JSON.stringify(document.location.href))
   // let linkDatas = "U2FsdGVkX19p15GCzPYVtx7DwPAwldwewsUcC%2F%2BNe8ZEnIrdgUPZo0q3HGFokCDCSDGMInageg%2FuuhYo98OCgA%3D%3D"
-  let linkData = decodeURIComponent(linkDatas);
-  let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-  let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+  // let linkData = decodeURIComponent(linkDatas);
+  // let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+  // let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
   // alert(JSON.stringify(decryptedData))
   // alert(decryptedData.msisdn)
 
