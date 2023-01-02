@@ -27,7 +27,7 @@ function SpinWheel() {
   const [isCopied, setCopied] = useState(false);
   const navigate = useNavigate();
 
-  let linkDatas = "U2FsdGVkX19sESFoX3uSxMSg9zOEHugGWVFhYpWW2hIIL5RFNzh8bXEFv5Lult9P%2BYRI%2FoX7aGvG0tYIH3ypew%3D%3D"
+  let linkDatas = "U2FsdGVkX18%2FNZgvZkCYPeGhRK%2FUA88PLK2n9cnF8OJ1wwtnNyVY6iW9D5mHjBg5dZQf5onnyFdZHJ2i3BCCcQ%3D%3D"
   let linkData = decodeURIComponent((linkDatas));
   let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
   let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
