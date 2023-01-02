@@ -57,14 +57,14 @@ function SpinWheel() {
 
   const getRewardCount = async () => {
     const rewardResponse = await getRequestData(
-      `${route["GET_REWARD_HISTORY"]}?user_profile_id=${msisdn}&spin_id=1&claim_status=${claimStatus}&rank=0`
+      `${route["GET_REWARD_HISTORY"]}?user_profile_id=${msisdn}&spin_id=1&claim_status=0&rank=0`
     );
     setRewardCount(rewardResponse?.data?.user_reward_count)
     setSpinData(rewardResponse?.data?.user_reward_count)
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${msisdn}&secondary_msisdn=${msisdn}&circle=${circleId}&name=vaibhav&status=1`);
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${msisdn}&secondary_msisdn=${msisdn}&circle=007&name=vaibhav&status=1`);
     setFlagData(getFlagresponse?.data?.reward_history_flag)
   }
 
