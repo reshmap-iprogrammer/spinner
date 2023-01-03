@@ -27,12 +27,21 @@ function SpinWheel() {
   const [isCopied, setCopied] = useState(false);
   const navigate = useNavigate();
 
-
-  let linkDatas = "U2FsdGVkX1%2BoBJPztwEtQ6y%2F8tsin19QV0hmCFyGTwtV3uuETBnbb%2FKGP6zFxSUzH3jeWyWNiSLD2rJfg0IpPA%3D%3D"
+  let msisdn;
+  let linkDatas = document.location.href.split('data=').pop()
   let linkData = decodeURIComponent((linkDatas));
-  let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-  let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-  let msisdn = JSON.parse(decryptedData.msisdn)
+  if(linkData?.length){
+    let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+    if(bytes?.length){
+      let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+       msisdn = JSON.parse(decryptedData.msisdn)
+      // alert(JSON.stringify(decryptedData))
+      // alert(decryptedData.msisdn)
+    }
+  }
+  // let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+  // let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+  // let msisdn = JSON.parse(decryptedData.msisdn)
   // alert(JSON.stringify(decryptedData))
   // let circleId = JSON.stringify(decryptedData.circleId);
   // let claimStatus = JSON.stringify(decryptedData.claim_status)
@@ -72,7 +81,7 @@ function SpinWheel() {
     if (selectedItem === null) {
       const selectedItem = rewardCount
       let filteredItem = spinnerValues?.filter((_, i) => i == selectedItem)
-      setRewardCount(filteredItem.map((item, i) => {
+      setRewardCount(filteredItem?.map((item, i) => {
         return (
           <>
             <img src={item?.overlay_image} height={120} width={'100%'} className="mb-3 ovelayImage" />
@@ -99,7 +108,7 @@ function SpinWheel() {
           </>
         )
       }))
-      setSpinData(filteredItem.map((item, i) => { 
+      setSpinData(filteredItem?.map((item, i) => { 
         return (
           <>
             <p>{item?.description}</p>
