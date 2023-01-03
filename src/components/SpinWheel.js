@@ -32,7 +32,7 @@ function SpinWheel() {
   let msisdn;
   let parentMsisdn;
   let circleId;
-  let linkDatas = document.location.href.split('=')?.[1]
+  let linkDatas = "U2FsdGVkX1%2FAtaqYT3%2FQIsiU9043BkH5q%2Fvr6LZql9bfSDJd9iBrxW8VQYB41fragUu50ht1BHpTOeuakziQCML%2BSe9v%2Bips4Q69nXxa4zoU3h%2B8OLDmbOyCY9vO1Ep1qMqkFprO277kgMnvzJG9ZUnJwdZwLWCWHtMVqC4lAHk%3D"
   if(linkDatas){
     let linkData = decodeURIComponent(linkDatas);
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
