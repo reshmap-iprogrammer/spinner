@@ -28,7 +28,7 @@ function SpinWheel() {
   const navigate = useNavigate();
 
   let msisdn = 87687765;
-  let linkDatas = 'U2FsdGVkX18%2F4jDYZCb4vQzXmxdQqKm6uNKx5Y1t04fbJGQBAWXlabkJC8RD2or3ctLveicGGKxFoQnrRYXz8w%3D%3D'
+  let linkDatas = 'U2FsdGVkX19oluxKxXmQ5g4%2BcBaluhA42B66%2BNtyx%2FS2SnmI4Gb1ylneHcPlGgvHRr2cahjbmmv5mdvpRuVfyQ%3D%3'
   let linkData = decodeURIComponent(linkDatas);
   if(linkData?.length){
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
