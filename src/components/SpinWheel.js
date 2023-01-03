@@ -28,7 +28,7 @@ function SpinWheel() {
   const navigate = useNavigate();
 
   let msisdn;
-  let linkDatas = document.location.href.split('=')?.[1]
+  let linkDatas = document.location.href.split('data=')?.[1]
   if(linkDatas){
     let linkData = decodeURIComponent(linkDatas);
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
