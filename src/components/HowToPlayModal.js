@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom';
 
 
 function HowToPlayModal({toggle, howToPlayModal}) {
+  const openInNewTab = (url) => {
+    window.open(url, '_blank', 'noreferrer');
+  };
   return (
     <div>
       <Modal className='modalWrapper' isOpen={howToPlayModal} toggle={toggle}>
@@ -24,14 +27,15 @@ function HowToPlayModal({toggle, howToPlayModal}) {
               <img src={rewardImage} className="rewardImage"/>
             <p className='mb-0'>Claim your reward</p>
             </div>
-            <a
+            {/* <a
               className="termsCondition"
               href="https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf"
               rel="noopener noreferrer"
               target="_blank"
             >
               terms and conditions
-            </a>
+            </a> */}
+            <p onClick={() => openInNewTab('https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf')}>terms and conditions</p>
             {/* <Link to="https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf" className='termsCondition'>terms and conditions</Link> */}
           </ModalBody>
           </Modal>
