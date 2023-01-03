@@ -35,6 +35,7 @@ function SpinWheel() {
     // if(bytes?.length){
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
       msisdn = JSON.stringify(decryptedData)
+      alert(JSON.stringify(decryptedData))
     // }
   }
   // let linkDatas = document.location.href.split('data=').pop()
