@@ -14,6 +14,7 @@ import copyIcon from '../Assets/images/Icon_Copy.svg'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useNavigate } from 'react-router-dom';
 import CryptoJS from "crypto-js";
+import OfferNotApplicableModal from './OfferNotApplicableModal';
 
 
 function SpinWheel() {
@@ -25,18 +26,18 @@ function SpinWheel() {
   const [spinData, setSpinData] = useState('');
   const [flagData, setFlagData] = useState('');
   const [isCopied, setCopied] = useState(false);
+  const [offerApplicable, setOfferApplicable] = useState(false)
   const navigate = useNavigate();
 
   let msisdn;
-  let linkDatas = document.location.href.split('data=')?.[1]
+  let parentMsisdn;
+  let circleId;
+  let linkDatas = document.location.href.split('=')?.[1]
   if(linkDatas){
     let linkData = decodeURIComponent(linkDatas);
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-    // if(bytes?.words?.length){
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-      msisdn = JSON.parse(decryptedData.msisdn)
-      alert(msisdn)
-    // }
+      msisdn = JSON.parse(decryptedData.msisdn);
   }
 
   let timer;
@@ -59,6 +60,9 @@ function SpinWheel() {
     setFlagData(getFlagresponse?.data?.reward_history_flag);
     if(getFlagresponse?.data?.reward_history_flag === 0){
       getRewardCount();
+    }
+    if(getFlagresponse?.data?.reward_history_flag === 1){
+      offerNotApplicableModal()
     }
   }
 
@@ -138,6 +142,10 @@ function SpinWheel() {
     setHowToPlayModal(!howToPlayModal)
   }
 
+  const offerNotApplicableModal = () => {
+    setOfferApplicable(!offerApplicable)
+  }
+
   const wheelVars = {
     "--nb-item": spinnerValues?.length,
     "--selected-item": selectedItem
@@ -212,6 +220,7 @@ function SpinWheel() {
       </Container>
       <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount} spinData={spinData} flagData={flagData} />
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
+      <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
     </Container>
   )
 }

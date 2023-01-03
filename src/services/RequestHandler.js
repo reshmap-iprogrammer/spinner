@@ -9,8 +9,7 @@ export const getRequestData = async (route, params = null) => {
       if (
         error?.response?.data?.statusCode == 400 ||
         error?.response?.data?.statusCode == 404 ||
-        error?.response?.data?.statusCode == 500 ||
-        error?.response?.data?.statusCode == 502 
+        error?.response?.data?.statusCode == 500 
       ) {
         return error?.response?.data;
       }
