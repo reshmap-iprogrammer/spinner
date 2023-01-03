@@ -35,7 +35,6 @@ function SpinWheel() {
     if(bytes?.words?.length){
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
       msisdn = JSON.parse(decryptedData.msisdn)
-      alert(JSON.parse(decryptedData.msisdn))
     }
   }
 
