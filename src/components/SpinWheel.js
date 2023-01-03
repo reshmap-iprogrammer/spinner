@@ -37,7 +37,7 @@ function SpinWheel() {
     let linkData = decodeURIComponent(linkDatas);
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-      alert(decryptedData)
+      alert(JSON.stringify(decryptedData))
       msisdn = JSON.parse(decryptedData.msisdn);
   }
 
