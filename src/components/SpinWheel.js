@@ -61,9 +61,6 @@ function SpinWheel() {
     if(getFlagresponse?.data?.reward_history_flag === 0){
       getRewardCount();
     }
-    if(getFlagresponse?.data?.reward_history_flag === 1){
-      offerNotApplicableModal()
-    }
   }
 
   const getRewardCount = async () => {
@@ -133,9 +130,13 @@ function SpinWheel() {
   }
 
   const startRotation = () => {
-    setTimeout(() => {
-      toggle();
-    }, 4000);
+    if(flagData === 1) {
+      offerNotApplicableModal();
+    }else{
+      setTimeout(() => {
+        toggle();
+      }, 4000);
+    }
   }
 
   const playtoggle = () => {
