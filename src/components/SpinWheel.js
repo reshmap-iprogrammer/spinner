@@ -28,7 +28,7 @@ function SpinWheel() {
   const navigate = useNavigate();
 
 
-  let linkDatas = "U2FsdGVkX18%2FNZgvZkCYPeGhRK%2FUA88PLK2n9cnF8OJ1wwtnNyVY6iW9D5mHjBg5dZQf5onnyFdZHJ2i3BCCcQ%3D%3D"
+  let linkDatas = "U2FsdGVkX18t%2BXujQf9f7jlB3M9xZ2a9R6j6Mb6Oip3bgaV8WZbP3isVIwFSiGKJGmP%2BPXJoDjjXfR%2BBUy%2FNKQ%3D%3D"
   let linkData = decodeURIComponent((linkDatas));
   let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
   let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
