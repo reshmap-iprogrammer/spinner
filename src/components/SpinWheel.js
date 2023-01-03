@@ -29,14 +29,15 @@ function SpinWheel() {
 
   let msisdn;
   let linkDatas = document.location.href.split('data=').pop()
-  let linkData = decodeURIComponent((linkDatas));
+  let linkData = decodeURIComponent(linkDatas);
   if(linkData?.length){
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
     if(bytes?.length){
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-       msisdn = JSON.parse(decryptedData.msisdn)
+       msisdn = JSON.stringify(decryptedData)
       // alert(JSON.stringify(decryptedData))
       // alert(decryptedData.msisdn)
+      console.log('object', msisdn)
     }
   }
   // let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
