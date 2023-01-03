@@ -184,7 +184,7 @@
         transform: rotate(93deg);
     }
     #spinId_2 .contentWrapper {
-        top: -54px;
+        top: -44px;
         transform: rotate(93deg);
     }
     #spinId_3 .contentWrapper {
@@ -203,7 +203,7 @@
     }
     #spinId_7 .contentWrapper {
         transform: rotate(93deg);
-        top: -47px;
+        top: -36px;
     }
 
      .textWrapper p,.textWrapper span{
@@ -227,6 +227,7 @@
     .WheelWrapperdisableSpinner {
         filter: grayscale(100%);
         opacity: 0.5;
+        position: relative;
     } 
     .wheelContainerDisable {
         border: 3px solid #d9d9d9;

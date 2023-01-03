@@ -21,15 +21,16 @@ function App() {
   })
 
   
-
   let linkDatas = document.location.href.split('data=').pop()
-  // alert(JSON.stringify(document.location.href.split('=')?.[1]))
-  // let linkDatas = "U2FsdGVkX19sESFoX3uSxMSg9zOEHugGWVFhYpWW2hIIL5RFNzh8bXEFv5Lult9P%2BYRI%2FoX7aGvG0tYIH3ypew%3D%3D"
   let linkData = decodeURIComponent(linkDatas);
-  let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-  let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-  alert(JSON.stringify(decryptedData))
-  // alert(decryptedData.msisdn)
+  if(linkData?.length){
+    let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+    if(bytes?.length){
+      let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+      // alert(JSON.stringify(decryptedData))
+      // alert(decryptedData.msisdn)
+    }
+  }
 
 
   const btnClick = async () => {

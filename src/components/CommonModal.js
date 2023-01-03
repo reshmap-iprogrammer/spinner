@@ -7,9 +7,11 @@ function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagDat
   const [loading, setLoading] = useState(false);
 
   const claimReaward = () => {
+    setLoading(true)
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(spinData[0]?.props?.children?.props?.children)
     }
+    setLoading(false);
   }
   return (
     <div>
@@ -38,7 +40,7 @@ function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagDat
           </div>: '' }
           
           {flagData === 0 ? <><div className='backHomeButton' onClick={claimReaward}>
-            <p className='text-center text-white p-3 backHomeText'>claim reward</p>
+            <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : 'loading......'}</p>
           </div></> : <>
             <div className='backHomeButton' >
               <p className='text-center text-white p-3 backHomeText'>back home</p>

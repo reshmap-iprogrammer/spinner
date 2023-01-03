@@ -26,14 +26,14 @@ function SpinWheel() {
   const [flagData, setFlagData] = useState('');
   const [isCopied, setCopied] = useState(false);
   const navigate = useNavigate();
-  
+
 
   let linkDatas = "U2FsdGVkX18%2FNZgvZkCYPeGhRK%2FUA88PLK2n9cnF8OJ1wwtnNyVY6iW9D5mHjBg5dZQf5onnyFdZHJ2i3BCCcQ%3D%3D"
   let linkData = decodeURIComponent((linkDatas));
   let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
   let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
   let msisdn = JSON.parse(decryptedData.msisdn)
-  alert(JSON.stringify(decryptedData))
+  // alert(JSON.stringify(decryptedData))
   // let circleId = JSON.stringify(decryptedData.circleId);
   // let claimStatus = JSON.stringify(decryptedData.claim_status)
 
@@ -47,9 +47,6 @@ function SpinWheel() {
     }
   }, []);
 
-  const copy = () => {
-    setCopied(true)
-  }
 
   const spinWheelApi = async () => {
     const response = await getRequestData(route["GET_SPIN"]);
@@ -92,7 +89,7 @@ function SpinWheel() {
                   <img src={copyIcon} height={24} width={24} />
                 </div>
                 <CopyToClipboard text={item?.coupon_code}
-                  onCopy={copy}>
+                  onCopy={()=>setCopied(true)}>
                   <p className='copyIconText'>{isCopied ? "Copied!" : "tap to copy"}</p>
                 </CopyToClipboard>
               </div>
@@ -149,7 +146,7 @@ function SpinWheel() {
         <img src={backIcon} height={25} className="backIconImage" onClick={() => navigate(-1)} />
         <p className='spinToWinHeaderText'>spin to win</p>
       </div>
-      <div className={flagData === 1 ? 'WheelWrapperdisableSpinner' : 'disableSpinner'}>
+      <div className={flagData === 1 ? 'WheelWrapperdisableSpinner position-relative' : 'disableSpinner position-relative'}>
         <div className= 'arrow' id="spinArrow" >
           <img src={spinArrowImage} />
         </div>
@@ -179,8 +176,8 @@ function SpinWheel() {
                         <img src={item?.logo_image} height={30} width={30} />
                       </div>
                       <div className='textWrapper text-center'>
-                        <p className='fw-bold text-truncate text-center' style={{maxWidth: '50px',marginLeft:'13px'}}>{item.title}</p>
-                        <span className='text-truncate text-center' >{item.sub_title}</span>
+                        <p className='fw-bold text-truncate text-center' style={{maxWidth: '50px',margin:'0 10px'}}>{item.title}</p>
+                        <span className='text-truncate text-center d-block' style={{maxWidth: '55px',margin:'0 10px'}} >{item.sub_title}</span>
                       </div>
                     </div>
                   </div>
