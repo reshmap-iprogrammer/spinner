@@ -32,28 +32,12 @@ function SpinWheel() {
   let linkData = decodeURIComponent(linkDatas);
   if(linkData?.length){
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-    // if(bytes?.length){
+    if(bytes?.length){
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
       msisdn = JSON.stringify(decryptedData)
       alert(JSON.stringify(decryptedData))
-    // }
+    }
   }
-  // let linkDatas = document.location.href.split('data=').pop()
-  // let linkData = decodeURIComponent(linkDatas);
-  // if(linkData?.length){
-  //   let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-  //     let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-  //      msisdn = JSON.stringify(decryptedData)
-  //     // alert(JSON.stringify(decryptedData))
-  //     // alert(decryptedData.msisdn)
-  //   console.log('object', msisdn)
-  // }
-  // let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-  // let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-  // let msisdn = JSON.parse(decryptedData.msisdn)
-  // alert(JSON.stringify(decryptedData))
-  // let circleId = JSON.stringify(decryptedData.circleId);
-  // let claimStatus = JSON.stringify(decryptedData.claim_status)
 
   let timer;
   useEffect(() => {
