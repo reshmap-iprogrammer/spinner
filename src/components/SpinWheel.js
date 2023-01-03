@@ -27,15 +27,15 @@ function SpinWheel() {
   const [isCopied, setCopied] = useState(false);
   const navigate = useNavigate();
 
-  let msisdn;
-  let linkDatas = document.location.href.split('data=').pop()
+  let msisdn = 87687765;
+  let linkDatas = 'U2FsdGVkX18%2F4jDYZCb4vQzXmxdQqKm6uNKx5Y1t04fbJGQBAWXlabkJC8RD2or3ctLveicGGKxFoQnrRYXz8w%3D%3D'
   let linkData = decodeURIComponent(linkDatas);
   if(linkData?.length){
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-    if(bytes?.words?.length){
+    // if(bytes?.words?.length){
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
       msisdn = JSON.parse(decryptedData.msisdn)
-    }
+    // }
   }
 
   let timer;
