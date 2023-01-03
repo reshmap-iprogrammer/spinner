@@ -28,7 +28,7 @@ function SpinWheel() {
   const navigate = useNavigate();
 
 
-  let linkDatas = "U2FsdGVkX1%2BtjuVyUhqo2IYNy6Owrna8EuSveVVqwI19CpUFl0FrYOREu9%2BExXNfQspnN4yRxIToX6ZZNSL87w%3D%3D"
+  let linkDatas = "U2FsdGVkX1%2B1hvS3n5DZT56F4V199KrFWd8UubkXf3LIxVMTIsHB8pPmFBA60wu4LEwpeLeZ7ERi7%2B%2BatpGwFw%3D%3D"
   let linkData = decodeURIComponent((linkDatas));
   let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
   let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
@@ -40,7 +40,6 @@ function SpinWheel() {
   let timer;
   useEffect(() => {
     spinWheelApi();
-    getRewardCount();
     getFlag();
     return () => {
       clearTimeout(timer);
@@ -53,17 +52,20 @@ function SpinWheel() {
     setSpinnerValues(response?.data?.SpinWheelCouponData)
   }
 
+  const getFlag = async () => {
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${msisdn}&secondary_msisdn=${msisdn}&circle=007&name=vaibhav&status=1`);
+    setFlagData(getFlagresponse?.data?.reward_history_flag);
+    if(getFlagresponse?.data?.reward_history_flag === 0){
+      getRewardCount();
+    }
+  }
+
   const getRewardCount = async () => {
     const rewardResponse = await getRequestData(
       `${route["GET_REWARD_HISTORY"]}?user_profile_id=${msisdn}&spin_id=1&claim_status=0&rank=0`
     );
     setRewardCount(rewardResponse?.data?.user_reward_count)
     setSpinData(rewardResponse?.data?.user_reward_count)
-  }
-
-  const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${msisdn}&secondary_msisdn=${msisdn}&circle=007&name=vaibhav&status=1`);
-    setFlagData(getFlagresponse?.data?.reward_history_flag)
   }
 
   const selectItem = (props) => {
