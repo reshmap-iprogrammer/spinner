@@ -27,19 +27,17 @@ function SpinWheel() {
   const [isCopied, setCopied] = useState(false);
   const navigate = useNavigate();
 
-  let msisdn;
-  let linkDatas = document.location.href.split('data=').pop()
-  let linkData = decodeURIComponent(linkDatas);
-  if(linkData?.length){
-    let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-    if(bytes?.length){
-      let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-       msisdn = JSON.stringify(decryptedData)
-      // alert(JSON.stringify(decryptedData))
-      // alert(decryptedData.msisdn)
-      console.log('object', msisdn)
-    }
-  }
+  let msisdn = 765765;
+  // let linkDatas = document.location.href.split('data=').pop()
+  // let linkData = decodeURIComponent(linkDatas);
+  // if(linkData?.length){
+  //   let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+  //     let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+  //      msisdn = JSON.stringify(decryptedData)
+  //     // alert(JSON.stringify(decryptedData))
+  //     // alert(decryptedData.msisdn)
+  //   console.log('object', msisdn)
+  // }
   // let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
   // let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
   // let msisdn = JSON.parse(decryptedData.msisdn)

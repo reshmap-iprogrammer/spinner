@@ -27,7 +27,7 @@ function App() {
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
     if(bytes?.length){
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-      // alert(JSON.stringify(decryptedData))
+      alert(JSON.stringify(decryptedData))
       // alert(decryptedData.msisdn)
     }
   }
