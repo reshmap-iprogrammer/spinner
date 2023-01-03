@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 
 function HowToPlayModal({toggle, howToPlayModal}) {
   const openInNewTab = (url) => {
-    window.open(url, '_blank', 'noreferrer');
+    // window.open(url, '_blank', 'noreferrer');
+    document.open(url, '_blank', 'noreferrer');
   };
   return (
     <div>
