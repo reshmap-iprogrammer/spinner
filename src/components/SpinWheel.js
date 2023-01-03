@@ -37,10 +37,10 @@ function SpinWheel() {
     let linkData = decodeURIComponent(linkDatas);
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-      alert(JSON.parse(decryptedData.parentMsisdn))
       msisdn = JSON.parse(decryptedData.msisdn);
       parentMsisdn = JSON.parse(decryptedData.parentMsisdn);
       circleId = JSON.parse(decryptedData.circleId)
+      alert(JSON.parse(decryptedData.parentMsisdn))
   }
 
   let timer;
