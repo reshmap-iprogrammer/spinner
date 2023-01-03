@@ -40,7 +40,7 @@ function SpinWheel() {
       msisdn = JSON.parse(decryptedData.msisdn);
       // parentMsisdn = JSON.parse(decryptedData.parentMsisdn);
       // circleId = JSON.parse(decryptedData.circleId)
-      alert(msisdn)
+      alert(decryptedData.parentMsisdn)
   }
 
   let timer;
