@@ -26,6 +26,7 @@ function SpinWheel() {
   const [flagData, setFlagData] = useState('');
   const [isCopied, setCopied] = useState(false);
   const navigate = useNavigate();
+  
 
   let linkDatas = "U2FsdGVkX18%2FNZgvZkCYPeGhRK%2FUA88PLK2n9cnF8OJ1wwtnNyVY6iW9D5mHjBg5dZQf5onnyFdZHJ2i3BCCcQ%3D%3D"
   let linkData = decodeURIComponent((linkDatas));
