@@ -28,15 +28,16 @@ function SpinWheel() {
   const navigate = useNavigate();
 
   let msisdn = 87687765;
-  let linkDatas = 'U2FsdGVkX19oluxKxXmQ5g4%2BcBaluhA42B66%2BNtyx%2FS2SnmI4Gb1ylneHcPlGgvHRr2cahjbmmv5mdvpRuVfyQ%3D%3'
-  let linkData = decodeURIComponent(linkDatas);
-  if(linkData?.length){
-    let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-    // if(bytes?.words?.length){
+  let linkDatas = document.location.href.split('data=').pop()
+  // let linkData = decodeURIComponent(linkDatas);
+  // if(linkData?.length){
+    let bytes = CryptoJS.AES.decrypt(linkDatas, 'VE1LLVNFRUQtRU5DLURFQw==')
+    if(bytes?.length){
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+      alert(JSON.parse(decryptedData.msisdn))
       msisdn = JSON.parse(decryptedData.msisdn)
-    // }
-  }
+    }
+  // }
 
   let timer;
   useEffect(() => {
