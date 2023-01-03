@@ -27,7 +27,7 @@ function SpinWheel() {
   const [isCopied, setCopied] = useState(false);
   const navigate = useNavigate();
 
-  let msisdn = 87687765;
+  let msisdn ;
   let linkDatas = document.location.href.split('data=').pop()
   // let linkData = decodeURIComponent(linkDatas);
   // if(linkData?.length){
