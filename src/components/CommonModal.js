@@ -11,7 +11,7 @@ function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagDat
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(spinData[0]?.props?.children?.props?.children)
     }
-    setLoading(false);
+    // setLoading(false);
   }
   return (
     <div>
