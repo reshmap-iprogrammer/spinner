@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Modal, ModalBody } from 'reactstrap';
 import closeIcon from '../Assets/images/close.svg'
 import offersNotApplicable from '../Assets/images/RechargeNotApplicable.svg'
 import { useNavigate } from 'react-router-dom';

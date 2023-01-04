@@ -393,6 +393,21 @@
         margin: 28px 20px 16px 20px;
         line-height: 1.17;
     }
+    .systemDownText {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2f3043;
+        line-height: 1.17;
+        margin: 40px 46px ;
+    }
+    .systemDownImage {
+        height: 70px;
+        width: 162px;
+        object-fit: contain;
+    }
+    .systemDownWrapperImage {
+        margin: 40px 86px;
+    }
     .offerNotApplication {
         width: 61.4px;
         height: 100px;
