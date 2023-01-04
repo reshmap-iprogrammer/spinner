@@ -54,33 +54,15 @@ function SpinWheel() {
 
   const spinWheelApi = async () => {
     const response = await getRequestData(route["GET_SPIN"]);
-    try {
-      if(response?.status === 200){
-        setSpinnerValues(response?.data?.SpinWheelCouponData)
-      }
-      else{
-        console.log('object',response?.message)
-      }
-    } catch (error) {
-      console.log('object',error?.message)
-    }
-    
+    setSpinnerValues(response?.data?.SpinWheelCouponData)
   }
 
   const getFlag = async () => {
     const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${parentMsisdn}&secondary_msisdn=${msisdn}&circle=${circleId}&name=vaibhav &status=1`);
-    try {
-      if(getFlagresponse?.status === 200){
         setFlagData(getFlagresponse?.data?.reward_history_flag);
         if(getFlagresponse?.data?.reward_history_flag === 0){
           getRewardCount();
         }
-      }else {
-        console.log('object', getFlagresponse?.message)
-      }
-    } catch (error) {
-      console.log('objecterr',error)
-    }
     
   }
 
@@ -88,16 +70,8 @@ function SpinWheel() {
     const rewardResponse = await getRequestData(
       `${route["GET_REWARD_HISTORY"]}?spin_id=1&claim_status=0&rank=0`
     );
-    try {
-      if(rewardResponse?.status === 200){
         setRewardCount(rewardResponse?.data?.user_reward_count)
         setSpinData(rewardResponse?.data?.user_reward_count)
-      }else {
-        console.log('objectreward',rewardResponse?.message )
-      }
-    } catch (error) {
-      console.log('objectrewarderror',error?.message )
-    }
     
   }
 
