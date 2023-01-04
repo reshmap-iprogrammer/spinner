@@ -10,9 +10,7 @@ function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagDat
   const claimReaward = () => {
     setLoading(true)
     if (window.ReactNativeWebView) {
-      setTimeout(() => {
-        window.ReactNativeWebView.postMessage(spinData[0]?.props?.children?.props?.children)
-      }, 4000);
+      window.ReactNativeWebView.postMessage(spinData[0]?.props?.children?.props?.children)
     }
     setLoading(false);
   }

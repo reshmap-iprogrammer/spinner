@@ -15,6 +15,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useNavigate } from 'react-router-dom';
 import CryptoJS from "crypto-js";
 import OfferNotApplicableModal from './OfferNotApplicableModal';
+import SystemDownErrorModal from './SystemDownErrorModal';
 
 
 function SpinWheel() {
@@ -26,7 +27,8 @@ function SpinWheel() {
   const [spinData, setSpinData] = useState('');
   const [flagData, setFlagData] = useState('');
   const [isCopied, setCopied] = useState(false);
-  const [offerApplicable, setOfferApplicable] = useState(false)
+  const [offerApplicable, setOfferApplicable] = useState(false);
+  const [errorModal, setErrorModal] = useState(false)
 
   const navigate = useNavigate();
 
@@ -46,7 +48,7 @@ function SpinWheel() {
   let timer;
   useEffect(() => {
     spinWheelApi();
-    getFlag();
+    // getFlag();
     return () => {
       clearTimeout(timer);
     }
@@ -56,11 +58,11 @@ function SpinWheel() {
   const spinWheelApi = async () => {
     const response = await getRequestData(route["GET_SPIN"]);
     try {
-      if(response?.status){
+      if(response?.data?.status === 200){
         setSpinnerValues(response?.data?.SpinWheelCouponData)
       }
       else{
-        console.log('objectspiner', response?.message)
+        console.log('objectspiner', response?.data?.message)
       }
     } catch (error) {
       console.log('objectspiner', error?.message)
@@ -69,9 +71,24 @@ function SpinWheel() {
 
   const getFlag = async () => {
     const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${msisdn}&secondary_msisdn=${msisdn}&circle=${msisdn}&name=vaibhav&status=1`);
-    setFlagData(getFlagresponse?.data?.reward_history_flag);
-    if(getFlagresponse?.data?.reward_history_flag === 0){
-      getRewardCount();
+    try {
+      if(getFlagresponse?.status === 200){
+        setFlagData(getFlagresponse?.data?.reward_history_flag);
+        startRotation(getFlagresponse?.data?.reward_history_flag)
+        if(getFlagresponse?.data?.reward_history_flag === 0){
+          getRewardCount();
+        }
+      }else{
+        if(!errorModal){
+          //open first modal
+          setErrorModal(true)
+        }else{
+          // open second modal
+        }
+        console.log('object', getFlagresponse)
+      }
+    } catch (error) {
+      console.log('objecterror', error)
     }
   }
 
@@ -80,11 +97,11 @@ function SpinWheel() {
       `${route["GET_REWARD_HISTORY"]}?user_profile_id=${msisdn}&spin_id=1&claim_status=0&rank=0`
     );
     try {
-      if(rewardResponse?.status) {
+      if(rewardResponse?.status === 200) {
         setRewardCount(rewardResponse?.data?.user_reward_count)
         setSpinData(rewardResponse?.data?.user_reward_count)
       }else{
-        console.log('objectreward',rewardResponse?.message)
+        console.log('objectreward',rewardResponse?.data?.message)
       }
     } catch (error) {
       console.log('objectreward', error?.message)
@@ -93,6 +110,7 @@ function SpinWheel() {
   }
 
   const selectItem = (props) => {
+    getFlag();
     if (selectedItem === null) {
       const selectedItem = rewardCount
       let filteredItem = spinnerValues?.filter((_, i) => i == selectedItem)
@@ -150,8 +168,8 @@ function SpinWheel() {
     audio.play();
   }
 
-  const startRotation = () => {
-     if(flagData === 1) {
+  const startRotation = (key) => {
+     if(key === 1) {
       offerNotApplicableModal();
     }else{
       setTimeout(() => {
@@ -189,9 +207,9 @@ function SpinWheel() {
             style={wheelVars}
             onClick={selectItem}
           >
-            {(selectedItem === null || selectItem < 1) && flagData === 0 ? <div className='spinButton' onClick={startRotation}>
+            {(selectedItem === null || selectItem < 1)  ? <div className='spinButton' >
               <button className='spinBtnText text-center' >SPIN</button>
-            </div> :   <div className='spinButton' onClick={startRotation}>
+            </div> :   <div className='spinButton' >
               <button disabled className='spinBtnText text-center' >SPIN</button>
             </div>}
            
@@ -243,6 +261,7 @@ function SpinWheel() {
       <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount} spinData={spinData} flagData={flagData} />
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
       <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
+      <SystemDownErrorModal getFlag={getFlag}/>
     </Container>
   )
 }

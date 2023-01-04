@@ -4,7 +4,7 @@ import { Modal, ModalBody } from 'reactstrap';
 import closeIcon from '../Assets/images/close.svg'
 import systemDown from '../Assets/images/lottie.svg'
 
-function SystemDownErrorModal({offerApplicable, toggle}) {
+function SystemDownErrorModal({offerApplicable, toggle,getFlag}) {
 
   return (
     <div>
@@ -18,7 +18,7 @@ function SystemDownErrorModal({offerApplicable, toggle}) {
             </div>
             <div>
               <p className='text-center systemDownText'>oops! servers are not responding at the moment</p>
-              <div className='backHomeButton'>
+              <div className='backHomeButton' onClick={getFlag}>
                 <p className='text-center text-white backHomeText p-3'>retry</p>
               </div>
             </div>
