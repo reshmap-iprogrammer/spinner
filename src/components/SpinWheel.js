@@ -14,7 +14,6 @@ import copyIcon from '../Assets/images/Icon_Copy.svg'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useNavigate } from 'react-router-dom';
 import CryptoJS from "crypto-js";
-import OfferNotApplicableModal from './OfferNotApplicableModal';
 
 
 function SpinWheel() {
@@ -26,23 +25,19 @@ function SpinWheel() {
   const [spinData, setSpinData] = useState('');
   const [flagData, setFlagData] = useState('');
   const [isCopied, setCopied] = useState(false);
-  const [offerApplicable, setOfferApplicable] = useState(false)
   const navigate = useNavigate();
 
   let msisdn;
-  let parentMsisdn;
-  let circleId;
   let linkDatas = document.location.href.split('=')?.[1]
   if(linkDatas){
     let linkData = decodeURIComponent(linkDatas);
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+    // if(bytes?.words?.length){
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-      msisdn = JSON.parse(decryptedData.msisdn);
+      msisdn = JSON.parse(decryptedData.msisdn)
       alert(msisdn)
-      // parentMsisdn = decryptedData.parentMsisdn;
-      // circleId = decryptedData.circleId
+    // }
   }
-  alert("gj",msisdn)
 
   let timer;
   useEffect(() => {
@@ -60,21 +55,19 @@ function SpinWheel() {
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${msisdn}&secondary_msisdn=${msisdn}&circle=${msisdn}&name=vaibhav &status=1`);
-        setFlagData(getFlagresponse?.data?.reward_history_flag);
-        if(getFlagresponse?.data?.reward_history_flag === 0){
-          getRewardCount();
-        }
-    
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${msisdn}&secondary_msisdn=${msisdn}&circle=007&name=vaibhav&status=1`);
+    setFlagData(getFlagresponse?.data?.reward_history_flag);
+    if(getFlagresponse?.data?.reward_history_flag === 0){
+      getRewardCount();
+    }
   }
 
   const getRewardCount = async () => {
     const rewardResponse = await getRequestData(
-      `${route["GET_REWARD_HISTORY"]}?spin_id=1&claim_status=0&rank=0`
+      `${route["GET_REWARD_HISTORY"]}?user_profile_id=${msisdn}&spin_id=1&claim_status=0&rank=0`
     );
-        setRewardCount(rewardResponse?.data?.user_reward_count)
-        setSpinData(rewardResponse?.data?.user_reward_count)
-    
+    setRewardCount(rewardResponse?.data?.user_reward_count)
+    setSpinData(rewardResponse?.data?.user_reward_count)
   }
 
   const selectItem = (props) => {
@@ -136,17 +129,13 @@ function SpinWheel() {
   }
 
   const startRotation = () => {
-      setTimeout(() => {
-        toggle();
-      }, 4000);
+    setTimeout(() => {
+      toggle();
+    }, 4000);
   }
 
   const playtoggle = () => {
     setHowToPlayModal(!howToPlayModal)
-  }
-
-  const offerNotApplicableModal = () => {
-    setOfferApplicable(!offerApplicable)
   }
 
   const wheelVars = {
@@ -223,7 +212,6 @@ function SpinWheel() {
       </Container>
       <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount} spinData={spinData} flagData={flagData} />
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
-      <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
     </Container>
   )
 }
