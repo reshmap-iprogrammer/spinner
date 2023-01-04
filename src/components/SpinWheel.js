@@ -39,8 +39,8 @@ function SpinWheel() {
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
       msisdn = JSON.parse(decryptedData.msisdn)
-      parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
-      circleId = JSON.parse(decryptedData.circleId)
+      // parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
+      // circleId = JSON.parse(decryptedData.circleId)
   }
 
   let timer;
@@ -55,7 +55,16 @@ function SpinWheel() {
 
   const spinWheelApi = async () => {
     const response = await getRequestData(route["GET_SPIN"]);
-    setSpinnerValues(response?.data?.SpinWheelCouponData)
+    try {
+      if(response?.status){
+        setSpinnerValues(response?.data?.SpinWheelCouponData)
+      }
+      else{
+        console.log('objectspiner', response?.message)
+      }
+    } catch (error) {
+      console.log('objectspiner', error?.message)
+    }
   }
 
   const getFlag = async () => {
@@ -70,8 +79,17 @@ function SpinWheel() {
     const rewardResponse = await getRequestData(
       `${route["GET_REWARD_HISTORY"]}?user_profile_id=${msisdn}&spin_id=1&claim_status=0&rank=0`
     );
-    setRewardCount(rewardResponse?.data?.user_reward_count)
-    setSpinData(rewardResponse?.data?.user_reward_count)
+    try {
+      if(rewardResponse?.status) {
+        setRewardCount(rewardResponse?.data?.user_reward_count)
+        setSpinData(rewardResponse?.data?.user_reward_count)
+      }else{
+        console.log('objectreward',rewardResponse?.message)
+      }
+    } catch (error) {
+      
+    }
+   
   }
 
   const selectItem = (props) => {

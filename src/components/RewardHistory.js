@@ -38,7 +38,15 @@ function RewardHistory() {
         const response = await getRequestData(
             `${route["GET_REWARDS"]}?user_profile_id=${msisdn}`
         );
-        setRewards(response?.data?.SpinWheelRewardHistoryData)
+        try {
+            if(response?.status === 200){
+                setRewards(response?.data?.SpinWheelRewardHistoryData)
+            }else{
+                console.log('object', response?.message)
+            }
+        } catch (error) {
+            console.log('object', error?.message)
+        }
     }
 
     const openRewardModal = (item) => {
