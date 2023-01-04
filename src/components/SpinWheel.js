@@ -38,9 +38,11 @@ function SpinWheel() {
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
       msisdn = JSON.parse(decryptedData.msisdn);
+      alert(msisdn)
       // parentMsisdn = decryptedData.parentMsisdn;
       // circleId = decryptedData.circleId
   }
+  alert("gj",msisdn)
 
   let timer;
   useEffect(() => {
