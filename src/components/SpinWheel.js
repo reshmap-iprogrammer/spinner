@@ -39,8 +39,8 @@ function SpinWheel() {
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
       msisdn = JSON.parse(decryptedData.msisdn)
-      parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
-      circleId = JSON.parse(decryptedData.circleId)
+      // parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
+      // circleId = JSON.parse(decryptedData.circleId)
   }
 
   let timer;
@@ -59,7 +59,7 @@ function SpinWheel() {
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${parentMsisdn}&secondary_msisdn=${msisdn}&circle=${circleId}&name=vaibhav&status=1`);
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${msisdn}&secondary_msisdn=${msisdn}&circle=${msisdn}&name=vaibhav&status=1`);
     setFlagData(getFlagresponse?.data?.reward_history_flag);
     if(getFlagresponse?.data?.reward_history_flag === 0){
       getRewardCount();
