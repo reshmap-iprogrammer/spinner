@@ -207,7 +207,7 @@ function SpinWheel() {
             style={wheelVars}
             onClick={selectItem}
           >
-            {(selectedItem === null || selectItem < 1)  ? <div className='spinButton' >
+            {(selectedItem === null || selectedItem < 1)  ? <div className='spinButton' >
               <button className='spinBtnText text-center' >SPIN</button>
             </div> :   <div className='spinButton' >
               <button disabled className='spinBtnText text-center' >SPIN</button>
