@@ -174,8 +174,8 @@ function SpinWheel() {
 
   const startRotation = (key) => {
      if(key === 1) {
-      offerNotApplicableModal();
-    }else{
+       offerNotApplicableModal();
+      }else{
       setTimeout(() => {
         toggle();
       }, 4000);
