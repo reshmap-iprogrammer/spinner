@@ -134,13 +134,13 @@ function SpinWheel() {
   }
 
   const startRotation = () => {
-    if(flagData === 1) {
-      offerNotApplicableModal();
-    }else{
+    // if(flagData === 1) {
+    //   offerNotApplicableModal();
+    // }else{
       setTimeout(() => {
         toggle();
       }, 4000);
-    }
+    // }
   }
 
   const playtoggle = () => {
