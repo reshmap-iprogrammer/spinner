@@ -14,6 +14,7 @@ import copyIcon from '../Assets/images/Icon_Copy.svg'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useNavigate } from 'react-router-dom';
 import CryptoJS from "crypto-js";
+import OfferNotApplicableModal from './OfferNotApplicableModal';
 
 
 function SpinWheel() {
@@ -25,6 +26,8 @@ function SpinWheel() {
   const [spinData, setSpinData] = useState('');
   const [flagData, setFlagData] = useState('');
   const [isCopied, setCopied] = useState(false);
+  const [offerApplicable, setOfferApplicable] = useState(false)
+
   const navigate = useNavigate();
 
   let msisdn;
@@ -32,12 +35,12 @@ function SpinWheel() {
   if(linkDatas){
     let linkData = decodeURIComponent(linkDatas);
     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-    // if(bytes?.words?.length){
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
       msisdn = JSON.parse(decryptedData.msisdn)
-      alert(msisdn)
     // }
   }
+
+  alert(msisdn)
 
   let timer;
   useEffect(() => {
@@ -129,13 +132,21 @@ function SpinWheel() {
   }
 
   const startRotation = () => {
-    setTimeout(() => {
-      toggle();
-    }, 4000);
+     if(flagData === 1) {
+      offerNotApplicableModal();
+    }else{
+      setTimeout(() => {
+        toggle();
+      }, 4000);
+    }
   }
 
   const playtoggle = () => {
     setHowToPlayModal(!howToPlayModal)
+  }
+
+  const offerNotApplicableModal = () => {
+    setOfferApplicable(!offerApplicable)
   }
 
   const wheelVars = {
@@ -212,6 +223,7 @@ function SpinWheel() {
       </Container>
       <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount} spinData={spinData} flagData={flagData} />
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
+      <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
     </Container>
   )
 }
