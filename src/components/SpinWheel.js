@@ -87,7 +87,7 @@ function SpinWheel() {
         console.log('objectreward',rewardResponse?.message)
       }
     } catch (error) {
-      
+      console.log('objectreward', error?.message)
     }
    
   }
