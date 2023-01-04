@@ -57,8 +57,9 @@ function SpinWheel() {
 
   const spinWheelApi = async () => {
     const response = await getRequestData(route["GET_SPIN"]);
+    console.log('object',response)
     try {
-      if(response?.data?.status === 200){
+      if(response?.status === 200){
         setSpinnerValues(response?.data?.SpinWheelCouponData)
       }
       else{
@@ -74,7 +75,6 @@ function SpinWheel() {
     try {
       if(getFlagresponse?.status === 200){
         setFlagData(getFlagresponse?.data?.reward_history_flag);
-        startRotation(getFlagresponse?.data?.reward_history_flag)
         if(getFlagresponse?.data?.reward_history_flag === 0){
           getRewardCount();
         }
@@ -85,7 +85,7 @@ function SpinWheel() {
         }else{
           // open second modal
         }
-        console.log('object', getFlagresponse)
+        console.log('object', getFlagresponse?.message)
       }
     } catch (error) {
       console.log('objecterror', error)
@@ -109,7 +109,7 @@ function SpinWheel() {
    
   }
 
-  const selectItem = (props) => {
+  const selectItem = () => {
     getFlag();
     if (selectedItem === null) {
       const selectedItem = rewardCount
@@ -153,6 +153,7 @@ function SpinWheel() {
       setSelectedItem(null);
       setTimeout(selectedItem, 500);
     }
+    startRotation()
   }
 
   const toggle = () => {
@@ -168,8 +169,8 @@ function SpinWheel() {
     audio.play();
   }
 
-  const startRotation = (key) => {
-     if(key === 1) {
+  const startRotation = () => {
+     if(flagData === 1) {
       offerNotApplicableModal();
     }else{
       setTimeout(() => {
@@ -198,7 +199,7 @@ function SpinWheel() {
         <img src={backIcon} height={25} className="backIconImage" onClick={() => navigate(-1)} />
         <p className='spinToWinHeaderText'>spin to win</p>
       </div>
-      <div className={flagData === 1 ? 'WheelWrapperdisableSpinner position-relative' : 'disableSpinner position-relative'}>
+      <div className={flagData === 0 ? 'WheelWrapperdisableSpinner position-relative' : 'disableSpinner position-relative'}>
         <div className= 'arrow' id="spinArrow" >
           <img src={spinArrowImage} />
         </div>
@@ -207,11 +208,14 @@ function SpinWheel() {
             style={wheelVars}
             onClick={selectItem}
           >
-            {(selectedItem === null || selectedItem < 1)  ? <div className='spinButton' >
+            {/* {(selectedItem === null || selectedItem < 1) && flagData === 0 ? <div className='spinButton' onClick={startRotation}>
               <button className='spinBtnText text-center' >SPIN</button>
-            </div> :   <div className='spinButton' >
+            </div> :   <div className='spinButton'onClick={startRotation} >
               <button disabled className='spinBtnText text-center' >SPIN</button>
-            </div>}
+            </div>} */}
+            <div className='spinButton' >
+              <button className='spinBtnText text-center' >SPIN</button>
+            </div>
            
             <div className={`wheelWrapper wheel ${spinning}`}>
               {spinnerValues?.map((item, index) => (
@@ -261,7 +265,7 @@ function SpinWheel() {
       <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount} spinData={spinData} flagData={flagData} />
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
       <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
-      <SystemDownErrorModal getFlag={getFlag}/>
+      <SystemDownErrorModal />
     </Container>
   )
 }
