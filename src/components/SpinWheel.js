@@ -88,7 +88,7 @@ function SpinWheel() {
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=5655567&primary_msisdn=5655567&secondary_msisdn=5655567&circle=006&name=vaibhav&status=1`);
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${msisdn}&secondary_msisdn=${msisdn}&circle=${msisdn}&name=vaibhav&status=1`);
     try {
       if(getFlagresponse?.status === 200){
         setFlagData(getFlagresponse?.data?.reward_history_flag);
