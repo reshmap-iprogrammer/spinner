@@ -4,14 +4,14 @@ import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
 import Loader from './Loader';
 
-function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagData, msisdn, rewardDesc }) {
+function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagData, msisdn, rewardDesc, benefit }) {
   const [loading, setLoading] = useState(false);
 
 
   const claimReaward = () => {
     setLoading(true)
     if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(rewardDesc[0]?.props?.children?.props?.children)
+      window.ReactNativeWebView.postMessage(rewardDesc[0]?.props?.children?.props?.children, benefit[0]?.props?.children?.props?.children)
     }
     setLoading(false);
   }

@@ -33,7 +33,8 @@ function SpinWheel() {
   const [systemError, setSystemError] = useState(false);
   const [serverDown, setServerDown] = useState(false);
   const [data, setData] = useState();
-  const [rewardDesc, setRewardDesc] = useState('')
+  const [rewardDesc, setRewardDesc] = useState('');
+  const [benefit, setBenefit] = useState('')
 
   const navigate = useNavigate();
 
@@ -190,6 +191,13 @@ function SpinWheel() {
           </>
         )
       }))
+      setBenefit(filteredItem?.map((item, i) => { 
+        return (
+          <>
+            <p>{item?.benefit_id}</p>
+          </>
+        )
+      }))
       setSelectedItem(selectedItem);
     } else {
       setSelectedItem(null);
@@ -309,7 +317,7 @@ function SpinWheel() {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} rewardDesc={rewardDesc} image={rewardCount} spinData={spinData} flagData={flagData} msisdn={msisdn}/>
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} benefit={benefit} rewardDesc={rewardDesc} image={rewardCount} spinData={spinData} flagData={flagData} msisdn={msisdn}/>
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
       <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
       <SystemDownErrorModal systemError={systemError} toggle={systemErrorModal} getFlag={getFlag} spinWheelApi={spinWheelApi} getRewardCount={getRewardCount} errorModal={errorModal} selectItem={selectItem} />
