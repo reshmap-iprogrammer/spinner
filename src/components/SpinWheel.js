@@ -32,7 +32,8 @@ function SpinWheel() {
   const [errorModal, setErrorModal] = useState({firstModal: false, secondModal: false, thirdModal: false});
   const [systemError, setSystemError] = useState(false);
   const [serverDown, setServerDown] = useState(false);
-  const [data, setData] = useState()
+  const [data, setData] = useState();
+  const [rewardDescription, setRewardDescription] = useState('')
 
   const navigate = useNavigate();
 
@@ -182,7 +183,7 @@ function SpinWheel() {
           </>
         )
       }))
-      setSpinData(filteredItem?.map((item, i) => { 
+      setRewardDescription(filteredItem?.map((item, i) => { 
         return (
           <>
             <p>{item?.description}</p>
@@ -308,7 +309,7 @@ function SpinWheel() {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} image={rewardCount} spinData={spinData} flagData={flagData} msisdn={msisdn}/>
+      <CommonModal showModal={showModal} toggle={toggle} rewardDescription={rewardDescription} spinnerValue={data} image={rewardCount} spinData={spinData} flagData={flagData} msisdn={msisdn}/>
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
       <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
       <SystemDownErrorModal systemError={systemError} toggle={systemErrorModal} getFlag={getFlag} spinWheelApi={spinWheelApi} getRewardCount={getRewardCount} errorModal={errorModal} selectItem={selectItem} />
