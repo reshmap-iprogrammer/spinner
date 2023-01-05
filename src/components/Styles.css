@@ -463,6 +463,19 @@
     .rewardHistoryDate {
         margin-left: 4px;
     }
+    .retryText {
+        color: #595969;
+        font-size: 14px;
+    }
+    .serverDownText {
+        font-size: 24px;
+        color: #2f3043;
+        font-weight: bold;
+    }
+    .closeBtn {
+        margin-top: 40px;
+    }
+
 }
 
 @media (min-width: 360px) and (max-width: 420px) {

@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import CryptoJS from "crypto-js";
 import OfferNotApplicableModal from './OfferNotApplicableModal';
 import SystemDownErrorModal from './SystemDownErrorModal';
+import ServerDownModal from './ServerDownModal';
 
 
 function SpinWheel() {
@@ -28,7 +29,10 @@ function SpinWheel() {
   const [flagData, setFlagData] = useState('');
   const [isCopied, setCopied] = useState(false);
   const [offerApplicable, setOfferApplicable] = useState(false);
-  const [errorModal, setErrorModal] = useState(false)
+  const [errorModal, setErrorModal] = useState({firstModal: false, secondModal: false, thirdModal: false});
+  const [systemError, setSystemError] = useState(false);
+  const [serverDown, setServerDown] = useState(false);
+  const [data, setData] = useState()
 
   const navigate = useNavigate();
 
@@ -45,11 +49,10 @@ function SpinWheel() {
       // circleId = JSON.parse(decryptedData.circleId)
   }
 
+
   let timer;
   useEffect(() => {
     spinWheelApi();
-    // getFlag();
-    getRewardCount()
     return () => {
       clearTimeout(timer);
     }
@@ -58,39 +61,60 @@ function SpinWheel() {
 
   const spinWheelApi = async () => {
     const response = await getRequestData(route["GET_SPIN"]);
-    console.log('object',response)
     try {
       if(response?.status === 200){
         setSpinnerValues(response?.data?.SpinWheelCouponData)
       }
       else{
-        console.log('objectspiner', response?.message)
+        if(!errorModal.firstModal){
+          //open first modal
+          setSystemError(true)
+          setErrorModal({ ...errorModal,firstModal: true})
+        }else{
+          setServerDown(true)
+          // open second modal
+        }
       }
     } catch (error) {
-      console.log('objectspiner', error?.message)
+      if(!errorModal.firstModal){
+        //open first modal
+        setSystemError(true)
+        setErrorModal({ ...errorModal,firstModal: true})
+      }else{
+        setServerDown(true)
+        // open second modal
+      }
     }
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${msisdn}&secondary_msisdn=${msisdn}&circle=${msisdn}&name=vaibhav&status=1`);
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=5655567&primary_msisdn=5655567&secondary_msisdn=5655567&circle=006&name=vaibhav&status=1`);
     try {
       if(getFlagresponse?.status === 200){
         setFlagData(getFlagresponse?.data?.reward_history_flag);
         startRotation(getFlagresponse?.data?.reward_history_flag)
-        // if(getFlagresponse?.data?.reward_history_flag === 0){
-        //   getRewardCount();
-        // }
+        if(getFlagresponse?.data?.reward_history_flag === 0){
+          getRewardCount();
+        }
       }else{
-        if(!errorModal){
+        if(!errorModal.secondModal){
           //open first modal
-          setErrorModal(true)
+          setSystemError(true)
+          setErrorModal({...errorModal, secondModal: true})
         }else{
+          setServerDown(true)
           // open second modal
         }
-        console.log('object', getFlagresponse)
       }
     } catch (error) {
-      console.log('objecterror', error)
+      if(!errorModal.secondModal){
+        //open first modal
+        setSystemError(true)
+        setErrorModal({...errorModal, secondModal: true})
+      }else{
+        setServerDown(true)
+        // open second modal
+      }
     }
   }
 
@@ -101,23 +125,37 @@ function SpinWheel() {
     );
     try {
       if(rewardResponse?.status === 200) {
+        selectItem(rewardResponse?.data?.user_reward_count);
         setRewardCount(rewardResponse?.data?.user_reward_count)
         setSpinData(rewardResponse?.data?.user_reward_count)
       }else{
-        console.log('objectreward',rewardResponse?.data?.message)
+        if(!errorModal.thirdModal){
+          //open first modal
+          setSystemError(true)
+          setErrorModal({...errorModal, thirdModal: true})
+        }else{
+          setServerDown(true)
+          // open second modal
+        }
       }
     } catch (error) {
-      console.log('objectreward', error?.message)
+      if(!errorModal.thirdModal){
+        //open first modal
+        setSystemError(true)
+        setErrorModal({...errorModal, thirdModal: true})
+      }else{
+        setServerDown(true)
+        // open second modal
+      }
     }
    
   }
 
-  const selectItem = () => {
-    getFlag();
+  const selectItem = (rewardCount) => {
     if (selectedItem === null) {
       const selectedItem = rewardCount
       let filteredItem = spinnerValues?.filter((_, i) => i == selectedItem)
-      setRewardCount(filteredItem?.map((item, i) => {
+      setData(filteredItem?.map((item, i) => {
         return (
           <>
             <img src={item?.overlay_image} height={120} width={'100%'} className="mb-3 ovelayImage" />
@@ -190,6 +228,14 @@ function SpinWheel() {
     setOfferApplicable(!offerApplicable)
   }
 
+  const systemErrorModal = () => {
+    setSystemError(!systemError)
+  }
+
+  const serverdownModal = () => {
+    setServerDown(!serverDown)
+  }
+
   const wheelVars = {
     "--nb-item": spinnerValues?.length,
     "--selected-item": selectedItem
@@ -209,7 +255,7 @@ function SpinWheel() {
         <div className="wheel-container">
           <div
             style={wheelVars}
-            onClick={selectItem}
+            onClick={getFlag}
           >
             {(selectedItem === null || selectedItem < 1)  ? <div className='spinButton' >
               <button className='spinBtnText text-center' >SPIN</button>
@@ -262,10 +308,11 @@ function SpinWheel() {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={rewardCount} image={rewardCount} spinData={spinData} flagData={flagData} />
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} image={rewardCount} spinData={spinData} flagData={flagData} msisdn={msisdn}/>
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
       <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
-      <SystemDownErrorModal getFlag={getFlag}/>
+      <SystemDownErrorModal systemError={systemError} toggle={systemErrorModal} getFlag={getFlag} spinWheelApi={spinWheelApi} getRewardCount={getRewardCount} errorModal={errorModal} selectItem={selectItem} />
+      <ServerDownModal serverDown={serverDown} toggle={serverdownModal}/>
     </Container>
   )
 }

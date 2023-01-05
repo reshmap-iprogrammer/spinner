@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
-import CryptoJS from "crypto-js";
 import { getRequestData } from './services/RequestHandler';
 import { route } from './services/ApiRoutes';
 

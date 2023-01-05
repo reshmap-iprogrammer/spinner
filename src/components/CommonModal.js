@@ -4,7 +4,7 @@ import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
 import Loader from './Loader';
 
-function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagData }) {
+function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagData, msisdn }) {
   const [loading, setLoading] = useState(false);
 
   const claimReaward = () => {

@@ -17,7 +17,15 @@ function ClaimRewardModal({showModal, toggle, getRewards}) {
     const claimRewardResponse = await getRequestData(
       `${route["CLAIM_REWARDS"]}?id=${getRewards?.id}`
     );
-    setClaimReward(claimRewardResponse?.data?.message)
+    try {
+      if(claimRewardResponse?.status === 200){
+        setClaimReward(claimRewardResponse?.data?.message);
+        toggle();
+      }
+      else{}
+    } catch (error) {
+      console.log('object', error)
+    }
   }
 
   const navigate = useNavigate();
