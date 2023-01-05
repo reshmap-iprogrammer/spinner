@@ -33,7 +33,7 @@ function SpinWheel() {
   const [systemError, setSystemError] = useState(false);
   const [serverDown, setServerDown] = useState(false);
   const [data, setData] = useState();
-  const [rewardDescription, setRewardDescription] = useState('')
+  const [rewardDesc, setRewardDesc] = useState('')
 
   const navigate = useNavigate();
 
@@ -89,7 +89,7 @@ function SpinWheel() {
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${msisdn}&secondary_msisdn=${msisdn}&circle=${msisdn}&name=vaibhav&status=1`);
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=86875785&primary_msisdn=86875785&secondary_msisdn=86875785&circle=86875785&name=vaibhav&status=1`);
     try {
       if(getFlagresponse?.status === 200){
         setFlagData(getFlagresponse?.data?.reward_history_flag);
@@ -183,7 +183,7 @@ function SpinWheel() {
           </>
         )
       }))
-      setRewardDescription(filteredItem?.map((item, i) => { 
+      setRewardDesc(filteredItem?.map((item, i) => { 
         return (
           <>
             <p>{item?.description}</p>
@@ -309,7 +309,7 @@ function SpinWheel() {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} rewardDescription={rewardDescription} spinnerValue={data} image={rewardCount} spinData={spinData} flagData={flagData} msisdn={msisdn}/>
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} rewardDesc={rewardDesc} image={rewardCount} spinData={spinData} flagData={flagData} msisdn={msisdn}/>
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
       <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
       <SystemDownErrorModal systemError={systemError} toggle={systemErrorModal} getFlag={getFlag} spinWheelApi={spinWheelApi} getRewardCount={getRewardCount} errorModal={errorModal} selectItem={selectItem} />
