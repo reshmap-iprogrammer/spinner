@@ -6,12 +6,13 @@ import Loader from './Loader';
 
 function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagData, msisdn, rewardDesc, benefit }) {
   const [loading, setLoading] = useState(false);
+  console.log('object', benefit[0]?.props?.children?.props?.children)
 
 
   const claimReaward = () => {
     setLoading(true)
     if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
+      window.ReactNativeWebView.postMessage(rewardDesc[0]?.props?.children?.props?.children)
     }
     setLoading(false);
   }
