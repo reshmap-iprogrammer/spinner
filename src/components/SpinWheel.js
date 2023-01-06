@@ -51,7 +51,6 @@ function SpinWheel() {
       // circleId = JSON.parse(decryptedData.circleId)
   }
 
-  alert(parentMsisdn);
 
   let timer;
   useEffect(() => {
