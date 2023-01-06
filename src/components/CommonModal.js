@@ -23,8 +23,8 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     console.log('object', JSON.stringify(obj1))
     setdataBenifit(newArr)
     if (window.ReactNativeWebView) {
+      // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
       window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
-      window.ReactNativeWebView.postMessage(JSON.stringify(newArr));
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
     setLoading(false); 
