@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 
 
 function HowToPlayModal({toggle, howToPlayModal}) {
-  
   const openInNewTab = () => {
-    window.open('https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf');
+    const url = 'https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf'
+    window.open(url, '_blank', 'noreferrer');
   };
   return (
     <div>
