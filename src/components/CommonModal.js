@@ -3,6 +3,8 @@ import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
 import Loader from './Loader';
+import CryptoJS from "crypto-js";
+
 
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
   const [loading, setLoading] = useState(false);
@@ -11,13 +13,16 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
 
-  // const cipherText = CryptoJS.AES.encrypt(this.state.message, this.state.secret)
+  const cipherText = CryptoJS.AES.encrypt(JSON.stringify(newArr), 'VE1LLVNFRUQtRU5DLURFQw==').toString();
+  let encodeToken = encodeURIComponent(cipherText);
+  console.log('object', cipherText)
+    console.log('object', encodeToken )
 
   const claimReaward = () => {
     setLoading(true)
     // const obj1 = Object.assign({}, newArr);
     if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(JSON.stringify(newArr));
+      window.ReactNativeWebView.postMessage(encodeToken);
       // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
