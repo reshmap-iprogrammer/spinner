@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 function HowToPlayModal({toggle, howToPlayModal}) {
   const openInNewTab = (url) => {
     // window.open(url, '_blank', 'noreferrer');
-    document.open(url, '_blank', 'noreferrer');
+    window.open('https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf');
   };
   return (
     <div>
@@ -36,7 +36,7 @@ function HowToPlayModal({toggle, howToPlayModal}) {
             >
               terms and conditions
             </a>
-            {/* <p onClick={() => openInNewTab('https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf')}>terms and conditions</p> */}
+            <p onClick={() => openInNewTab()}>terms and conditions</p>
             {/* <Link to="https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf" className='termsCondition'>terms and conditions</Link> */}
           </ModalBody>
           </Modal>
