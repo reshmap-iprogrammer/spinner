@@ -41,10 +41,10 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
           <div className='data'>
             <h5 >{spinnerValue}</h5>
           </div>
-          {flagData === 1 ? <div className='d-flex justify-content-center'>
+           <div className='d-flex justify-content-center'>
             <img src={infoIcon} height={20} />
             <p>This will be reflect in {msisdn}'s account in 24 hrs</p>
-          </div>: '' }
+          </div>
           
           {flagData === 0 ? <><div className='backHomeButton' onClick={claimReaward}>
             <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : <Loader />}</p>
