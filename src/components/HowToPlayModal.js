@@ -5,6 +5,7 @@ import spinImage from '../Assets/images/spin.svg'
 import rewardImage from '../Assets/images/claim.svg'
 import closeIcon from '../Assets/images/close.svg'
 import { Link } from 'react-router-dom';
+import ViPdf from '../Assets/documents/vi_app_tnc.pdf'
 
 
 function HowToPlayModal({toggle, howToPlayModal}) {
@@ -30,13 +31,13 @@ function HowToPlayModal({toggle, howToPlayModal}) {
             </div>
             <a
               className="termsCondition"
-              href="https://www.youtube.com/"
+              href={ViPdf}
               rel="noopener noreferrer"
               target="_blank"
             >
               terms and conditions
             </a>
-            <p onClick={() => openInNewTab()}>terms and conditions</p>
+            {/* <p onClick={() => openInNewTab()}>terms and conditions</p> */}
             {/* <Link to="https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf" className='termsCondition'>terms and conditions</Link> */}
           </ModalBody>
           </Modal>
