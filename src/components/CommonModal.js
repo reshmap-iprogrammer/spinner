@@ -10,12 +10,19 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
 
   const claimReaward = () => {
+    // const data = spinnerValues?.map((item) => item?.benefit_id)
+    // const newArr = data.filter((item) => item !== null)
+    // console.log('object',spinnerValues, newArr, benefit?.props?.children?.map((item) => {
+    //   console.log('object', item)
+    // }))
     setLoading(true)
     const data = spinnerValues?.map((item) => item?.benefit_id)
     const newArr = data.filter((item) => item !== null)
-    // setdataBenifit(newArr)
+    const obj1 = Object.assign({}, newArr);
+    console.log('object', obj1)
+    setdataBenifit(newArr)
     if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(newArr);
+      window.ReactNativeWebView.postMessage(obj1);
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
     setLoading(false); 
