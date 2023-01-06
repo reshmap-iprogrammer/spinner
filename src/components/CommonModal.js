@@ -4,7 +4,7 @@ import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
 import Loader from './Loader';
 
-function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn }) {
+function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
   const [loading, setLoading] = useState(false);
 
 
@@ -43,7 +43,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
           </div>
            <div className='d-flex justify-content-center'>
             <img src={infoIcon} height={20} />
-            <p>This will be reflect in {msisdn}'s account in 24 hrs</p>
+            <p>This will be reflect in {msisdn === parentMsisdn ? parentMsisdn : msisdn}'s account in 24 hrs</p>
           </div>
           
           {flagData === 0 ? <><div className='backHomeButton' onClick={claimReaward}>
