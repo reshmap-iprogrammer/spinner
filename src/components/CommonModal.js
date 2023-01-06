@@ -9,7 +9,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   
   let data = spinnerValues?.map((item) => item?.benefit_id)
-  let newArr = data.filter((item) => item !== null)
+  let newArr = data?.filter((item) => item !== null)
 
   // const cipherText = CryptoJS.AES.encrypt(this.state.message, this.state.secret)
 
