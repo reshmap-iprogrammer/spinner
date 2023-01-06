@@ -33,7 +33,7 @@ function App() {
     <Router>
       {/* <button onClick={btnClick}>Hi</button> */}
       <Routes>
-        <Route path="/" element={<ClaimPrizeForm tagline={''} />} />
+        <Route path="/" element={<SpinWheel tagline={''} />} />
         <Route path="/rewardHistory" element={<RewardHistory />} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
       </Routes>
