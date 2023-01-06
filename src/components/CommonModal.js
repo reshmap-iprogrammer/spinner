@@ -15,7 +15,7 @@ function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagDat
       window.ReactNativeWebView.postMessage(rewardDesc[0]?.props?.children?.props?.children);
       window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
-    setLoading(false);
+    setLoading(false); 
   }
   return (
     <div>
