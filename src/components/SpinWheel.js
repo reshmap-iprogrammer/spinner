@@ -48,7 +48,7 @@ function SpinWheel() {
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
       msisdn = JSON.parse(decryptedData.msisdn)
       parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
-      // circleId = JSON.parse(decryptedData.circleId)
+      circleId = JSON.parse(decryptedData.circleId)
   }
 
 
@@ -90,7 +90,7 @@ function SpinWheel() {
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${parentMsisdn}&secondary_msisdn=${msisdn}&circle=007&name=vaibhav&status=1`);
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=76876&primary_msisdn=76876&secondary_msisdn=76876&circle=${circleId}&name=vaibhav&status=1`);
     try {
       if(getFlagresponse?.status === 200){
         setFlagData(getFlagresponse?.data?.reward_history_flag);
@@ -153,6 +153,7 @@ function SpinWheel() {
    
   }
 
+
   const selectItem = (rewardCount) => {
     if (selectedItem === null) {
       const selectedItem = rewardCount
@@ -191,7 +192,7 @@ function SpinWheel() {
           </>
         )
       }))
-      setBenefit(filteredItem?.map((item, i) => { 
+      setBenefit(spinnerValues?.map((item, i) => { 
         return (
           <>
             <p>{item?.benefit_id}</p>
@@ -317,7 +318,7 @@ function SpinWheel() {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} benefit={benefit} rewardDesc={rewardDesc} image={rewardCount} spinData={spinData} flagData={flagData} msisdn={msisdn}/>
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} benefit={benefit} rewardDesc={rewardDesc} image={rewardCount} spinData={spinData} flagData={flagData} msisdn={msisdn} spinnerValues={spinnerValues}/>
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
       <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
       <SystemDownErrorModal systemError={systemError} toggle={systemErrorModal} getFlag={getFlag} spinWheelApi={spinWheelApi} getRewardCount={getRewardCount} errorModal={errorModal} selectItem={selectItem} />

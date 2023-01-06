@@ -1,19 +1,22 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
 import Loader from './Loader';
 
-function CommonModal({ showModal, toggle, spinnerValue, image, spinData, flagData, msisdn, rewardDesc, benefit }) {
+function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues }) {
   const [loading, setLoading] = useState(false);
-  console.log('object', benefit[0]?.props?.children?.props?.children)
+  const [dataBenifit, setdataBenifit] = useState('')
 
 
   const claimReaward = () => {
+    const data = spinnerValues?.map((item) => item?.benefit_id)
+    const newArr = data.filter((item) => item !== null)
+    setdataBenifit(newArr)
     setLoading(true)
     if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(rewardDesc[0]?.props?.children?.props?.children);
-      window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
+      window.ReactNativeWebView.postMessage(dataBenifit);
+      // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
     setLoading(false); 
   }
