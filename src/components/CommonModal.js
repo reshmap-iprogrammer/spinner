@@ -7,11 +7,14 @@ import Loader from './Loader';
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
   const [loading, setLoading] = useState(false);
 
+  
+  let data = spinnerValues?.map((item) => item?.benefit_id)
+  let newArr = data.filter((item) => item !== null)
+
+  // const cipherText = CryptoJS.AES.encrypt(this.state.message, this.state.secret)
 
   const claimReaward = () => {
     setLoading(true)
-    const data = spinnerValues?.map((item) => item?.benefit_id)
-    const newArr = data.filter((item) => item !== null)
     // const obj1 = Object.assign({}, newArr);
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(JSON.stringify(newArr));
