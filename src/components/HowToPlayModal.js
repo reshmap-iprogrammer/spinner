@@ -5,13 +5,12 @@ import spinImage from '../Assets/images/spin.svg'
 import rewardImage from '../Assets/images/claim.svg'
 import closeIcon from '../Assets/images/close.svg'
 import { Link } from 'react-router-dom';
-import ViPdf from '../Assets/documents/vi_app_tnc.pdf'
 
 
 function HowToPlayModal({toggle, howToPlayModal}) {
-  const openInNewTab = () => {
-    const url = 'https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf'
-    window.open(url, '_blank', 'noreferrer');
+  const openInNewTab = (url) => {
+    // window.open(url, '_blank', 'noreferrer');
+    document.open(url, '_blank', 'noreferrer');
   };
   return (
     <div>
@@ -31,13 +30,13 @@ function HowToPlayModal({toggle, howToPlayModal}) {
             </div>
             <a
               className="termsCondition"
-              href={ViPdf}
+              href="https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf"
               rel="noopener noreferrer"
               target="_blank"
             >
               terms and conditions
             </a>
-            {/* <p onClick={() => openInNewTab()}>terms and conditions</p> */}
+            {/* <p onClick={() => openInNewTab('https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf')}>terms and conditions</p> */}
             {/* <Link to="https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf" className='termsCondition'>terms and conditions</Link> */}
           </ModalBody>
           </Modal>
