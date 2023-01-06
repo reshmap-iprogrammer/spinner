@@ -10,6 +10,7 @@ import emptyRewardIcon from '../Assets/images/box-empty-request.svg'
 import moment from 'moment';
 import ClaimRewardModal from './ClaimRewardModal';
 import CryptoJS from "crypto-js";
+import ClaimPrizeForm from './ClaimPrizeForm';
 
 
 function RewardHistory() {
@@ -53,10 +54,11 @@ function RewardHistory() {
         setRewardData(item)
         toggle();
     }
-
+    
     const navigate = useNavigate();
     return (
         <>
+
             <Container className='rewardHistoryWrapper'>
                 <div className='backIcon'>
                     <img src={backIcon} height={25} className="backIconImage" onClick={() => navigate(-1)} />
@@ -74,7 +76,7 @@ function RewardHistory() {
             {getRewards && getRewards.length && getRewards?.map((item, index) => {
                 return (
                     <>
-                        <div className='rewardListwrapper'>
+                        <div className='rewardListwrapper' key={item?.id}>
                             <div >
                                 <div className=' d-flex justify-content-between rewardList' >
                                     <div className='rowWrapper'>

@@ -160,7 +160,7 @@ function SpinWheel() {
       let filteredItem = spinnerValues?.filter((_, i) => i == selectedItem)
       setData(filteredItem?.map((item, i) => {
         return (
-          <>
+          <div key={item.id}>
             <img src={item?.overlay_image} height={120} width={'100%'} className="mb-3 ovelayImage" />
             <div className='overlayWrapper'>
               <p className='descriptionText'>{item?.description}</p>
@@ -182,7 +182,7 @@ function SpinWheel() {
                 </CopyToClipboard>
               </div>
             </div>
-          </>
+          </div>
         )
       }))
       setRewardDesc(filteredItem?.map((item, i) => { 

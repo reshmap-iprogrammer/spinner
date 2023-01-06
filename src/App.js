@@ -9,6 +9,7 @@ import RewardHistory from './components/RewardHistory';
 import React, { useEffect } from 'react'
 import { getRequestData } from './services/RequestHandler';
 import { route } from './services/ApiRoutes';
+import ClaimPrizeForm from './components/ClaimPrizeForm';
 
 
 function App() {
@@ -27,12 +28,14 @@ function App() {
     }
   }
 
+
   return (
     <Router>
       {/* <button onClick={btnClick}>Hi</button> */}
       <Routes>
-        <Route path="/" element={<SpinWheel tagline={''} />} />
+        <Route path="/" element={<ClaimPrizeForm tagline={''} />} />
         <Route path="/rewardHistory" element={<RewardHistory />} />
+        <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
       </Routes>
     </Router>
   );
