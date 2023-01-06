@@ -14,7 +14,7 @@ function ClaimPrizeForm() {
             <img src={file} />
   
         </div>
-  ``
+  
     );
 }
   
