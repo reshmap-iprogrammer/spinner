@@ -30,7 +30,7 @@ function HowToPlayModal({toggle, howToPlayModal}) {
             </div>
             <a
               className="termsCondition"
-              href="https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf"
+              href="www.google.com"
               rel="noopener noreferrer"
               target="_blank"
             >
