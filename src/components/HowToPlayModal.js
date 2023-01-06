@@ -30,7 +30,7 @@ function HowToPlayModal({toggle, howToPlayModal}) {
             </div>
             <a
               className="termsCondition"
-              href="www.google.com"
+              href="https://www.youtube.com/"
               rel="noopener noreferrer"
               target="_blank"
             >
