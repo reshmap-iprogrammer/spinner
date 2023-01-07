@@ -8,9 +8,11 @@ import { Link } from 'react-router-dom';
 
 
 function HowToPlayModal({toggle, howToPlayModal}) {
-  const openInNewTab = (url) => {
+  const openInNewTab = () => {
     // window.open(url, '_blank', 'noreferrer');
-    window.open('https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf');
+    const src = "https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf"
+    window.open(src);
+    document.open(src);
   };
   return (
     <div>
@@ -36,7 +38,7 @@ function HowToPlayModal({toggle, howToPlayModal}) {
             >
               terms and conditions
             </a>
-            <p onClick={() => openInNewTab()}>terms and conditions</p>
+            <p onClick={openInNewTab}>terms and conditions</p>
             {/* <Link to="https://www.myvi.in/content/dam/vodafoneideadigital/StaticPages/consumerimages/tnc/new/vi_app_tnc.pdf" className='termsCondition'>terms and conditions</Link> */}
           </ModalBody>
           </Modal>

@@ -15,8 +15,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   const cipherText = CryptoJS.AES.encrypt(JSON.stringify(newArr), 'VE1LLVNFRUQtRU5DLURFQw==').toString();
   let encodeToken = encodeURIComponent(cipherText);
-  console.log('object', cipherText)
-    console.log('object', encodeToken )
+
 
   const claimReaward = () => {
     setLoading(true)
