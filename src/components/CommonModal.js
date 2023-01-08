@@ -28,7 +28,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
       window.ReactNativeWebView.postMessage(encodeToken);
       // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
-    }
+    } 
   }
   return (
     <div>
