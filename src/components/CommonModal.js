@@ -20,7 +20,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const claimReaward = () => {
     setLoading(true)
     document.addEventListener("message", function (data) {
-      alert(data.data);
+      setTimeout(() => {
+        alert(data.data);
+      }, 3000);
     });
     setLoading(false); 
     // const obj1 = Object.assign({}, newArr);

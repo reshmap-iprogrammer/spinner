@@ -10,21 +10,15 @@ import React, { useEffect } from 'react'
 import { getRequestData } from './services/RequestHandler';
 import { route } from './services/ApiRoutes';
 import ClaimPrizeForm from './components/ClaimPrizeForm';
-import React,{useState, useEffect} from 'react'
 
 
 function App() {
-  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    setLoading(true)
-    document.addEventListener("message", function (data) {
-      setTimeout(() => {
-        alert(data.data);
-      }, 3000);
-    });
-    setLoading(false)
-  })
+  // useEffect(() => {
+  //   document.addEventListener("message", function (data) {
+  //     alert(data.data);
+  //   });
+  // })
 
 
   const btnClick = async () => {
