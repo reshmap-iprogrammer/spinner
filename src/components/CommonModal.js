@@ -19,13 +19,16 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   const claimReaward = () => {
     setLoading(true)
+    document.addEventListener("message", function (data) {
+      alert(data.data);
+    });
+    setLoading(false); 
     // const obj1 = Object.assign({}, newArr);
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(encodeToken);
       // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
-    setLoading(false); 
   }
   return (
     <div>

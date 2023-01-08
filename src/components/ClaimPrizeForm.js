@@ -1,23 +1,49 @@
 
 import React, { useState } from "react";
-  
+import { Button, Container } from 'reactstrap';
+import backIcon from '../Assets/images/Icon_Back.svg'
+import { useNavigate } from 'react-router-dom';
+import './Styles.css'
+
 function ClaimPrizeForm() {
     const [file, setFile] = useState();
     function handleChange(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
-  
+
+    const navigate = useNavigate();
+
     return (
-        <div className="App">
-            <input type="file" onChange={handleChange} />
-            <img src={file} />
-  
-        </div>
-  
+        <Container>
+            <div className='spinToWinHeader'>
+                <img src={backIcon} height={25} className="backIconImage" onClick={() => navigate(-1)} />
+                <p className='spinToWinHeaderText'>submit form to claim prize!</p>
+            </div>
+            <div className="mb-2">
+                <label >name *</label>
+                <input placeholder="enter name" type="text" className="nameInput"/>
+                <label >email *</label>
+                <input placeholder="enter email" type="email" className="nameInput"/>
+                <label >mobile number *</label>
+                <input placeholder="enter mobile number" type="number" className="nameInput"/>
+                <label >address *</label>
+                <input placeholder="enter address" maxLength={500} type="textarea" className="nameInput"/>
+                <label >pincode *</label>
+                <input placeholder="enter pincode" type="number" className="nameInput"/>
+                <label >landmark *</label>
+                <input placeholder="enter landmark" type="text" className="nameInput"/>
+                <Button>submit form</Button>
+            </div>
+            <div className="App">
+                <input type="file" onChange={handleChange} />
+                <img src={file} />
+            </div>
+        </Container>
+
     );
 }
-  
+
 export default ClaimPrizeForm;
 
 
