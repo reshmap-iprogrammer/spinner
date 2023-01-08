@@ -14,11 +14,13 @@ import ClaimPrizeForm from './components/ClaimPrizeForm';
 
 function App() {
 
-  // useEffect(() => {
-  //   document.addEventListener("message", function (data) {
-  //     alert(data.data);
-  //   });
-  // })
+  useEffect(() => {
+    document.addEventListener("message", function (data) {
+      setTimeout(() => {
+        alert(data.data);
+      }, 3000);
+    });
+  })
 
 
   const btnClick = async () => {
