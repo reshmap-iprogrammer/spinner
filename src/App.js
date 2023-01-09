@@ -45,17 +45,19 @@ function App() {
   }, [])
   
 
-  // const AppToWeb = () => {
-  //   document.addEventListener("message", function (data) {
-  //     setTimeout(() => {
-  //       alert(data.data);
-  //     }, 3000);
-  //   });
-  // }
+  const AppToWeb = () => {
+    alert(1)
+    document.addEventListener("message", function (data) {
+      alert(2)
+      setTimeout(() => {
+        alert(data.data);
+      }, 3000);
+    });
+  }
 
   return (
     <Router>
-      {/* <button onClick={AppToWeb}>Hi</button> */}
+      <button onClick={AppToWeb}>Hi</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={parentMsisdn}/>} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
