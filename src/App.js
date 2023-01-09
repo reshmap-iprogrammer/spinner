@@ -20,16 +20,16 @@ function App() {
       window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
     }
   }
-  const AppToWeb = () => {
-    document.addEventListener("message", function (data) {
-      setTimeout(() => {
-        alert(data.data);
-      }, 3000);
-    });
-  }
+  // const AppToWeb = () => {
+  //   document.addEventListener("message", function (data) {
+  //     setTimeout(() => {
+  //       alert(data.data);
+  //     }, 3000);
+  //   });
+  // }
   return (
     <Router>
-      <button onClick={AppToWeb}>Hi</button>
+      {/* <button onClick={AppToWeb}>Hi</button> */}
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} />} />
         <Route path="/rewardHistory" element={<RewardHistory />} />
