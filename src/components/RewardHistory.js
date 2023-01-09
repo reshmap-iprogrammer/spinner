@@ -56,9 +56,18 @@ function RewardHistory() {
     }
     
     const navigate = useNavigate();
+
+    const AppToWeb = () => {
+        document.addEventListener("message", function (data) {
+          setTimeout(() => {
+            setAppToWeb(data.data);
+          }, 3000);
+        });
+      }
+
     return (
         <>
-
+    <button onClick={AppToWeb}>Hi</button>
             <Container className='rewardHistoryWrapper'>
                 <div className='backIcon'>
                     <img src={backIcon} height={25} className="backIconImage" onClick={() => navigate(-1)} />

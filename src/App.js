@@ -6,7 +6,7 @@ import {
   Route
 } from 'react-router-dom';
 import RewardHistory from './components/RewardHistory';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getRequestData } from './services/RequestHandler';
 import { route } from './services/ApiRoutes';
 import ClaimPrizeForm from './components/ClaimPrizeForm';
@@ -14,19 +14,22 @@ import ClaimPrizeForm from './components/ClaimPrizeForm';
 
 function App() {
 
+  const [appToWeb, setAppToWeb] = useState()
+
   const btnClick = async () => {
     const rewardResponse = await getRequestData(route["GET_SPIN"]);
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
     }
   }
-  // const AppToWeb = () => {
-  //   document.addEventListener("message", function (data) {
-  //     setTimeout(() => {
-  //       alert(data.data);
-  //     }, 3000);
-  //   });
-  // }
+
+  const AppToWeb = () => {
+    document.addEventListener("message", function (data) {
+      setTimeout(() => {
+        setAppToWeb(data.data);
+      }, 3000);
+    });
+  }
   return (
     <Router>
       {/* <button onClick={AppToWeb}>Hi</button> */}

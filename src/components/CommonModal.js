@@ -79,7 +79,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
               <p className='text-center text-white p-3 backHomeText'>back home</p>
             </div>
           </>}
-          <button onClick={AppToWeb}>Hi</button>
+          {/* <button onClick={AppToWeb}>Hi</button> */}
           <p style={{ textAlign: 'center' }}>you may also view this later in reward history</p>
         </ModalBody>
       </Modal>
