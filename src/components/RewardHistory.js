@@ -13,7 +13,7 @@ import CryptoJS from "crypto-js";
 import ClaimPrizeForm from './ClaimPrizeForm';
 
 
-function RewardHistory() {
+function RewardHistory({msisdn}) {
     const [getRewards, setRewards] = useState();
     const [showModal, setModal] = useState(false);
     const [rewardData, setRewardData] = useState()
@@ -22,16 +22,16 @@ function RewardHistory() {
         setModal(!showModal)
     }
     
-        let msisdn;
-        let linkDatas = document.location.href.split('=')?.[1]
-        alert(linkDatas)
-        if(linkDatas){
-            let linkData = decodeURIComponent(linkDatas);
-            let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-            let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-            alert(decryptedData)
-            // msisdn = JSON.parse(decryptedData.msisdn)   
-        }
+        // let msisdn;
+        // let linkDatas = document.location.href.split('=')?.[1]
+        // alert(linkDatas)
+        // if(linkDatas){
+        //     let linkData = decodeURIComponent(linkDatas);
+        //     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+        //     let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+        //     alert(decryptedData)
+        //     // msisdn = JSON.parse(decryptedData.msisdn)   
+        // }
 
     useEffect(() => {
         getRewardListApi()
