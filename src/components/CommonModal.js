@@ -10,11 +10,13 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const [loading, setLoading] = useState(false);
 
 useEffect(() => {
+  setLoading(true)
   document.addEventListener("message", function (data) {
     setTimeout(() => {
       alert(data.data);
     }, 3000);
   });
+  setLoading(false)
 }, [])
   
   let data = spinnerValues?.map((item) => item?.benefit_id)
@@ -36,9 +38,7 @@ useEffect(() => {
   const AppToWeb = () => {
     alert("hiii")
     document.addEventListener("message", function (data) {
-      setTimeout(() => {
-        alert(data.data);
-      }, 3000);
+        alert(data);
     });
   }
 
