@@ -27,6 +27,7 @@ const [appToWeb, setappToWeb] = useState()
       msisdn = JSON.parse(decryptedData.msisdn)
       parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
       // circleId = JSON.parse(decryptedData.circleId)
+      alert(JSON.parse(decryptedData.circleId))
   }
 
   alert(msisdn)
@@ -62,7 +63,7 @@ const [appToWeb, setappToWeb] = useState()
     <Router>
       {/* <button onClick={AppToWeb}>Hi</button> */}
       <Routes>
-        <Route path="/" element={<SpinWheel tagline={''} />} />
+        <Route path="/" element={<SpinWheel tagline={''}  />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
       </Routes>
