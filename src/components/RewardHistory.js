@@ -34,13 +34,12 @@ function RewardHistory() {
         let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
         msisdn = JSON.parse(decryptedData.msisdn);
     }
-
+    alert(msisdn)
     const getRewardListApi = async () => {
-        alert(msisdn)
         const response = await getRequestData(
             `${route["GET_REWARDS"]}?user_profile_id=${msisdn}`
         );
-       alert(response)
+       alert(JSON.stringify(response))
         try {
             if(response?.status === 200){
                 setRewards(response?.data?.SpinWheelRewardHistoryData)
