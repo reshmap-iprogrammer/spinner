@@ -36,14 +36,14 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const AppToWeb = () => {
     alert();
     setLoading(true);
-    document.addEventListener("message", function (data) {
-      alert(data.data);
-      if(data){
-        setTimeout(() => {
-          alert(data.data);
-        }, 3000);
-      }
-    });
+    // document.addEventListener("message", function (data) {
+    //   alert(data.data);
+    //   if(data){
+    //     setTimeout(() => {
+    //       alert(data.data);
+    //     }, 3000);
+    //   }
+    // });
     setLoading(false);
   }
 
