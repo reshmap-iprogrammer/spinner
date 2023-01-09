@@ -27,7 +27,7 @@ const [appToWeb, setappToWeb] = useState()
       msisdn = JSON.parse(decryptedData.msisdn)
       parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
       // circleId = JSON.parse(decryptedData.circleId)
-      alert(JSON.parse(decryptedData.circleId))
+      alert(decryptedData.circleId)
   }
 
   alert(msisdn)
