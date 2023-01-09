@@ -69,7 +69,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
           </div>
           <div className='d-flex justify-content-center'>
             <img src={infoIcon} height={20} />
-            <p>This will be reflect in {msisdn === parentMsisdn ? parentMsisdn : msisdn}'s account in 24 hrs</p>
+            {msisdn === parentMsisdn ? <p>This will be reflect in your account within 24 hrs</p> :
+            <p>This will be reflect in {msisdn}'s account in 24 hrs</p>
+            }
           </div>
 
           {flagData === 0 ? <><div className='backHomeButton' onClick={()=>{AppToWeb();

@@ -10,9 +10,24 @@ import React, { useEffect, useState } from 'react'
 import { getRequestData } from './services/RequestHandler';
 import { route } from './services/ApiRoutes';
 import ClaimPrizeForm from './components/ClaimPrizeForm';
+import CryptoJS from "crypto-js";
 
 
 function App() {
+
+
+  let msisdn;
+  let parentMsisdn;
+  let circleId;
+  let linkDatas = document.location.href.split('=')?.[1]
+  if(linkDatas){
+    let linkData = decodeURIComponent(linkDatas);
+    let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+      let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+      msisdn = JSON.parse(decryptedData.msisdn)
+      parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
+      circleId = JSON.parse(decryptedData.circleId)
+  }
 
 
   const btnClick = async () => {
@@ -33,8 +48,8 @@ function App() {
     <Router>
       {/* <button onClick={AppToWeb}>Hi</button> */}
       <Routes>
-        <Route path="/" element={<SpinWheel tagline={''} />} />
-        <Route path="/rewardHistory" element={<RewardHistory />} />
+        <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={parentMsisdn}/>} />
+        <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
       </Routes>
     </Router>
