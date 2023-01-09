@@ -8,7 +8,7 @@ import CryptoJS from "crypto-js";
 
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
   const [loading, setLoading] = useState(false);
-  
+
 useEffect(() => {
   document.addEventListener("message", function (data) {
     setTimeout(() => {
@@ -16,7 +16,6 @@ useEffect(() => {
     }, 3000);
   });
 }, [])
-f
   
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
