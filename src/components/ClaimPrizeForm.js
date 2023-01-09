@@ -36,6 +36,11 @@ function ClaimPrizeForm() {
                 <img src={backIcon} height={25} className="backIconImage" onClick={() => navigate(-1)} />
                 <p className='spinToWinHeaderText'>submit form to claim prize!</p>
             </div>
+
+            <div className="App">
+                <input type="file" onChange={handleChange} />
+                <img src={file} />
+            </div>
             {/* <Webcam
         audio={false}
         ref={webcamRef}
@@ -52,7 +57,7 @@ function ClaimPrizeForm() {
      
       {/* <img src={image} alt='Taken photo'/> */}
 
-      <Camera
+      {/* <Camera
         showFocus={true}
         front={false}
         capture={capture}
@@ -64,7 +69,7 @@ function ClaimPrizeForm() {
         btnColor="white"
       />
       <button onClick={img => cam.current.capture(img)}>Take image</button>
-      <img src={imgSrc}/>
+      <img src={imgSrc}/> */}
             <div className="mb-2">
                 <label >name *</label>
                 <input placeholder="enter name" type="text" className="nameInput"/>
@@ -80,10 +85,7 @@ function ClaimPrizeForm() {
                 <input placeholder="enter landmark" type="text" className="nameInput"/>
                 <Button>submit form</Button>
             </div>
-            <div className="App">
-                <input type="file" onChange={handleChange} />
-                <img src={file} />
-            </div>
+           
         </Container>
 
     );
