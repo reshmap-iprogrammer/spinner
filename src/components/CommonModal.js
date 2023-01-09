@@ -25,6 +25,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
 
   const claimReaward = () => {
+    alert(2)
     // const obj1 = Object.assign({}, newArr);
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(encodeToken);
@@ -34,6 +35,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   }
 
   const AppToWeb = () => {
+    alert();
     setLoading(true);
     document.addEventListener("message", function (data) {
       if(data){
