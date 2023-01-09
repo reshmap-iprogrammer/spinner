@@ -54,7 +54,7 @@ function ClaimRewardModal({showModal, toggle, getRewards}) {
         {getRewards?.claim_status === 0  ? <><div className='backHomeButton' onClick={claimRewards}>
             <p className='text-center text-white p-3 backHomeText'>claim reward</p>
           </div></> : <>
-            <div className='backHomeButton' onClick={() => navigate(-1)}>
+            <div className='backHomeButton' onClick={() => navigate(-2)}>
               <p className='text-center text-white p-3 backHomeText'>back home</p>
             </div>
           </>}
