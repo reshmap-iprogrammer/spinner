@@ -27,7 +27,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const claimReaward = () => {
     setLoading(true);
     document.addEventListener("message", function (data) {
-      alert(data);
+      alert(data.data);
     });
     setLoading(false)
     // const obj1 = Object.assign({}, newArr);
@@ -36,6 +36,12 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
       // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
+  }
+
+  const AppToWeb = () => {
+    document.addEventListener("message", function (data) {
+        alert(data.data);
+    });
   }
 
   return (
@@ -71,6 +77,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
               <p className='text-center text-white p-3 backHomeText'>back home</p>
             </div>
           </>}
+          <button onClick={AppToWeb}>Hi</button>
           <p style={{ textAlign: 'center' }}>you may also view this later in reward history</p>
         </ModalBody>
       </Modal>
