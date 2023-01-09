@@ -26,12 +26,12 @@ const [appToWeb, setappToWeb] = useState()
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
       msisdn = JSON.parse(decryptedData.msisdn)
       parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
-      circleId = JSON.parse(decryptedData.circleId)
+      // circleId = JSON.parse(decryptedData.circleId)
   }
 
   alert(msisdn)
   alert(parentMsisdn)
-  alert(circleId)
+  // alert(circleId)
 
   const btnClick = async () => {
     const rewardResponse = await getRequestData(route["GET_SPIN"]);
