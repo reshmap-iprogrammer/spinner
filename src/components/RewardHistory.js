@@ -21,7 +21,6 @@ function RewardHistory({msisdn}) {
     const toggle = () => {
         setModal(!showModal)
     }
-    alert(msisdn)
         // let msisdn;
         // let linkDatas = document.location.href.split('=')?.[1]
         // alert(linkDatas)
@@ -41,7 +40,6 @@ function RewardHistory({msisdn}) {
         const response = await getRequestData(
             `${route["GET_REWARDS"]}?user_profile_id=${msisdn}`
         );
-       alert(JSON.stringify(response))
         try {
             if(response?.status === 200){
                 setRewards(response?.data?.SpinWheelRewardHistoryData)
