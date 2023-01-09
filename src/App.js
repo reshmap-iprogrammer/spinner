@@ -29,6 +29,9 @@ const [appToWeb, setappToWeb] = useState()
       circleId = JSON.parse(decryptedData.circleId)
   }
 
+  alert(msisdn)
+  alert(parentMsisdn)
+  alert(circleId)
 
   const btnClick = async () => {
     const rewardResponse = await getRequestData(route["GET_SPIN"]);
@@ -45,15 +48,15 @@ const [appToWeb, setappToWeb] = useState()
   // }, [])
   
 
-  const AppToWeb = () => {
-    alert(1)
-    document.addEventListener("message", function (data) {
-      alert(2)
-      setTimeout(() => {
-        alert(data.data);
-      }, 3000);
-    });
-  }
+  // const AppToWeb = () => {
+  //   alert(1)
+  //   document.addEventListener("message", function (data) {
+  //     alert(2)
+  //     setTimeout(() => {
+  //       alert(data.data);
+  //     }, 3000);
+  //   });
+  // }
 
   return (
     <Router>
