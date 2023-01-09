@@ -25,19 +25,19 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
 
   const claimReaward = () => {
-    alert(2)
     // const obj1 = Object.assign({}, newArr);
-    // if (window.ReactNativeWebView) {
-    //   window.ReactNativeWebView.postMessage(encodeToken);
-    //   // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
-    //   // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
-    // }
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage(encodeToken);
+      // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
+      // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
+    }
   }
 
   const AppToWeb = () => {
     alert();
     setLoading(true);
     document.addEventListener("message", function (data) {
+      alert(data.data);
       if(data){
         setTimeout(() => {
           alert(data.data);
