@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
@@ -9,16 +9,14 @@ import CryptoJS from "crypto-js";
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
   const [loading, setLoading] = useState(false);
 
-// useEffect(() => {
-//   setLoading(true)
-//   document.addEventListener("message", function (data) {
-//     setTimeout(() => {
-//       alert(data.data);
-//     }, 3000);
-//   });
-//   setLoading(false)
-// }, [])
-  
+  useEffect(() => {
+    document.addEventListener("message", function (data) {
+      setTimeout(() => {
+        alert(data.data);
+      }, 3000);
+    });
+  }, [])
+
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
 
@@ -27,19 +25,17 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
 
   const claimReaward = () => {
+    setLoading(true);
+    document.addEventListener("message", function (data) {
+      alert(data);
+    });
+    setLoading(false)
     // const obj1 = Object.assign({}, newArr);
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(encodeToken);
       // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
-    } 
-  }
-
-  const AppToWeb = () => {
-    alert("hiii")
-    document.addEventListener("message", function (data) {
-        alert(data);
-    });
+    }
   }
 
   return (
@@ -56,18 +52,18 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
         }}>
           <p >Congratulations</p>
         </ModalHeader>
-        {flagData === 0 ? <p style={{ textAlign: 'center' }}>here is your reward</p> : 
-        <p style={{ textAlign: 'center' }}>your reward is being proceed!</p>
-      }
+        {flagData === 0 ? <p style={{ textAlign: 'center' }}>here is your reward</p> :
+          <p style={{ textAlign: 'center' }}>your reward is being proceed!</p>
+        }
         <ModalBody>
           <div className='data'>
             <h5 >{spinnerValue}</h5>
           </div>
-           <div className='d-flex justify-content-center'>
+          <div className='d-flex justify-content-center'>
             <img src={infoIcon} height={20} />
             <p>This will be reflect in {msisdn === parentMsisdn ? parentMsisdn : msisdn}'s account in 24 hrs</p>
           </div>
-          
+
           {flagData === 0 ? <><div className='backHomeButton' onClick={claimReaward}>
             <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : <Loader />}</p>
           </div></> : <>
@@ -75,7 +71,6 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
               <p className='text-center text-white p-3 backHomeText'>back home</p>
             </div>
           </>}
-          <button onClick={AppToWeb}>Hi</button>
           <p style={{ textAlign: 'center' }}>you may also view this later in reward history</p>
         </ModalBody>
       </Modal>

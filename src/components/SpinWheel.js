@@ -252,19 +252,12 @@ function SpinWheel() {
   };
   const spinning = selectedItem !== null ? "spinning" : "";
 
-  const AppToWeb = () => {
-    document.addEventListener("message", function (data) {
-        alert(data.data);
-    });
-  }
-
   return (
     <Container>
       <div className='spinToWinHeader'>
         <img src={backIcon} height={25} className="backIconImage" onClick={() => navigate(-1)} />
         <p className='spinToWinHeaderText'>spin to win</p>
       </div>
-      <button onClick={AppToWeb}>Hi</button>
       <div className={flagData === 1 ? 'WheelWrapperdisableSpinner position-relative' : 'disableSpinner position-relative'}>
         <div className= 'arrow' id="spinArrow" >
           <img src={spinArrowImage} />
