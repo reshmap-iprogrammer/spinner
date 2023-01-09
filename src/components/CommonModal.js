@@ -38,11 +38,11 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     }
   }
 
-  const AppToWeb = () => {
-    document.addEventListener("message", function (data) {
-        alert(data.data);
-    });
-  }
+  // const AppToWeb = () => {
+  //   document.addEventListener("message", function (data) {
+  //       alert(data.data);
+  //   });
+  // }
 
   return (
     <div>
