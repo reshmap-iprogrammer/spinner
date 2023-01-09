@@ -19,7 +19,7 @@ import SystemDownErrorModal from './SystemDownErrorModal';
 import ServerDownModal from './ServerDownModal';
 
 
-function SpinWheel() {
+function SpinWheel({msisdn, parentMsisdn, circleId}) {
   const [selectedItem, setSelectedItem] = useState(null);
   const [spinnerValues, setSpinnerValues] = useState()
   const [showModal, setModal] = useState(false);
@@ -90,7 +90,7 @@ function SpinWheel() {
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=35435435&primary_msisdn=35435435&secondary_msisdn=35435435&circle=007&name=vaibhav&status=1`);
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${parentMsisdn}&secondary_msisdn=${msisdn}&circle=${circleId}&name=vaibhav&status=1`);
     try {
       if(getFlagresponse?.status === 200){
         setFlagData(getFlagresponse?.data?.reward_history_flag);
@@ -123,7 +123,7 @@ function SpinWheel() {
 
   const getRewardCount = async () => {
     const rewardResponse = await getRequestData(
-      `${route["GET_REWARD_HISTORY"]}?user_profile_id=5675&spin_id=1&claim_status=0&rank=0`
+      `${route["GET_REWARD_HISTORY"]}?user_profile_id=${msisdn}&spin_id=1&claim_status=0&rank=0`
     );
     try {
       if(rewardResponse?.status === 200) {
