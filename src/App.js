@@ -14,7 +14,6 @@ import ClaimPrizeForm from './components/ClaimPrizeForm';
 
 function App() {
 
-  const [appToWeb, setAppToWeb] = useState()
 
   const btnClick = async () => {
     const rewardResponse = await getRequestData(route["GET_SPIN"]);

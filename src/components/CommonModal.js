@@ -25,11 +25,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
 
   const claimReaward = () => {
-    setLoading(true);
-    // document.addEventListener("message", function (data) {
-    //   alert(data.data);
-    // });
-    setLoading(false)
+   
     // const obj1 = Object.assign({}, newArr);
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(encodeToken);
@@ -38,13 +34,17 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     }
   }
 
-  // const AppToWeb = () => {
-  //   document.addEventListener("message", function (data) {
-  //     setTimeout(() => {
-  //       alert(data.data);
-  //     }, 3000);
-  //   });
-  // }
+  const AppToWeb = () => {
+    setLoading(true);
+    document.addEventListener("message", function (data) {
+      if(data){
+        setTimeout(() => {
+          alert(data.data);
+        }, 3000);
+      }
+    });
+    setLoading(false);
+  }
 
   return (
     <div>
@@ -72,14 +72,14 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
             <p>This will be reflect in {msisdn === parentMsisdn ? parentMsisdn : msisdn}'s account in 24 hrs</p>
           </div>
 
-          {flagData === 0 ? <><div className='backHomeButton' onClick={claimReaward}>
+          {flagData === 0 ? <><div className='backHomeButton' onClick={()=>{AppToWeb();
+            claimReaward()}}>
             <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : <Loader />}</p>
           </div></> : <>
             <div className='backHomeButton' >
               <p className='text-center text-white p-3 backHomeText'>back home</p>
             </div>
           </>}
-          {/* <button onClick={AppToWeb}>Hi</button> */}
           <p style={{ textAlign: 'center' }}>you may also view this later in reward history</p>
         </ModalBody>
       </Modal>
