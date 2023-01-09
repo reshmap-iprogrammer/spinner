@@ -9,13 +9,13 @@ import CryptoJS from "crypto-js";
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    document.addEventListener("message", function (data) {
-      setTimeout(() => {
-        alert(data.data);
-      }, 3000);
-    });
-  }, [])
+  // useEffect(() => {
+  //   document.addEventListener("message", function (data) {
+  //     setTimeout(() => {
+  //       alert(data.data);
+  //     }, 3000);
+  //   });
+  // }, [])
 
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
