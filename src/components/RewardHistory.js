@@ -23,7 +23,7 @@ function RewardHistory() {
     }
     
         let msisdn;
-        let linkDatas = 'U2FsdGVkX1%2Bm6EX%2F0Sl5y%2BzMgRH7G58L1K2kO0K44mK3yB3qxfAjxFpuWrMDgvsDQvK9FotN0BljNWaiA3iEcVP0yjAIDA2wXXm%2BltBfNXZswuPUbPDS9VoXLHTL08rHLAntxhq1y58tZoyUNServlFepXuJLdfrp8JgHdMA5ks%3D'
+        let linkDatas = document.location.href.split('=')?.[1]
         alert(linkDatas)
         if(linkDatas){
             let linkData = decodeURIComponent(linkDatas);
