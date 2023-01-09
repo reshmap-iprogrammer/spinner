@@ -16,18 +16,24 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const cipherText = CryptoJS.AES.encrypt(JSON.stringify(newArr), 'VE1LLVNFRUQtRU5DLURFQw==').toString();
   let encodeToken = encodeURIComponent(cipherText);
 
+
   const claimReaward = () => {
-    document.addEventListener("message", function (data) {
-      alert(data.data);
-  });
-    // setLoading(false); 
     // const obj1 = Object.assign({}, newArr);
-    // if (window.ReactNativeWebView) {
-    //   window.ReactNativeWebView.postMessage(encodeToken);
-    //   // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
-    //   // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
-    // } 
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage(encodeToken);
+      // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
+      // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
+    } 
   }
+
+  const AppToWeb = () => {
+    document.addEventListener("message", function (data) {
+      setTimeout(() => {
+        alert(data.data);
+      }, 3000);
+    });
+  }
+
   return (
     <div>
       <Modal className='modalWrapper' isOpen={showModal} toggle={toggle} backdrop="static">
@@ -61,6 +67,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
               <p className='text-center text-white p-3 backHomeText'>back home</p>
             </div>
           </>}
+          <button onClick={AppToWeb}>Hi</button>
           <p style={{ textAlign: 'center' }}>you may also view this later in reward history</p>
         </ModalBody>
       </Modal>
