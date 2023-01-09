@@ -14,13 +14,9 @@ import ClaimPrizeForm from './components/ClaimPrizeForm';
 
 function App() {
 
-  // useEffect(() => {
-  //   document.addEventListener("message", function (data) {
-  //     setTimeout(() => {
-  //       alert(data.data);
-  //     }, 3000);
-  //   });
-  // })
+
+  useEffect(() => {
+  })
 
 
   const btnClick = async () => {
@@ -35,7 +31,7 @@ function App() {
     <Router>
       {/* <button onClick={btnClick}>Hi</button> */}
       <Routes>
-        <Route path="/" element={<SpinWheel tagline={''} />} />
+        <Route path="/" element={<ClaimPrizeForm tagline={''} />} />
         <Route path="/rewardHistory" element={<RewardHistory />} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
       </Routes>
