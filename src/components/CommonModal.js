@@ -27,6 +27,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   }
 
   const AppToWeb = () => {
+    alert("hiii")
     document.addEventListener("message", function (data) {
       setTimeout(() => {
         alert(data.data);
