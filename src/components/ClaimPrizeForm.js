@@ -27,6 +27,7 @@ function ClaimPrizeForm() {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
+    alert(file)
 
     const navigate = useNavigate();
 
@@ -39,7 +40,7 @@ function ClaimPrizeForm() {
 
             <div className="App">
                 <input type="file" onChange={handleChange} />
-                <img src={file} />
+                <img src={file} height={50} width={50} />
             </div>
             {/* <Webcam
         audio={false}
