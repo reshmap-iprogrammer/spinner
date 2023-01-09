@@ -21,22 +21,23 @@ function RewardHistory() {
     const toggle = () => {
         setModal(!showModal)
     }
+    
+        let msisdn;
+        let linkDatas = document.location.href.split('=')?.[1]
+        alert(linkDatas)
+        if(linkDatas){
+            let linkData = decodeURIComponent(linkDatas);
+            let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+            let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+            alert(decryptedData)
+            // msisdn = JSON.parse(decryptedData.msisdn)   
+        }
+            alert(msisdn)
 
     useEffect(() => {
         getRewardListApi()
     }, [])
 
-    let msisdn;
-    let linkDatas = document.location.href.split('=')?.[1]
-    alert(linkDatas)
-    if(linkDatas){
-        let linkData = decodeURIComponent(linkDatas);
-        let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-        let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-        alert(decryptedData)
-        // msisdn = JSON.parse(decryptedData.msisdn)   
-    }
-    // alert(msisdn)
     const getRewardListApi = async () => {
         const response = await getRequestData(
             `${route["GET_REWARDS"]}?user_profile_id=${msisdn}`
