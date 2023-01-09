@@ -52,6 +52,8 @@ function SpinWheel() {
   }
 
   alert(msisdn)
+  alert(parentMsisdn)
+  alert(circleId)
 
   let timer;
   useEffect(() => {
