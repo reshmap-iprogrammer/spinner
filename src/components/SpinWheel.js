@@ -90,7 +90,7 @@ function SpinWheel({msisdn, parentMsisdn,circleId}) {
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${parentMsisdn}&secondary_msisdn=${msisdn}&circle=${circleId}&name=vaibhav&status=1`);
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${parentMsisdn}&secondary_msisdn=${circleId}&circle=007&name=vaibhav&status=1`);
     try {
       if(getFlagresponse?.status === 200){
         setFlagData(getFlagresponse?.data?.reward_history_flag);
@@ -157,7 +157,7 @@ function SpinWheel({msisdn, parentMsisdn,circleId}) {
   const selectItem = (rewardCount) => {
     if (selectedItem === null) {
       const selectedItem = rewardCount
-      let filteredItem = spinnerValues?.filter((_, i) => i == selectedItem)
+      let filteredItem = spinnerValues?.filter((item, i) => item.rank == selectedItem)
       setData(filteredItem?.map((item, i) => {
         return (
           <div key={item.id}>
@@ -199,7 +199,7 @@ function SpinWheel({msisdn, parentMsisdn,circleId}) {
           </>
         )
       }))
-      setSelectedItem(selectedItem);
+      setSelectedItem(selectedItem -1);
     } else {
       setSelectedItem(null);
       setTimeout(selectedItem, 500);
