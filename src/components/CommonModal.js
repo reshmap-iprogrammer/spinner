@@ -26,9 +26,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   const claimReaward = () => {
     setLoading(true);
-    document.addEventListener("message", function (data) {
-      alert(data.data);
-    });
+    // document.addEventListener("message", function (data) {
+    //   alert(data.data);
+    // });
     setLoading(false)
     // const obj1 = Object.assign({}, newArr);
     if (window.ReactNativeWebView) {
@@ -38,13 +38,13 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     }
   }
 
-  const AppToWeb = () => {
-    document.addEventListener("message", function (data) {
-      setTimeout(() => {
-        alert(data.data);
-      }, 3000);
-    });
-  }
+  // const AppToWeb = () => {
+  //   document.addEventListener("message", function (data) {
+  //     setTimeout(() => {
+  //       alert(data.data);
+  //     }, 3000);
+  //   });
+  // }
 
   return (
     <div>
