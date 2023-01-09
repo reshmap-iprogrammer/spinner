@@ -39,9 +39,9 @@ function App() {
 
   const AppToWeb = () => {
     document.addEventListener("message", function (data) {
-      // setTimeout(() => {
+      setTimeout(() => {
         alert(data.data);
-      // }, 3000);
+      }, 3000);
     });
   }
 
