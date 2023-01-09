@@ -123,7 +123,7 @@ function SpinWheel() {
 
   const getRewardCount = async () => {
     const rewardResponse = await getRequestData(
-      `${route["GET_REWARD_HISTORY"]}?user_profile_id=${msisdn}&spin_id=1&claim_status=0&rank=0`
+      `${route["GET_REWARD_HISTORY"]}?user_profile_id=5675&spin_id=1&claim_status=0&rank=0`
     );
     try {
       if(rewardResponse?.status === 200) {
@@ -318,7 +318,7 @@ function SpinWheel() {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} benefit={benefit} rewardDesc={rewardDesc} image={rewardCount} spinData={spinData} flagData={flagData} msisdn={msisdn} parentMsisdn={parentMsisdn} spinnerValues={spinnerValues}/>
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} benefit={benefit} rewardDesc={rewardDesc} image={rewardCount} spinData={spinData} flagData={flagData} spinnerValues={spinnerValues}/>
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
       <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
       <SystemDownErrorModal systemError={systemError} toggle={systemErrorModal} getFlag={getFlag} spinWheelApi={spinWheelApi} getRewardCount={getRewardCount} errorModal={errorModal} selectItem={selectItem} />
