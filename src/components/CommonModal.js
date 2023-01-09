@@ -5,6 +5,7 @@ import closeIcon from '../Assets/images/close.svg'
 import Loader from './Loader';
 import CryptoJS from "crypto-js";
 import RewardHistory from './RewardHistory';
+import { useNavigate } from 'react-router-dom';
 
 
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
@@ -12,6 +13,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const [appToWeb, setappToWeb] = useState();
   const [rewardFlag, setRewardFlag] = useState(false)
 
+  const navigate = useNavigate();
 
   // useEffect(() => {
   //   document.addEventListener("message", function (data) {
@@ -44,6 +46,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
       // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
+    navigate("/RewardHistory")
   }
 
   const AppToWeb = () => {
@@ -58,10 +61,11 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     // });
     setLoading(false);
   }
+  
 
   return (
     <div>
-      {rewardFlag && <RewardHistory/>}
+      {/* {rewardFlag && <RewardHistory/>} */}
       <Modal className='modalWrapper' isOpen={showModal} toggle={toggle} backdrop="static">
         <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32} />
