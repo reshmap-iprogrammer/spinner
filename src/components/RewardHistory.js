@@ -36,9 +36,11 @@ function RewardHistory() {
     }
 
     const getRewardListApi = async () => {
+        alert(msisdn)
         const response = await getRequestData(
             `${route["GET_REWARDS"]}?user_profile_id=${msisdn}`
         );
+       alert(response)
         try {
             if(response?.status === 200){
                 setRewards(response?.data?.SpinWheelRewardHistoryData)
