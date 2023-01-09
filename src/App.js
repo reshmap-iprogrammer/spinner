@@ -62,9 +62,9 @@ const [appToWeb, setappToWeb] = useState()
     <Router>
       {/* <button onClick={AppToWeb}>Hi</button> */}
       <Routes>
-        <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId}/>} />
+        {/* <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId}/>} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
-        <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
+        <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/> */}
       </Routes>
     </Router>
   );
