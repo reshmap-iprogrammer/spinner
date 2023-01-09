@@ -16,22 +16,22 @@ import CryptoJS from "crypto-js";
 function App() {
 const [appToWeb, setappToWeb] = useState()
 
-  // let msisdn;
-  // let parentMsisdn;
-  // let circleId;
-  // let linkDatas = document.location.href.split('=')?.[1]
-  // if(linkDatas){
-  //   let linkData = decodeURIComponent(linkDatas);
-  //   let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-  //     let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-  //     msisdn = JSON.parse(decryptedData.msisdn)
-  //     parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
-  //     circleId = JSON.parse(decryptedData.circleId)
-  // }
+  let msisdn;
+  let parentMsisdn;
+  let circleId;
+  let linkDatas = document.location.href.split('=')?.[1]
+  if(linkDatas){
+    let linkData = decodeURIComponent(linkDatas);
+    let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+      let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+      msisdn = JSON.parse(decryptedData.msisdn)
+      parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
+      circleId = JSON.parse(decryptedData.circleId)
+  }
 
-  // alert(msisdn)
-  // alert(parentMsisdn)
-  // alert(circleId)
+  alert(msisdn)
+  alert(parentMsisdn)
+  alert(circleId)
 
   const btnClick = async () => {
     const rewardResponse = await getRequestData(route["GET_SPIN"]);
@@ -60,11 +60,11 @@ const [appToWeb, setappToWeb] = useState()
 
   return (
     <Router>
-      <button onClick={AppToWeb}>Hi</button>
+      {/* <button onClick={AppToWeb}>Hi</button> */}
       <Routes>
-        {/* <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId}/>} />
+        <Route path="/" element={<SpinWheel tagline={''} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
-        <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/> */}
+        <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
       </Routes>
     </Router>
   );
