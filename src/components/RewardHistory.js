@@ -28,6 +28,7 @@ function RewardHistory() {
 
     let msisdn;
     let linkDatas = document.location.href.split('=')?.[1]
+    alert(linkDatas)
     if(linkDatas){
         let linkData = decodeURIComponent(linkDatas);
         let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
