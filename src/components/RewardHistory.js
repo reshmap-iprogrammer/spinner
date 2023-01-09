@@ -21,7 +21,7 @@ function RewardHistory({msisdn}) {
     const toggle = () => {
         setModal(!showModal)
     }
-    
+    alert(msisdn)
         // let msisdn;
         // let linkDatas = document.location.href.split('=')?.[1]
         // alert(linkDatas)
