@@ -8,6 +8,16 @@ import CryptoJS from "crypto-js";
 
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
   const [loading, setLoading] = useState(false);
+  const [appToWeb, setappToWeb] = useState()
+
+
+  // useEffect(() => {
+  //   document.addEventListener("message", function (data) {
+  //     setTimeout(() => {
+  //       setappToWeb(data.data);
+  //     }, 3000);
+  //   });
+  // }, [])
 
   // useEffect(() => {
   //   document.addEventListener("message", function (data) {

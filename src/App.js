@@ -14,7 +14,7 @@ import CryptoJS from "crypto-js";
 
 
 function App() {
-
+const [appToWeb, setappToWeb] = useState()
 
   let msisdn;
   let parentMsisdn;
@@ -36,13 +36,13 @@ function App() {
       window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
     }
   }
-  useEffect(() => {
-    document.addEventListener("message", function (data) {
-      setTimeout(() => {
-        alert(data.data);
-      }, 3000);
-    });
-  }, [])
+  // useEffect(() => {
+  //   document.addEventListener("message", function (data) {
+  //     setTimeout(() => {
+  //       setappToWeb(data.data);
+  //     }, 3000);
+  //   });
+  // }, [])
   
 
   const AppToWeb = () => {
@@ -57,9 +57,9 @@ function App() {
 
   return (
     <Router>
-      <button onClick={AppToWeb}>Hi</button>
+      {/* <button onClick={AppToWeb}>Hi</button> */}
       <Routes>
-        <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={parentMsisdn}/>} />
+        <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId}/>} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
       </Routes>
