@@ -1,21 +1,27 @@
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button, Container } from 'reactstrap';
 import backIcon from '../Assets/images/Icon_Back.svg'
 import { useNavigate } from 'react-router-dom';
 import './Styles.css'
-import Webcam from "react-webcam";
-
+// import Webcam from "react-webcam";
+import { Camera } from 'react-cam';
 
 function ClaimPrizeForm() {
     const [file, setFile] = useState();
-    const webcamRef = React.useRef(null);
-    const [imgSrc, setImgSrc] = React.useState(null);
+    const cam = useRef(null);
+    const [imgSrc, setImgSrc] = useState();
+
+    function capture(imgSrc) {
+        setImgSrc(imgSrc);
+      }
+    // const webcamRef = React.useRef(null);
+    // const [imgSrc, setImgSrc] = React.useState(null);
   
-    const capture = React.useCallback(() => {
-      const imageSrc = webcamRef.current.getScreenshot();
-      setImgSrc(imageSrc);
-    }, [webcamRef, setImgSrc]);
+    // const capture = React.useCallback(() => {
+    //   const imageSrc = webcamRef.current.getScreenshot();
+    //   setImgSrc(imageSrc);
+    // }, [webcamRef, setImgSrc]);
 
     function handleChange(e) {
         console.log(e.target.files);
@@ -30,7 +36,7 @@ function ClaimPrizeForm() {
                 <img src={backIcon} height={25} className="backIconImage" onClick={() => navigate(-1)} />
                 <p className='spinToWinHeaderText'>submit form to claim prize!</p>
             </div>
-            <Webcam
+            {/* <Webcam
         audio={false}
         ref={webcamRef}
         screenshotFormat="image/jpeg"
@@ -40,7 +46,25 @@ function ClaimPrizeForm() {
         <img
           src={imgSrc}
         />
-      )}
+      )} */}
+
+
+     
+      {/* <img src={image} alt='Taken photo'/> */}
+
+      <Camera
+        showFocus={true}
+        front={false}
+        capture={capture}
+        ref={cam}
+        width="auto"
+        height="100%"
+        focusWidth="auto"
+        focusHeight="auto"
+        btnColor="white"
+      />
+      <button onClick={img => cam.current.capture(img)}>Take image</button>
+      <img src={imgSrc}/>
             <div className="mb-2">
                 <label >name *</label>
                 <input placeholder="enter name" type="text" className="nameInput"/>
