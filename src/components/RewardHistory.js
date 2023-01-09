@@ -28,13 +28,14 @@ function RewardHistory() {
 
     let msisdn;
     let linkDatas = document.location.href.split('=')?.[1]
-    if (linkDatas) {
+    if(linkDatas){
         let linkData = decodeURIComponent(linkDatas);
         let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
         let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-        msisdn = JSON.parse(decryptedData.msisdn);
+        alert(decryptedData)
+        // msisdn = JSON.parse(decryptedData.msisdn)   
     }
-    alert(msisdn)
+    // alert(msisdn)
     const getRewardListApi = async () => {
         const response = await getRequestData(
             `${route["GET_REWARDS"]}?user_profile_id=${msisdn}`
