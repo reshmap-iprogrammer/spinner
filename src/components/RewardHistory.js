@@ -60,7 +60,7 @@ function RewardHistory() {
     const AppToWeb = () => {
         document.addEventListener("message", function (data) {
           setTimeout(() => {
-            setAppToWeb(data.data);
+            alert(data.data);
           }, 3000);
         });
       }
