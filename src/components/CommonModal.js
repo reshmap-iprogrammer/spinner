@@ -40,7 +40,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   const AppToWeb = () => {
     document.addEventListener("message", function (data) {
+      setTimeout(() => {
         alert(data.data);
+      }, 3000);
     });
   }
 
