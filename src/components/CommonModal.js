@@ -23,6 +23,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
         alert(data.data);
       }, 3000);
     });
+    setLoading(false)
   }
 
 
