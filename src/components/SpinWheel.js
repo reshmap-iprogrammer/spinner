@@ -51,6 +51,10 @@ function SpinWheel({msisdn, parentMsisdn,circleId}) {
   //     circleId = JSON.parse(decryptedData.circleId)
   // }
 
+  alert(msisdn)
+  alert(parentMsisdn)
+  alert(circleId)
+
   let timer;
   useEffect(() => {
     spinWheelApi();
@@ -89,7 +93,7 @@ function SpinWheel({msisdn, parentMsisdn,circleId}) {
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${parentMsisdn}&secondary_msisdn=${circleId}&circle=007&name=vaibhav&status=1`);
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${parentMsisdn}&secondary_msisdn=${msisdn}&circle=${circleId}&name=vaibhav&status=1`);
     try {
       if(getFlagresponse?.status === 200){
         setFlagData(getFlagresponse?.data?.reward_history_flag);
