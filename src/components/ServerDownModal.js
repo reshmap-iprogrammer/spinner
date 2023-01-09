@@ -6,10 +6,10 @@ import systemDown from '../Assets/images/lottie.svg'
 function ServerDownModal({serverDown, toggle}) {
   return (
     <div>
-       <Modal className='modalWrapper' isOpen={serverDown} toggle={toggle}>
-        <div className='closeIconWrapper'>
+       <Modal className='modalWrapper' isOpen={serverDown} toggle={toggle} backdrop="static">
+        {/* <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32}/>
-        </div>
+        </div> */}
           <ModalBody>
             <div className='text-center systemDownWrapperImage'>
               <img src={systemDown} className="systemDownImage"/>

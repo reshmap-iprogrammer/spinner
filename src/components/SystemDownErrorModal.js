@@ -21,14 +21,14 @@ function SystemDownErrorModal({systemError, toggle,getFlag, flagData, getRewardC
 
   return (
     <div>
-       <Modal className='modalWrapper' isOpen={systemError} toggle={toggle}>
+       <Modal className='modalWrapper' isOpen={systemError} toggle={toggle} backdrop="static">
         <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32}/>
         </div>
           <ModalBody>
-            <div className='text-center systemDownWrapperImage'>
+            {/* <div className='text-center systemDownWrapperImage'>
               <img src={systemDown} className="systemDownImage"/>
-            </div>
+            </div> */}
             <div>
               <p className='text-center systemDownText'>oops! servers are not responding at the moment</p>
               <div className='backHomeButton' onClick={errorModalData}>
