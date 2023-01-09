@@ -16,16 +16,18 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const cipherText = CryptoJS.AES.encrypt(JSON.stringify(newArr), 'VE1LLVNFRUQtRU5DLURFQw==').toString();
   let encodeToken = encodeURIComponent(cipherText);
 
-  // const appData =  document.addEventListener("message", function (data) {
-  //   setTimeout(() => {
-  //     alert(data.data);
-  //   }, 3000);
-  // });
+  const AppToWeb = () => {
+    setLoading(true)
+    document.addEventListener("message", function (data) {
+      setTimeout(() => {
+        alert(data.data);
+      }, 3000);
+    });
+  }
 
 
   const claimReaward = () => {
-    setLoading(true)
-    // appData();
+    AppToWeb();
     setLoading(false); 
     // const obj1 = Object.assign({}, newArr);
     if (window.ReactNativeWebView) {

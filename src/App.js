@@ -39,7 +39,7 @@ function App() {
 
   return (
     <Router>
-      <button onClick={AppToWeb}>Hi</button>
+      {/* <button onClick={AppToWeb}>Hi</button> */}
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} />} />
         <Route path="/rewardHistory" element={<RewardHistory />} />
