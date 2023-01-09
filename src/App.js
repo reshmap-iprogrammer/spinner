@@ -14,22 +14,21 @@ import ClaimPrizeForm from './components/ClaimPrizeForm';
 
 function App() {
 
-
-  useEffect(() => {
-  })
-
-
   const btnClick = async () => {
     const rewardResponse = await getRequestData(route["GET_SPIN"]);
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
     }
   }
-
+  // const AppToWeb = () => {
+  //   document.addEventListener("message", function (data) {
+  //       alert(data.data);
+  //   });
+  // }
 
   return (
     <Router>
-      {/* <button onClick={btnClick}>Hi</button> */}
+      {/* <button onClick={AppToWeb}>Hi</button> */}
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} />} />
         <Route path="/rewardHistory" element={<RewardHistory />} />

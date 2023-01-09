@@ -9,15 +9,15 @@ import CryptoJS from "crypto-js";
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
   const [loading, setLoading] = useState(false);
 
-useEffect(() => {
-  setLoading(true)
-  document.addEventListener("message", function (data) {
-    setTimeout(() => {
-      alert(data.data);
-    }, 3000);
-  });
-  setLoading(false)
-}, [])
+// useEffect(() => {
+//   setLoading(true)
+//   document.addEventListener("message", function (data) {
+//     setTimeout(() => {
+//       alert(data.data);
+//     }, 3000);
+//   });
+//   setLoading(false)
+// }, [])
   
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
