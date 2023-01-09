@@ -90,7 +90,7 @@ function SpinWheel({msisdn, parentMsisdn, circleId}) {
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${parentMsisdn}&secondary_msisdn=${msisdn}&circle=${circleId}&name=vaibhav&status=1`);
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=547657&primary_msisdn=547657&secondary_msisdn=547657&circle=007&name=vaibhav&status=1`);
     try {
       if(getFlagresponse?.status === 200){
         setFlagData(getFlagresponse?.data?.reward_history_flag);
@@ -161,7 +161,7 @@ function SpinWheel({msisdn, parentMsisdn, circleId}) {
       setData(filteredItem?.map((item, i) => {
         return (
           <div key={item.id}>
-            <img src={item?.overlay_image} height={120} width={'100%'} className="mb-3 ovelayImage" />
+            <img src={item?.overlay_image} width={'100%'} className="mb-3 ovelayImage" />
             <div className='overlayWrapper'>
               <p className='descriptionText'>{item?.description}</p>
               <p className='deatilsText'>{item?.detail}</p>

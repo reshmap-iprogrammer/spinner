@@ -4,11 +4,13 @@ import infoIcon from '../Assets/images/Icon_Info.svg'
 import closeIcon from '../Assets/images/close.svg'
 import Loader from './Loader';
 import CryptoJS from "crypto-js";
+import RewardHistory from './RewardHistory';
 
 
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
   const [loading, setLoading] = useState(false);
-  const [appToWeb, setappToWeb] = useState()
+  const [appToWeb, setappToWeb] = useState();
+  const [rewardFlag, setRewardFlag] = useState(false)
 
 
   // useEffect(() => {
@@ -35,6 +37,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
 
   const claimReaward = () => {
+    setRewardFlag(true);
     // const obj1 = Object.assign({}, newArr);
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(encodeToken);
@@ -44,7 +47,6 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   }
 
   const AppToWeb = () => {
-    alert();
     setLoading(true);
     // document.addEventListener("message", function (data) {
     //   alert(data.data);
@@ -59,6 +61,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   return (
     <div>
+      {rewardFlag && <RewardHistory/>}
       <Modal className='modalWrapper' isOpen={showModal} toggle={toggle} backdrop="static">
         <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32} />
