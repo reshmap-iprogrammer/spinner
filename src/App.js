@@ -46,12 +46,16 @@ const [loading, setLoading] = useState(false);
     }, false);
   }, [])
 
+  useEffect(() => {
+  alert(appToWeb)
+  }, [appToWeb])
+  
 
     const claimButton = () => {
       setLoading(true)
       setTimeout(() => {
       //  const value = localStorage.getItem("data")
-      alert(appToWeb)
+      // alert(appToWeb)
       }, 3000);
     }
 
