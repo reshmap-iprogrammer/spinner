@@ -28,7 +28,7 @@ useEffect(() => {
       const appData = data?.data
       if(appData !== undefined){
         setappToWeb(appData);
-        alert(appData)
+        alert(appToWeb)
         alert('hi')
       }
     setLoading(false);
