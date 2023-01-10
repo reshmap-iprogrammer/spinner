@@ -42,9 +42,8 @@ const [appToWeb, setappToWeb] = useState()
   //     }, 3000);
   //   });
   // }, [])
-  let button = document.getElementById('#btn');
   const AppToWeb = () => {
-    button.addEventListener("message", function (data) {
+    document.getElementById('btn').addEventListener("message", function (data) {
       setTimeout(() => {
         alert(data.data);
       }, 3000);
