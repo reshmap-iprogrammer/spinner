@@ -18,9 +18,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
         alert(data.data)
       setappToWeb(data.data);
       setLoading(false);
-      if(!loading){
-        navigate("/RewardHistory")
-      }
+        // navigate("/RewardHistory")
     }); 
   }, [])
 
@@ -49,7 +47,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
         window.ReactNativeWebView.postMessage(obj1);
     }
     setLoading(true);
-    // navigate("/RewardHistory")
+    navigate("/RewardHistory")
   }
 
 
