@@ -17,7 +17,7 @@ import Loader from './components/Loader';
 function App() {
 const [appToWeb, setappToWeb] = useState()
 const [loading, setLoading] = useState(false);
-
+let dummyData = {}
   let msisdn;
   let parentMsisdn;
   let circleId;
@@ -40,9 +40,10 @@ const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     document.addEventListener("message", function (data) {
-      alert(data.data)
+      // alert(data.data)
       // localStorage.setItem("data",data.data)
         setappToWeb(data.data);
+        dummyData = data.data;
     }, false);
   }, [])
 
@@ -52,7 +53,10 @@ const [loading, setLoading] = useState(false);
   
 
     const claimButton = () => {
-      setLoading(true)
+      alert(dummyData)
+
+
+      // setLoading(true)
       setTimeout(() => {
       //  const value = localStorage.getItem("data")
       // alert(appToWeb)
