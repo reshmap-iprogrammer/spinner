@@ -48,15 +48,15 @@ const btnClick = () => {
   setLoading(true);
   setTimeout(() => {
     alert(appToWeb)
+    setLoading(false);
   }, 3000);
-  setLoading(false);
 }
     
 
 
   return (
     <Router>
-      {/* <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button> */}
+      <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
