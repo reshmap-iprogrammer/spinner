@@ -40,7 +40,7 @@ const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     document.addEventListener("message", function (data) {
-      alert()
+      alert(data.data)
       localStorage.setItem("data",data.data)
         setappToWeb(data.data);
     }, false);
