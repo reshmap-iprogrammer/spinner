@@ -12,13 +12,24 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const [loading, setLoading] = useState(false);
   const [appToWeb, setappToWeb] = useState();
   const [rewardFlag, setRewardFlag] = useState(false)
+
   const navigate = useNavigate();
 
-  useEffect(() => {
-    document.addEventListener("message", function (data) {
-       return setappToWeb(data.data);
-    });
-  }, [appToWeb])
+  // useEffect(() => {
+  //   document.addEventListener("message", function (data) {
+  //     setTimeout(() => {
+  //       setappToWeb(data.data);
+  //     }, 3000);
+  //   });
+  // }, [])
+
+  // useEffect(() => {
+  //   document.addEventListener("message", function (data) {
+  //     setTimeout(() => {
+  //       alert(data.data);
+  //     }, 3000);
+  //   });
+  // }, [])
 
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
@@ -39,11 +50,16 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   }
 
   const AppToWeb = () => {
-    // setLoading(true);
-    setTimeout(() => {
-      alert(appToWeb)
-    }, 3000);
-    // setLoading(false);
+    setLoading(true);
+    // document.addEventListener("message", function (data) {
+    //   alert(data.data);
+    //   if(data){
+    //     setTimeout(() => {
+    //       alert(data.data);
+    //     }, 3000);
+    //   }
+    // });
+    setLoading(false);
   }
   
 
@@ -76,7 +92,8 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
             }
           </div>
 
-          {flagData === 0 ? <><div className='backHomeButton' onClick={AppToWeb}>
+          {flagData === 0 ? <><div className='backHomeButton' onClick={()=>{AppToWeb();
+            claimReaward()}}>
             <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : <Loader />}</p>
           </div></> : <>
             <div className='backHomeButton'  onClick={() => navigate(-2)}>
