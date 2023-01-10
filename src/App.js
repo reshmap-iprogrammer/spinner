@@ -42,17 +42,15 @@ const [appToWeb, setappToWeb] = useState()
   //     }, 3000);
   //   });
   // }, [])
-  const AppToWeb = () => {
-    document.getElementById('btn').addEventListener("onClick", function (data) {
+    document.getElementById('btn').addEventListener("click", function (data) {
       setTimeout(() => {
         alert(data.data);
       }, 3000);
     });
-  }
 
   return (
     <Router>
-      <button onClick={AppToWeb} id="#btn">Hi</button>
+      <button id="#btn">Hi</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
