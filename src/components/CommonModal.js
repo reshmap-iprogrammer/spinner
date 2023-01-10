@@ -18,9 +18,11 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
         alert(data.data)
       setappToWeb(data.data);
       setLoading(false);
-      navigate("/RewardHistory")
+      if(!loading){
+        navigate("/RewardHistory")
+      }
     }); 
-  }, [RewardHistory])
+  }, [])
 
   const rewartTypeData = () => {
     setrewardTypeFlag(spinnerValues?.map((item) => {
@@ -33,7 +35,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
-  console.log('object', newArr)
+  console.log('object', JSON.stringify(newArr))
 
   const cipherText = CryptoJS.AES.encrypt(JSON.stringify(newArr), 'SE1LLVNSRUQtRU5DLURFQw==').toString();
   let encodeToken = encodeURIComponent(cipherText);
@@ -41,10 +43,10 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   const claimReaward = () => {
     // setRewardFlag(true);
-    // const obj1 = Object.assign({}, newArr);
+    const obj1 = Object.assign({}, newArr);
    
     if (window.ReactNativeWebView) {
-        window.ReactNativeWebView.postMessage(encodeToken);
+        window.ReactNativeWebView.postMessage(obj1);
     }
     setLoading(true);
     // navigate("/RewardHistory")
