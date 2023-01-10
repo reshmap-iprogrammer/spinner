@@ -37,30 +37,10 @@ const [loading, setLoading] = useState(false);
       window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
     }
   }
-  useEffect(async() => {
-    document.addEventListener("message", function (data) {
-      console.log('objectdata', data)
-        alert(data.data);
-    });
-  }, [])
-
-    // document.addEventListener("message", function (data) {
-    //     setappToWeb(data.data);
-    // });
-    
-    const dataValue = appToWeb
-
-    const claimButton = () => {
-      setLoading(true)
-      setTimeout(() => {
-        alert(appToWeb)
-      }, 3000);
-    }
 
 
   return (
     <Router>
-      {/* <button onClick={claimButton} id="btn">{!loading ? 'claim reward' : <Loader />}</button> */}
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />

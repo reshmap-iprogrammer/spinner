@@ -12,9 +12,12 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const [loading, setLoading] = useState(false);
   const [appToWeb, setappToWeb] = useState();
   const [rewardTypeFlag, setrewardTypeFlag] = useState()
-  // const [rewardFlag, setRewardFlag] = useState(false)
 
-  console.log('object',spinnerValues)
+  useEffect(() => {
+    document.addEventListener("message", function (data) {
+        alert(data.data);
+    });
+  }, [])
 
   const rewartTypeData = () => {
     setrewardTypeFlag(spinnerValues?.map((item) => {
@@ -23,9 +26,6 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
       )
     }))
   }
-
-  console.log('object',spinnerValues)
-
 
   const navigate = useNavigate();
 
@@ -55,10 +55,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     // const obj1 = Object.assign({}, newArr);
     setLoading(true);
     if (window.ReactNativeWebView) {
-      setTimeout(() => {
         window.ReactNativeWebView.postMessage(encodeToken);
-        setLoading(false);
-      }, 4000);
       // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
