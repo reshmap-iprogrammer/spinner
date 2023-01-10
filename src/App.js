@@ -15,7 +15,7 @@ import Loader from './components/Loader';
 
 
 function App() {
-const [appToWeb, setappToWeb] = useState()
+const [appToWeb, setappToWeb] = useState(1)
 const [loading, setLoading] = useState(false);
 let dummyData = ''
   let msisdn;
