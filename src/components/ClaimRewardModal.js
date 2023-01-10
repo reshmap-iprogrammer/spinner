@@ -12,11 +12,11 @@ import DummyModal from './DummyModal';
 
 function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
 
-  alert(localStorage.getItem("dummy"))
-
+  
   const [claimReward, setClaimReward] = useState('')
-
+  
   const claimRewards =async () => {
+    alert(localStorage.getItem("dummy"))
     const claimRewardResponse = await getRequestData(
       `${route["CLAIM_REWARDS"]}?id=${getRewards?.id}`
     );
