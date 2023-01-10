@@ -19,7 +19,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
       setappToWeb(data.data);
       setLoading(false);
       navigate("/RewardHistory")
-    });
+    }); 
   }, [RewardHistory])
 
   const rewartTypeData = () => {
