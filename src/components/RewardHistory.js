@@ -25,11 +25,11 @@ function RewardHistory({msisdn}) {
 
     useEffect(() => {
         getRewardListApi()
-    }, [getRewards])
+    }, [])
 
     const getRewardListApi = async () => {
         const response = await getRequestData(
-            `${route["GET_REWARDS"]}?user_profile_id=${msisdn}`
+            `${route["GET_REWARDS"]}?user_profile_id=7030567899`
         );
         try {
             if(response?.status === 200){
