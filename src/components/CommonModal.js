@@ -6,11 +6,9 @@ import Loader from './Loader';
 import CryptoJS from "crypto-js";
 import RewardHistory from './RewardHistory';
 import { useNavigate } from 'react-router-dom';
-import DummyModal from './DummyModal';
 
 
 function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues, msisdn, parentMsisdn, loading, setLoading }) {
-  const [appToWeb, setappToWeb] = useState();
   const [rewardTypeFlag, setrewardTypeFlag] = useState()
   const navigate = useNavigate();
 
@@ -19,9 +17,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
         // alert(data.data)
         const appData = data?.data
         if(appData !== undefined){
-          // setappToWeb(appData);
           localStorage.setItem("dummy", appData)
-          alert(appToWeb)
         }
       setLoading(false);
         // navigate("/RewardHistory")
@@ -54,14 +50,12 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
     }
     setLoading(true);
     if(localStorage.getItem("dummy")){
-
       navigate("/RewardHistory")
     }
   }
 
   return (
     <div>
-       <DummyModal testData={appToWeb}/>
         <Modal className='modalWrapper' isOpen={showModal} toggle={toggle} backdrop="static">
         <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32} />
