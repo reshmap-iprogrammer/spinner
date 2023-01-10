@@ -43,7 +43,7 @@ const [appToWeb, setappToWeb] = useState()
   //   });
   // }, [])
   const AppToWeb = () => {
-    document.getElementById('btn').addEventListener("click", function (data) {
+    document.getElementById('btn').addEventListener("onClick", function (data) {
       setTimeout(() => {
         alert(data.data);
       }, 3000);
