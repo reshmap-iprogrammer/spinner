@@ -12,7 +12,7 @@ import DummyModal from './DummyModal';
 
 function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
 
-  alert(appToWeb)
+  alert(localStorage.getItem("dummy"))
 
   const [claimReward, setClaimReward] = useState('')
 

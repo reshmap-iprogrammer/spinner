@@ -28,12 +28,14 @@ useEffect(() => {
       const appData = data?.data
       if(appData !== undefined){
         setappToWeb(appData);
+        localStorage.setItem("dummy", appData)
         alert(appToWeb)
       }
     setLoading(false);
       // navigate("/RewardHistory")
   }); 
-}, [appToWeb])
+}, [])
+
 
   let msisdn;
   let parentMsisdn;
