@@ -27,7 +27,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
         // navigate("/RewardHistory")
     }); 
   }, [])
-  let localStorageData = localStorage.getItem("dummy")
+
   const rewartTypeData = () => {
     setrewardTypeFlag(spinnerValues?.map((item) => {
       return (
@@ -53,7 +53,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
         window.ReactNativeWebView.postMessage(obj1);
     }
     setLoading(true);
-    if(localStorageData){
+    if(localStorage.getItem("dummy")){
 
       navigate("/RewardHistory")
     }
