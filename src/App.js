@@ -37,10 +37,10 @@ const [loading, setLoading] = useState(false);
       window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
     }
   }
+
   useEffect(() => {
     document.addEventListener("message", function (data) {
-      alert(data.data)
-      localStorage.setItem(data.data)
+      localStorage.setItem("data",data.data)
         setappToWeb(data.data);
     }, false);
   }, [])
@@ -49,7 +49,8 @@ const [loading, setLoading] = useState(false);
     const claimButton = () => {
       setLoading(true)
       setTimeout(() => {
-        alert(appToWeb)
+       const value = localStorage.getItem("data")
+       alert(value)
       }, 3000);
     }
 
