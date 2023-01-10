@@ -11,7 +11,11 @@ import { useNavigate } from 'react-router-dom';
 function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues, msisdn, parentMsisdn, loading, setLoading, props }) {
   const [rewardTypeFlag, setrewardTypeFlag] = useState()
   const navigate = useNavigate();
-
+  const navigateRewardHistory = () => {
+    if(localStorage.getItem("dummy")){
+      navigate("/RewardHistory")
+    }
+  }
   useEffect(() => {
     document.addEventListener("message", function (data) {
         // alert(data.data)
@@ -22,13 +26,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
       setLoading(false);
       navigateRewardHistory();
     }); 
-  }, [])
+  }, [navigateRewardHistory])
 
-  const navigateRewardHistory = () => {
-    if(localStorage.getItem("dummy")){
-      navigate("/RewardHistory")
-    }
-  }
+ 
 
   const rewartTypeData = () => {
     setrewardTypeFlag(spinnerValues?.map((item) => {
