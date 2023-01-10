@@ -15,9 +15,9 @@ import Loader from './components/Loader';
 
 
 function App() {
-const [appToWeb, setappToWeb] = useState(1)
+const [appToWeb, setappToWeb] = useState()
 const [loading, setLoading] = useState(false);
-let dummyData = ''
+
   let msisdn;
   let parentMsisdn;
   let circleId;
@@ -37,26 +37,20 @@ let dummyData = ''
       window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
     }
   }
-
-  useEffect(() => {
+  useEffect(async() => {
     document.addEventListener("message", function (data) {
-      alert(data.data)
-      // localStorage.setItem("data",data.data)
-      alert(4)
-        setappToWeb(5);
-        dummyData = data.data;
+        alert(data.data);
     });
   }, [])
 
+    // document.addEventListener("message", function (data) {
+    //     setappToWeb(data.data);
+    // });
 
     const claimButton = () => {
-      alert(appToWeb)
-
-
-      // setLoading(true)
+      setLoading(true)
       setTimeout(() => {
-      //  const value = localStorage.getItem("data")
-      // alert(appToWeb)
+        alert(appToWeb)
       }, 3000);
     }
 
