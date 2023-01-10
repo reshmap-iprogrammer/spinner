@@ -37,9 +37,9 @@ const [loading, setLoading] = useState(false);
       window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
     }
   }
-  useEffect(async() => {
+  useEffect(() => {
     document.addEventListener("message", function (data) {
-      alert(data.data)
+      alert()
         setappToWeb(data.data);
     });
   }, [])
