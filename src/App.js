@@ -39,9 +39,10 @@ const [loading, setLoading] = useState(false);
   }
   useEffect(async() => {
     document.addEventListener("message", function (data) {
+      alert(data.data)
         setappToWeb(data.data);
     });
-  }, [appToWeb])
+  }, [])
 
     // document.addEventListener("message", function (data) {
     //     setappToWeb(data.data);
