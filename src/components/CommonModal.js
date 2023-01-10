@@ -20,7 +20,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
       setLoading(false);
       navigate("/RewardHistory")
     });
-  }, [])
+  }, [RewardHistory])
 
   const rewartTypeData = () => {
     setrewardTypeFlag(spinnerValues?.map((item) => {
