@@ -6,11 +6,13 @@ import Loader from './Loader';
 import CryptoJS from "crypto-js";
 import RewardHistory from './RewardHistory';
 import { useNavigate } from 'react-router-dom';
+import DummyModal from './DummyModal';
 
 
-function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn, loading, setLoading }) {
+function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues, msisdn, parentMsisdn, loading, setLoading }) {
   const [appToWeb, setappToWeb] = useState();
   const [rewardTypeFlag, setrewardTypeFlag] = useState()
+  const [flag, setFlag] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,7 +20,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
         alert(data.data)
       setappToWeb(data.data);
       setLoading(false);
-        // navigate("/RewardHistory")
+        navigate("/RewardHistory")
     }); 
   }, [])
 
@@ -47,20 +49,12 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
         window.ReactNativeWebView.postMessage(obj1);
     }
     setLoading(true);
-    navigate("/RewardHistory")
-  }
-
-
-  const AppToWeb = () => {
-    // setLoading(true);
-    // setTimeout(() => {
-    //   alert(appToWeb)
-    //   setLoading(false);
-    // }, 3000);
+    // navigate("/RewardHistory")
   }
 
   return (
     <div>
+       <DummyModal testData={appToWeb}/>
         <Modal className='modalWrapper' isOpen={showModal} toggle={toggle} backdrop="static">
         <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32} />
@@ -87,8 +81,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
             }
           </div>
 
-          {flagData === 0 ? <><div className='backHomeButton' onClick={()=>{AppToWeb();
-            claimReaward()}}>
+          {flagData === 0 ? <><div className='backHomeButton' onClick={claimReaward}>
             <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : <Loader />}</p>
           </div></> : <>
             <div className='backHomeButton'  onClick={() => navigate(-2)}>
@@ -98,6 +91,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
           <p style={{ textAlign: 'center' }}>you may also view this later in reward history</p>
         </ModalBody>
       </Modal>
+     
     </div>
   )
 }
