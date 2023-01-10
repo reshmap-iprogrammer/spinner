@@ -40,7 +40,7 @@ const [loading, setLoading] = useState(false);
   // }
   useEffect(() => {
     document.addEventListener("message", function (data) {
-        setappToWeb(data.data);
+       return setappToWeb(data.data);
     });
   }, [appToWeb])
 
