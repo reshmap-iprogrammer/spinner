@@ -37,9 +37,7 @@ const [appToWeb, setappToWeb] = useState()
   }
   useEffect(() => {
     document.addEventListener("message", function (data) {
-      setTimeout(() => {
-        setappToWeb(data.data);
-      }, 3000);
+       return setappToWeb(data.data);
     });
   }, [])
 
