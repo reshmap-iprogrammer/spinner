@@ -26,7 +26,7 @@ useEffect(() => {
   document.addEventListener("message", function (data) {
       // alert(data.data)
       const appData = data?.data
-      if(appData){
+      if(appData !== undefined){
         setappToWeb(appData);
         alert(appData)
         alert('hi')
