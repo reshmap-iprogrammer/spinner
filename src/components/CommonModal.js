@@ -76,8 +76,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
             }
           </div>
 
-          {flagData === 0 ? <><div className='backHomeButton' onClick={()=>{AppToWeb();
-            claimReaward()}}>
+          {flagData === 0 ? <><div className='backHomeButton' onClick={AppToWeb}>
             <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : <Loader />}</p>
           </div></> : <>
             <div className='backHomeButton'  onClick={() => navigate(-2)}>
