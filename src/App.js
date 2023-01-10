@@ -41,7 +41,7 @@ const [loading, setLoading] = useState(false);
   useEffect(() => {
     document.addEventListener("message", function (data) {
       alert(data.data)
-      localStorage.setItem("data",data.data)
+      // localStorage.setItem("data",data.data)
         setappToWeb(data.data);
     }, false);
   }, [])
@@ -50,8 +50,8 @@ const [loading, setLoading] = useState(false);
     const claimButton = () => {
       setLoading(true)
       setTimeout(() => {
-       const value = localStorage.getItem("data")
-       alert(value)
+      //  const value = localStorage.getItem("data")
+       alert(appToWeb)
       }, 3000);
     }
 
