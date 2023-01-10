@@ -11,10 +11,12 @@ import { getRequestData } from './services/RequestHandler';
 import { route } from './services/ApiRoutes';
 import ClaimPrizeForm from './components/ClaimPrizeForm';
 import CryptoJS from "crypto-js";
+import Loader from './components/Loader';
 
 
 function App() {
 const [appToWeb, setappToWeb] = useState()
+const [loading, setLoading] = useState(false);
 
   let msisdn;
   let parentMsisdn;
@@ -45,12 +47,17 @@ const [appToWeb, setappToWeb] = useState()
     //     setappToWeb(data.data);
     // });
 
-    
+    const claimButton = () => {
+      setLoading(true)
+      setTimeout(() => {
+        alert(appToWeb)
+      }, 7000);
+    }
 
 
   return (
     <Router>
-      <button onClick={()=>alert(appToWeb)} id="btn">Hi</button>
+      <button onClick={claimButton} id="btn">{!loading ? 'claim reward' : <Loader />}</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
