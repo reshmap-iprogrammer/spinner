@@ -17,6 +17,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
 
   useEffect(() => {
     document.addEventListener("message", function (data) {
+      alert(1)
       alert(data.data)
       const appData = data?.data
       let bytes = CryptoJS.AES.decrypt(appData, "SE1LLVNSRUQtRU5DLURFQw==")
