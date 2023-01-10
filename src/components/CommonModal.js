@@ -44,6 +44,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
+  console.log('object', newArr)
 
   const cipherText = CryptoJS.AES.encrypt(JSON.stringify(newArr), 'SE1LLVNSRUQtRU5DLURFQw==').toString();
   let encodeToken = encodeURIComponent(cipherText);
