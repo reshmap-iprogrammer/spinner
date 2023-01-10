@@ -20,8 +20,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
           localStorage.setItem("dummy", appData)
         }
       setLoading(false);
-      props.history.push(`/RewardHistory`);
-        // navigate("/RewardHistory")
+      if(localStorage.setItem("dummy")){
+        navigate("/RewardHistory")
+      }
     }); 
   }, [])
 
