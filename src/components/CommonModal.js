@@ -15,11 +15,20 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    document.addEventListener("message", function (data) {
+  useEffect(() => {  
+    return () => {
+      document.addEventListener("message", function (data) {
         setappToWeb(data.data);
     });
+    }
   }, [appToWeb])
+  
+
+  // useEffect(() => {
+  //   document.addEventListener("message", function (data) {
+  //       setappToWeb(data.data);
+  //   });
+  // }, [appToWeb])
 
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
