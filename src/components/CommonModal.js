@@ -19,8 +19,8 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
     document.addEventListener("message", function (data) {
       alert(1)
       const appData = data?.data
-      let bytes = CryptoJS.AES.decrypt(appData, "SE1LLVNSRUQtRU5DLURFQw==")
-      let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+      let rewardBytes = CryptoJS.AES.decrypt(appData, "SE1LLVNSRUQtRU5DLURFQw==")
+      let decryptedData = JSON.parse(rewardBytes.toString(CryptoJS.enc.Utf8))
       alert(decryptedData)
       alert()
       // if(appData !== undefined){
