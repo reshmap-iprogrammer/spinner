@@ -53,7 +53,7 @@ const [appToWeb, setappToWeb] = useState()
   return (
     <Router>
       <button onClick={()=> document.addEventListener("message", function (data) {
-        setappToWeb(data.data);
+        alert(data.data);
     })} id="btn">Hi</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
