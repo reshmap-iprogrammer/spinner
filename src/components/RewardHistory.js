@@ -20,6 +20,7 @@ function RewardHistory({msisdn, loading, setLoading}) {
 
     useEffect(() => {
         document.addEventListener("message", function (data) {
+            alert(data.data)
           setappToWeb(data.data);
         });
         setLoading(false);

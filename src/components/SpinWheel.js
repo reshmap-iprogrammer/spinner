@@ -19,7 +19,7 @@ import SystemDownErrorModal from './SystemDownErrorModal';
 import ServerDownModal from './ServerDownModal';
 
 
-function SpinWheel({msisdn, parentMsisdn, circleId}) {
+function SpinWheel({msisdn, parentMsisdn, circleId, loading, setLoading}) {
   const [selectedItem, setSelectedItem] = useState(null);
   const [spinnerValues, setSpinnerValues] = useState()
   const [showModal, setModal] = useState(false);
@@ -305,7 +305,7 @@ function SpinWheel({msisdn, parentMsisdn, circleId}) {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} benefit={benefit} rewardDesc={rewardDesc} image={rewardCount} spinData={spinData} flagData={flagData} spinnerValues={spinnerValues}/>
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} benefit={benefit} rewardDesc={rewardDesc} image={rewardCount} spinData={spinData} flagData={flagData} spinnerValues={spinnerValues} loading={loading} setLoading={setLoading}/>
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
       <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
       <SystemDownErrorModal systemError={systemError} toggle={systemErrorModal} getFlag={getFlag} spinWheelApi={spinWheelApi} getRewardCount={getRewardCount} errorModal={errorModal} selectItem={selectItem} />

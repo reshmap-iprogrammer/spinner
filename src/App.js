@@ -44,10 +44,9 @@ const [loading, setLoading] = useState(false);
     <>
     <Router>
       <Routes>
-        <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
+        <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} setLoading={setLoading} loading={loading} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn} setLoading={setLoading} loading={loading}/>} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
-        <Route path='/commonModal' element={<CommonModal setLoading={setLoading} loading={loading}/>}/>
       </Routes>
     </Router>
     </>
