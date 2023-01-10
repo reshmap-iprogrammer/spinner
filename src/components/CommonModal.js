@@ -8,7 +8,7 @@ import RewardHistory from './RewardHistory';
 import { useNavigate } from 'react-router-dom';
 
 
-function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues, msisdn, parentMsisdn, loading, setLoading }) {
+function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues, msisdn, parentMsisdn, loading, setLoading, props }) {
   const [rewardTypeFlag, setrewardTypeFlag] = useState()
   const navigate = useNavigate();
 
@@ -20,6 +20,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
           localStorage.setItem("dummy", appData)
         }
       setLoading(false);
+      props.history.push(`/RewardHistory`);
         // navigate("/RewardHistory")
     }); 
   }, [])
@@ -49,9 +50,10 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
         window.ReactNativeWebView.postMessage(obj1);
     }
     setLoading(true);
-    if(localStorage.getItem("dummy")){
-      navigate("/RewardHistory")
-    }
+    // props.history.push(`/RewardHistory`);
+    // if(localStorage.getItem("dummy")){
+    //   navigate("/RewardHistory")
+    // }
   }
 
   return (
