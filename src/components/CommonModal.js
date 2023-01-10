@@ -52,6 +52,10 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
     // navigate("/RewardHistory")
   }
 
+  const navigateToHistory = () => {
+    navigate("/RewardHistory")
+  }
+
   return (
     <div>
        <DummyModal testData={appToWeb}/>
@@ -81,7 +85,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
             }
           </div>
 
-          {flagData === 0 ? <><div className='backHomeButton' onClick={claimReaward}>
+          {flagData === 0 ? <><div className='backHomeButton' onClick={()=>{claimReaward();
+          navigateToHistory()
+          }}>
             <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : <Loader />}</p>
           </div></> : <>
             <div className='backHomeButton'  onClick={() => navigate(-2)}>
