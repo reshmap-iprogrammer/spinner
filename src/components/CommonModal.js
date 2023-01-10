@@ -7,50 +7,58 @@ import CryptoJS from "crypto-js";
 import RewardHistory from './RewardHistory';
 import { useNavigate } from 'react-router-dom';
 
-
 function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues, msisdn, parentMsisdn, loading, setLoading, props }) {
-  const [rewardTypeFlag, setrewardTypeFlag] = useState()
+
   const navigate = useNavigate();
+
+  let rewardTypeData = spinnerValues?.map((item) => item?.reward_type)
+
+  
+
+  useEffect(() => {
+    document.addEventListener("message", function (data) {
+      const appData = data?.data
+      if(appData !== undefined){
+        localStorage.setItem("dummy", appData)
+      }
+      let bytes = CryptoJS.AES.decrypt(appData, "SE1LLVNSRUQtRU5DLURFQw==")
+      let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+      alert(decryptedData)
+      setLoading(false);
+      navigateRewardHistory();
+    }); 
+  }, [])
+
   const navigateRewardHistory = () => {
     if(localStorage.getItem("dummy")){
       navigate("/RewardHistory")
     }
   }
-  useEffect(() => {
-    document.addEventListener("message", function (data) {
-        // alert(data.data)
-        const appData = data?.data
-        if(appData !== undefined){
-          localStorage.setItem("dummy", appData)
-        }
-      setLoading(false);
-      navigateRewardHistory();
-    }); 
-  }, [navigateRewardHistory])
 
- 
-
-  const rewartTypeData = () => {
-    setrewardTypeFlag(spinnerValues?.map((item) => {
-      return (
-        <p>{item.reward_type}</p>
-      )
-    }))
-  }
+  
 
 
   let data = spinnerValues?.map((item) => item?.benefit_id)
+  // setRewardType(rewardTypeData);
+  // console.log('object', rewardType)
+  // console.log('object', rewardTypeData)
   let newArr = data?.filter((item) => item !== null)
-  console.log('object', JSON.stringify(newArr))
+  const benifitIdObj = Object.assign({}, newArr);
+  const rewardTypeObj = Object.assign({}, rewardTypeData)
+ let objData = {
+		benifitId: newArr,
+    rewardType: rewardTypeData
+		} 
 
-  const cipherText = CryptoJS.AES.encrypt(JSON.stringify(newArr), 'SE1LLVNSRUQtRU5DLURFQw==').toString();
+    console.log('object', JSON.stringify(objData))
+
+  const cipherText = CryptoJS.AES.encrypt(JSON.stringify(objData), 'SE1LLVNSRUQtRU5DLURFQw==').toString();
   let encodeToken = encodeURIComponent(cipherText);
-// alert(JSON.stringify(encodeToken))
+  // console.log('object', JSON.stringify(newArr))
+
 
   const claimReaward = () => {
-    // setRewardFlag(true);
-    const obj1 = Object.assign({}, newArr);
-   
+    const obj1 = Object.assign({}, encodeToken);
     if (window.ReactNativeWebView) {
         window.ReactNativeWebView.postMessage(obj1);
     }

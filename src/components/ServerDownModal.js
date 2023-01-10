@@ -20,7 +20,7 @@ function ServerDownModal({serverDown, toggle}) {
             <div>
               <p className='text-center serverDownText'>looks like our servers are down</p>
               <p className='text-center retryText'>Please retry in sometime to spin the wheel</p>
-              <div className='backHomeButton'  onClick={() => navigate(-1)}>
+              <div className='backHomeButton'  onClick={() => navigate(-2)}>
                 <p className='text-center text-white backHomeText closeBtn p-3'>close</p>
               </div>
             </div>
