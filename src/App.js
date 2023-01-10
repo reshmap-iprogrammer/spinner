@@ -25,11 +25,12 @@ const [loading, setLoading] = useState(false);
 useEffect(() => {
   document.addEventListener("message", function (data) {
       alert(data.data)
-    setappToWeb(data.data);
+      const appData = data?.data
+        setappToWeb(appData);
     setLoading(false);
       // navigate("/RewardHistory")
   }); 
-}, [])
+}, [appToWeb])
 
   let msisdn;
   let parentMsisdn;
