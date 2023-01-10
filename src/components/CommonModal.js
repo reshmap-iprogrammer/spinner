@@ -41,18 +41,6 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   const AppToWeb = () => {
     setLoading(true);
-    // document.addEventListener("message", function (data) {
-    //   alert(data.data);
-    //   if(data){
-    //     setTimeout(() => {
-    //       alert(data.data);
-    //     }, 3000);
-    //   }
-    // });
-    setLoading(false);
-  }
-  const btnClick = () => {
-    setLoading(true);
     setTimeout(() => {
       alert(appToWeb)
       setLoading(false);
@@ -62,7 +50,6 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   return (
     <div>
         <Modal className='modalWrapper' isOpen={showModal} toggle={toggle} backdrop="static">
-      <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button>
         <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32} />
         </div>
@@ -90,7 +77,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
           {flagData === 0 ? <><div className='backHomeButton' onClick={()=>{AppToWeb();
             claimReaward()}}>
-            <p className='text-center text-white p-3 backHomeText'>claim reward</p>
+            <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : <Loader />}</p>
           </div></> : <>
             <div className='backHomeButton'  onClick={() => navigate(-2)}>
               <p className='text-center text-white p-3 backHomeText'>back home</p>
