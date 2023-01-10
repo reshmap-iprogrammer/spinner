@@ -15,6 +15,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   useEffect(() => {
     document.addEventListener("message", function (data) {
+      alert(data.data)
       setappToWeb(data.data);
     });
   }, [])
