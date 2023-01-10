@@ -10,7 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import DummyModal from './DummyModal';
 
 
-function ClaimRewardModal({showModal, toggle, getRewards}) {
+function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
+
+  alert(appToWeb)
 
   const [claimReward, setClaimReward] = useState('')
 
@@ -33,7 +35,6 @@ function ClaimRewardModal({showModal, toggle, getRewards}) {
 
   return (
     <div>
-      <DummyModal/>
        <Modal className='modalWrapper' isOpen={showModal} toggle={toggle} backdrop="static">
         <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32}/>

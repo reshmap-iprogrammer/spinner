@@ -14,6 +14,7 @@ import CryptoJS from "crypto-js";
 import Loader from './components/Loader';
 import CommonModal from './components/CommonModal';
 import { useNavigate } from 'react-router-dom';
+import ClaimRewardModal from './components/ClaimRewardModal';
 
 
 function App() {
@@ -58,6 +59,7 @@ useEffect(() => {
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} setLoading={setLoading} loading={loading} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn} setLoading={setLoading} loading={loading}/>} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
+        <Route path="/claimRewardModal" element={<ClaimRewardModal appToWeb={appToWeb}/>}/>
       </Routes>
     </Router>
     </>
