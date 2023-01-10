@@ -65,14 +65,14 @@ function RewardHistory({msisdn}) {
                     <p className='rewardHistoryText'>reward history</p>
                 </div>
             </Container>
-            <div className="rewardWrappper">
+          {getRewards && <div className="rewardWrappper">
                 <Container className='rewardContainer'>
                     <div className='partnerText'>
                         partner
                     </div>
                     <div className='partnerText'>issue date</div>
                 </Container>
-            </div>
+            </div>}
             {getRewards && getRewards.length && getRewards?.map((item, index) => {
                 return (
                     <>
