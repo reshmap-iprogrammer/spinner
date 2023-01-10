@@ -35,26 +35,24 @@ const [appToWeb, setappToWeb] = useState()
       window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
     }
   }
-  // useEffect(() => {
-  //   document.addEventListener("message", function (data) {
-  //     setTimeout(() => {
-  //       setappToWeb(data.data);
-  //     }, 3000);
-  //   });
-  // }, [])
-
+  useEffect(() => {
     document.addEventListener("message", function (data) {
+      setTimeout(() => {
         setappToWeb(data.data);
+      }, 3000);
     });
+  }, [])
+
+    // document.addEventListener("message", function (data) {
+    //     setappToWeb(data.data);
+    // });
 
     
 
 
   return (
     <Router>
-      <button onClick={()=> document.addEventListener("message", function (data) {
-        alert(data.data);
-    })} id="btn">Hi</button>
+      <button onClick={()=>alert(appToWeb)} id="btn">Hi</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
