@@ -12,7 +12,7 @@ import ClaimRewardModal from './ClaimRewardModal';
 import ClaimPrizeForm from './ClaimPrizeForm';
 
 
-function RewardHistory({msisdn}) {
+function RewardHistory({msisdn, loading, setLoading}) {
     const [getRewards, setRewards] = useState();
     const [showModal, setModal] = useState(false);
     const [rewardData, setRewardData] = useState()
@@ -20,9 +20,9 @@ function RewardHistory({msisdn}) {
 
     useEffect(() => {
         document.addEventListener("message", function (data) {
-          alert(data.data)
           setappToWeb(data.data);
         });
+        setLoading(false);
       }, [])
 
     const toggle = () => {

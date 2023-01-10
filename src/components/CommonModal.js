@@ -8,8 +8,7 @@ import RewardHistory from './RewardHistory';
 import { useNavigate } from 'react-router-dom';
 
 
-function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
-  const [loading, setLoading] = useState(false);
+function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn, loading, setLoading }) {
   const [appToWeb, setappToWeb] = useState();
   const [rewardTypeFlag, setrewardTypeFlag] = useState()
 
@@ -39,7 +38,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     if (window.ReactNativeWebView) {
         window.ReactNativeWebView.postMessage(encodeToken);
     }
-    navigate("/RewardHistory")
+    // navigate("/RewardHistory")
   }
 
 

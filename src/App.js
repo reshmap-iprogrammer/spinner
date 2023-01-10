@@ -12,10 +12,12 @@ import { route } from './services/ApiRoutes';
 import ClaimPrizeForm from './components/ClaimPrizeForm';
 import CryptoJS from "crypto-js";
 import Loader from './components/Loader';
+import CommonModal from './components/CommonModal';
 
 
 function App() {
 const [appToWeb, setappToWeb] = useState()
+const [loading, setLoading] = useState(false);
 
   let msisdn;
   let parentMsisdn;
@@ -39,13 +41,16 @@ const [appToWeb, setappToWeb] = useState()
 
 
   return (
+    <>
     <Router>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
-        <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
+        <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn} setLoading={setLoading} loading={loading}/>} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
+        <Route path='/commonModal' element={<CommonModal setLoading={setLoading} loading={loading}/>}/>
       </Routes>
     </Router>
+    </>
   );
 }
 
