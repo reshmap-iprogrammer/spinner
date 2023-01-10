@@ -40,13 +40,15 @@ const [loading, setLoading] = useState(false);
   useEffect(async() => {
     document.addEventListener("message", function (data) {
       console.log('objectdata', data)
-        // alert(data.data);
+        alert(data.data);
     });
   }, [])
 
     // document.addEventListener("message", function (data) {
     //     setappToWeb(data.data);
     // });
+    
+    const dataValue = appToWeb
 
     const claimButton = () => {
       setLoading(true)
