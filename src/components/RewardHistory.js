@@ -26,7 +26,7 @@ function RewardHistory({msisdn, loading, setLoading}) {
 
     useEffect(() => {
         getRewardListApi()
-    }, [])
+    }, [getRewards])
 
     const getRewardListApi = async () => {
         const response = await getRequestData(
