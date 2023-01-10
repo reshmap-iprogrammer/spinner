@@ -28,7 +28,8 @@ useEffect(() => {
       const appData = data?.data
       if(appData){
         setappToWeb(appData);
-        alert(appToWeb)
+        alert(appData)
+        alert('hi')
       }
     setLoading(false);
       // navigate("/RewardHistory")
