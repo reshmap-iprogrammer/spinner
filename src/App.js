@@ -38,9 +38,9 @@ const [loading, setLoading] = useState(false);
     }
   }
   useEffect(async() => {
-    document.addEventListener("message", function (data) {
+    window.addEventListener("message", function (data) {
       console.log('objectdata', data)
-        alert(data.data);
+        // alert(data.data);
     });
   }, [])
 
@@ -58,7 +58,7 @@ const [loading, setLoading] = useState(false);
 
   return (
     <Router>
-      <button onClick={claimButton} id="btn">{!loading ? 'claim reward' : <Loader />}</button>
+      {/* <button onClick={claimButton} id="btn">{!loading ? 'claim reward' : <Loader />}</button> */}
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
