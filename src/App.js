@@ -16,7 +16,6 @@ import Loader from './components/Loader';
 
 function App() {
 const [appToWeb, setappToWeb] = useState()
-const [loading, setLoading] = useState(false);
 
   let msisdn;
   let parentMsisdn;
