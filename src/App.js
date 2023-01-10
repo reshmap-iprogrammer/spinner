@@ -48,9 +48,9 @@ const [loading, setLoading] = useState(false);
     // });
 
 const btnClick = () => {
-  setRewardFlag(true);
+  setLoading(true);
   alert(appToWeb)
-  setRewardFlag(false);
+  setLoading(false);
 }
     
 
