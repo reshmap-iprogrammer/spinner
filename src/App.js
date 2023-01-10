@@ -36,8 +36,6 @@ useEffect(() => {
   let circleId;
   let linkDatas = document.location.href.split('=')?.[1]
   if(linkDatas){
-    alert('hi')
-    alert(appToWeb)
     let linkData = decodeURIComponent(linkDatas);
     let bytes = CryptoJS.AES.decrypt(linkData, 'SE1LLVNSRUQtRU5DLURFQw==')
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
@@ -45,6 +43,9 @@ useEffect(() => {
       parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
       circleId = decryptedData.circleId
   }
+
+  alert('hi')
+  alert(appToWeb)
 
   const btnClick = async () => {
     const rewardResponse = await getRequestData(route["GET_SPIN"]);
