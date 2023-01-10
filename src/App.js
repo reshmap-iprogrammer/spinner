@@ -48,9 +48,9 @@ const [loading, setLoading] = useState(false);
     // });
 
 const btnClick = () => {
-  setLoading(true);
+  // setLoading(true);
   alert(appToWeb)
-  setLoading(false);
+  // setLoading(false);
 }
     
 
