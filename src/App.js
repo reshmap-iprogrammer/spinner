@@ -40,20 +40,16 @@ let dummyData = ''
 
   useEffect(() => {
     document.addEventListener("message", function (data) {
-      // alert(data.data)
+      alert(data.data)
       // localStorage.setItem("data",data.data)
-        setappToWeb(data.data);
+        setappToWeb(5);
         dummyData = data.data;
     }, false);
   }, [])
 
-  useEffect(() => {
-  alert(appToWeb)
-  }, [appToWeb])
-  
 
     const claimButton = () => {
-      alert(dummyData)
+      alert(appToWeb)
 
 
       // setLoading(true)
