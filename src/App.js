@@ -39,7 +39,7 @@ const [appToWeb, setappToWeb] = useState()
     document.addEventListener("message", function (data) {
        return setappToWeb(data.data);
     });
-  }, [])
+  }, [appToWeb])
 
     // document.addEventListener("message", function (data) {
     //     setappToWeb(data.data);
