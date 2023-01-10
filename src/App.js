@@ -45,7 +45,7 @@ let dummyData = ''
       alert(4)
         setappToWeb(5);
         dummyData = data.data;
-    }, false);
+    });
   }, [])
 
 
