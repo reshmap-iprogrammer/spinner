@@ -24,10 +24,11 @@ const [loading, setLoading] = useState(false);
 
 useEffect(() => {
   document.addEventListener("message", function (data) {
-      alert(data.data)
+      // alert(data.data)
       const appData = data?.data
       if(appData){
         setappToWeb(appData);
+        alert(appToWeb)
       }
     setLoading(false);
       // navigate("/RewardHistory")
