@@ -39,11 +39,11 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   }
 
   const AppToWeb = () => {
-    setLoading(true);
+    // setLoading(true);
     setTimeout(() => {
       alert(appToWeb)
     }, 3000);
-    setLoading(false);
+    // setLoading(false);
   }
   
 
