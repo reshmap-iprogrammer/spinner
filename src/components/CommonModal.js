@@ -17,17 +17,13 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
 
   useEffect(() => {
     document.addEventListener("message", function (data) {
-      alert(1)
       const appData = data?.data
       let rewardBytes = CryptoJS.AES.decrypt(appData, "SE1LLVNSRUQtRU5DLURFQw==")
-      alert(rewardBytes)
       let decryptedData = JSON.parse(rewardBytes.toString(CryptoJS.enc.Utf8))
       alert(decryptedData)
-      alert()
-      // if(appData !== undefined){
+      if(decryptedData !== undefined){
         localStorage.setItem("dummy", decryptedData)
-      // }
-     
+      }
       // alert(JSON.stringify(decryptedData))
       setLoading(false);
       navigateRewardHistory();
