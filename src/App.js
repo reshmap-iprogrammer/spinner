@@ -18,7 +18,7 @@ import ClaimRewardModal from './components/ClaimRewardModal';
 
 
 function App() {
-const [appToWeb, setappToWeb] = useState({})
+const [appToWeb, setappToWeb] = useState()
 const [loading, setLoading] = useState(false);
 // const navigate = useNavigate();
 
@@ -29,12 +29,11 @@ useEffect(() => {
       if(appData !== undefined){
         setappToWeb(appData);
         alert(appToWeb)
-        alert('hi')
       }
     setLoading(false);
       // navigate("/RewardHistory")
   }); 
-}, [])
+}, [appToWeb])
 
   let msisdn;
   let parentMsisdn;
