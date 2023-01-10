@@ -39,7 +39,7 @@ const [loading, setLoading] = useState(false);
   }
   useEffect(async() => {
     document.addEventListener("message", function (data) {
-      console.log('object', data)
+      console.log('objectdata', data)
         alert(data.data);
     });
   }, [])
