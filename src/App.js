@@ -11,13 +11,10 @@ import { getRequestData } from './services/RequestHandler';
 import { route } from './services/ApiRoutes';
 import ClaimPrizeForm from './components/ClaimPrizeForm';
 import CryptoJS from "crypto-js";
-import Loader from './components/Loader';
-import CommonModal from './components/CommonModal';
 
 
 function App() {
 const [appToWeb, setappToWeb] = useState()
-const [loading, setLoading] = useState(false);
 
   let msisdn;
   let parentMsisdn;
@@ -32,34 +29,30 @@ const [loading, setLoading] = useState(false);
       circleId = decryptedData.circleId
   }
 
-  // const btnClick = async () => {
-  //   const rewardResponse = await getRequestData(route["GET_SPIN"]);
-  //   if (window.ReactNativeWebView) {
-  //     window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
-  //   }
-  // }
+  const btnClick = async () => {
+    const rewardResponse = await getRequestData(route["GET_SPIN"]);
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
+    }
+  }
   useEffect(() => {
     document.addEventListener("message", function (data) {
        return setappToWeb(data.data);
     });
   }, [appToWeb])
 
+    // document.addEventListener("message", function (data) {
+    //     setappToWeb(data.data);
+    // });
 
-const btnClick = () => {
-  setLoading(true);
-  setTimeout(() => {
-    alert(appToWeb)
-    setLoading(false);
-  }, 3000);
-}
     
 
 
   return (
     <Router>
-      <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button>
+      <button onClick={()=>alert(appToWeb)} id="btn">Hi</button>
       <Routes>
-        <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} appToWeb={appToWeb}/>} />
+        <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
       </Routes>
