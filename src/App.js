@@ -36,6 +36,7 @@ useEffect(() => {
   let circleId;
   let linkDatas = document.location.href.split('=')?.[1]
   if(linkDatas){
+    alert(appToWeb)
     let linkData = decodeURIComponent(linkDatas);
     let bytes = CryptoJS.AES.decrypt(linkData, 'SE1LLVNSRUQtRU5DLURFQw==')
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
