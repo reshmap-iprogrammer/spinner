@@ -17,7 +17,7 @@ import Loader from './components/Loader';
 function App() {
 const [appToWeb, setappToWeb] = useState()
 const [loading, setLoading] = useState(false);
-let dummyData = {}
+let dummyData = ''
   let msisdn;
   let parentMsisdn;
   let circleId;
