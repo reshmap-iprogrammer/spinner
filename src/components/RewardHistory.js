@@ -110,7 +110,7 @@ function RewardHistory({msisdn}) {
                             </div>
                             <p className='text-center noRecordYetText'>no rewards yet? no problem!</p>
                             <p className='text-center rechargeText'>Recharge now and win rewards!</p>
-                            <Button size="lg" block color="danger" className='rechargeBtn'>recharge now</Button>
+                            <Button size="lg" block color="danger" className='rechargeBtn' onClick={() => navigate(-2)}>recharge now</Button>
                         </div>
                     </div>
                 </>

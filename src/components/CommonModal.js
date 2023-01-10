@@ -96,7 +96,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
             claimReaward()}}>
             <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : <Loader />}</p>
           </div></> : <>
-            <div className='backHomeButton' >
+            <div className='backHomeButton'  onClick={() => navigate(-2)}>
               <p className='text-center text-white p-3 backHomeText'>back home</p>
             </div>
           </>}
