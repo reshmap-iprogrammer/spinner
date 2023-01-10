@@ -38,6 +38,20 @@ function SpinWheel({msisdn, parentMsisdn, circleId}) {
 
   const navigate = useNavigate();
 
+  // let msisdn;
+  // let parentMsisdn;
+  // let circleId;
+  // let linkDatas = document.location.href.split('=')?.[1]
+  // if(linkDatas){
+  //   let linkData = decodeURIComponent(linkDatas);
+  //   let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+  //     let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+  //     msisdn = JSON.parse(decryptedData.msisdn)
+  //     parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
+  //     circleId = JSON.parse(decryptedData.circleId)
+  // }
+
+
   let timer;
   useEffect(() => {
     spinWheelApi();
