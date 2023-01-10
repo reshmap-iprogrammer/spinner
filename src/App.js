@@ -37,26 +37,26 @@ const [loading, setLoading] = useState(false);
   //     window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
   //   }
   // }
-  useEffect(() => {
-    document.addEventListener("message", function (data) {
-        setappToWeb(data.data);
-    });
-  }, [appToWeb])
+  // useEffect(() => {
+  //   document.addEventListener("message", function (data) {
+  //       setappToWeb(data.data);
+  //   });
+  // }, [appToWeb])
 
 
-const btnClick = () => {
-  setLoading(true);
-  setTimeout(() => {
-    alert(appToWeb)
-    setLoading(false);
-  }, 3000);
-}
+// const btnClick = () => {
+//   setLoading(true);
+//   setTimeout(() => {
+//     alert(appToWeb)
+//     setLoading(false);
+//   }, 3000);
+// }
     
 
 
   return (
     <Router>
-      <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button>
+      {/* <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button> */}
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />

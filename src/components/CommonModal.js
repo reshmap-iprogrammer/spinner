@@ -15,22 +15,11 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   document.addEventListener("message", function (data) {
-  //     setTimeout(() => {
-  //       setappToWeb(data.data);
-  //     }, 3000);
-  //   });
-  // }, [])
-
-  // useEffect(() => {
-  //   document.addEventListener("message", function (data) {
-  //     setTimeout(() => {
-  //       alert(data.data);
-  //     }, 3000);
-  //   });
-  // }, [])
-
+  useEffect(() => {
+    document.addEventListener("message", function (data) {
+        setappToWeb(data.data);
+    });
+  }, [appToWeb])
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
 
@@ -61,12 +50,19 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     // });
     setLoading(false);
   }
-  
+
+  const btnClick = () => {
+    setLoading(true);
+    setTimeout(() => {
+      alert(appToWeb)
+      setLoading(false);
+    }, 3000);
+  }
 
   return (
     <div>
-      {/* {rewardFlag && <RewardHistory/>} */}
       <Modal className='modalWrapper' isOpen={showModal} toggle={toggle} backdrop="static">
+      <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button>
         <div className='closeIconWrapper'>
           <img src={closeIcon} onClick={toggle} height={32} width={32} />
         </div>
