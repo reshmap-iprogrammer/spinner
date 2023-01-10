@@ -30,7 +30,7 @@ useEffect(() => {
     setLoading(false);
       // navigate("/RewardHistory")
   }); 
-}, [appToWeb])
+}, [])
 
   let msisdn;
   let parentMsisdn;
