@@ -15,7 +15,7 @@ import Loader from './components/Loader';
 
 
 function App() {
-const [appToWeb, setappToWeb] = useState()
+const [appToWeb, setappToWeb] = useState(null)
 const [loading, setLoading] = useState(false);
 
   let msisdn;
@@ -37,6 +37,15 @@ const [loading, setLoading] = useState(false);
   //     window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
   //   }
   // }
+
+  const btnClick = () => {
+    setLoading(true);
+    setTimeout(() => {
+        alert(appToWeb)
+      setLoading(false);
+    }, 3000);
+  }
+
   useEffect(() => {
     document.addEventListener("message", function (data) {
         setappToWeb(data.data);
@@ -44,13 +53,6 @@ const [loading, setLoading] = useState(false);
   }, [appToWeb])
 
 
-const btnClick = () => {
-  setLoading(true);
-  setTimeout(() => {
-      alert(appToWeb)
-    setLoading(false);
-  }, 3000);
-}
     
 
 

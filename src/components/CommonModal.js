@@ -11,7 +11,21 @@ import { useNavigate } from 'react-router-dom';
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
   const [loading, setLoading] = useState(false);
   const [appToWeb, setappToWeb] = useState();
+  const [rewardTypeFlag, setrewardTypeFlag] = useState()
   // const [rewardFlag, setRewardFlag] = useState(false)
+
+  console.log('object',spinnerValues)
+
+  const rewartTypeData = () => {
+    setrewardTypeFlag(spinnerValues?.map((item) => {
+      return (
+        <p>{item.reward_type}</p>
+      )
+    }))
+  }
+
+  console.log('object',spinnerValues)
+
 
   const navigate = useNavigate();
 
