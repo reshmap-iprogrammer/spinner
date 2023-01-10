@@ -77,7 +77,7 @@ function SpinWheel({msisdn, parentMsisdn, circleId, loading, setLoading}) {
   }
 
   const getFlag = async () => {
-    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=7030567899&primary_msisdn=7030567899&secondary_msisdn=7030567899&circle=008&name=vaibhav&status=1`);
+    const getFlagresponse = await getRequestData(`${route["GET_REWARD_HISTORY_FLAG"]}?user_profile_id=${msisdn}&primary_msisdn=${parentMsisdn}&secondary_msisdn=${msisdn}&circle=${circleId}&name=vaibhav&status=1`);
     try {
       if(getFlagresponse?.status === 200){
         setFlagData(getFlagresponse?.data?.reward_history_flag);
@@ -110,7 +110,7 @@ function SpinWheel({msisdn, parentMsisdn, circleId, loading, setLoading}) {
 
   const getRewardCount = async () => {
     const rewardResponse = await getRequestData(
-      `${route["GET_REWARD_HISTORY"]}?user_profile_id=7030567899&spin_id=1&claim_status=0&rank=0`
+      `${route["GET_REWARD_HISTORY"]}?user_profile_id=${msisdn}&spin_id=1&claim_status=0&rank=0`
     );
     try {
       if(rewardResponse?.status === 200) {

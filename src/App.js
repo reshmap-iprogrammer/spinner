@@ -49,13 +49,6 @@ const [loading, setLoading] = useState(false);
       circleId = decryptedData.circleId
   }
 
-  const btnClick = async () => {
-    const rewardResponse = await getRequestData(route["GET_SPIN"]);
-    if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
-    }
-  }
-
   return (
     <>
     <Router>
