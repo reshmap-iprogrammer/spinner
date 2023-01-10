@@ -57,7 +57,7 @@ const [loading, setLoading] = useState(false);
 
   return (
     <Router>
-      {/* <button onClick={claimButton} id="btn">{!loading ? 'claim reward' : <Loader />}</button> */}
+      <button onClick={claimButton} id="btn">{!loading ? 'claim reward' : <Loader />}</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
