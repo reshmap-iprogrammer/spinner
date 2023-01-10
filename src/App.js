@@ -52,7 +52,7 @@ const btnClick = () => {
   setTimeout(() => {
     alert(appToWeb)
   }, 3000);
-  setLoading(false);
+  // setLoading(false);
 }
     
 
