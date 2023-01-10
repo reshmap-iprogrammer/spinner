@@ -13,12 +13,13 @@ import ClaimPrizeForm from './ClaimPrizeForm';
 
 
 
-function RewardHistory({msisdn, loading, setLoading}) {
+function RewardHistory({msisdn}) {
     const [getRewards, setRewards] = useState();
     const [showModal, setModal] = useState(false);
     const [rewardData, setRewardData] = useState()
     const navigate = useNavigate();
-
+    
+alert(getRewards)
 
     const toggle = () => {
         setModal(!showModal)
