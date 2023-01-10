@@ -16,11 +16,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const navigate = useNavigate();
 
   useEffect(() => {  
-    return () => {
       document.addEventListener("message", function (data) {
         setappToWeb(data.data);
     });
-    }
   }, [appToWeb])
   
 
