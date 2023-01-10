@@ -17,7 +17,6 @@ import Loader from './components/Loader';
 function App() {
 const [appToWeb, setappToWeb] = useState()
 const [loading, setLoading] = useState(false);
-const [dummy, setdDummy] = useState(false);
 
   let msisdn;
   let parentMsisdn;
@@ -42,11 +41,10 @@ const [dummy, setdDummy] = useState(false);
     document.addEventListener("message", function (data) {
         setappToWeb(data.data);
     });
-  }, [appToWeb, dummy])
+  }, [appToWeb])
 
 
 const btnClick = () => {
-  setdDummy(true)
   setLoading(true);
   setTimeout(() => {
       alert(appToWeb)
