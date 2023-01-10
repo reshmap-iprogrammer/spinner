@@ -11,23 +11,23 @@ import DummyModal from './DummyModal';
 
 
 function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
-
-  
   const [claimReward, setClaimReward] = useState('')
+  let localStorageData = localStorage.getItem("dummy")
   
   const claimRewards =async () => {
-    alert(localStorage.getItem("dummy"))
-    const claimRewardResponse = await getRequestData(
-      `${route["CLAIM_REWARDS"]}?id=${getRewards?.id}`
-    );
-    try {
-      if(claimRewardResponse?.status === 200){
-        setClaimReward(claimRewardResponse?.data?.message);
-        toggle();
+    if(localStorageData?.claimStatus === 1){
+      const claimRewardResponse = await getRequestData(
+        `${route["CLAIM_REWARDS"]}?id=${getRewards?.id}`
+      );
+      try {
+        if(claimRewardResponse?.status === 200){
+          setClaimReward(claimRewardResponse?.data?.message);
+          toggle();
+        }
+        else{}
+      } catch (error) {
+        console.log('object', error)
       }
-      else{}
-    } catch (error) {
-      console.log('object', error)
     }
   }
 

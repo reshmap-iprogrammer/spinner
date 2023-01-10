@@ -14,7 +14,6 @@ import CryptoJS from "crypto-js";
 import Loader from './components/Loader';
 import CommonModal from './components/CommonModal';
 import { useNavigate } from 'react-router-dom';
-import ClaimRewardModal from './components/ClaimRewardModal';
 
 
 function App() {
@@ -22,19 +21,19 @@ const [appToWeb, setappToWeb] = useState()
 const [loading, setLoading] = useState(false);
 // const navigate = useNavigate();
 
-useEffect(() => {
-  document.addEventListener("message", function (data) {
-      // alert(data.data)
-      const appData = data?.data
-      if(appData !== undefined){
-        setappToWeb(appData);
-        localStorage.setItem("dummy", appData)
-        alert(appToWeb)
-      }
-    setLoading(false);
-      // navigate("/RewardHistory")
-  }); 
-}, [])
+// useEffect(() => {
+//   document.addEventListener("message", function (data) {
+//       // alert(data.data)
+//       const appData = data?.data
+//       if(appData !== undefined){
+//         // setappToWeb(appData);
+//         localStorage.setItem("dummy", appData)
+//         alert(appToWeb)
+//       }
+//     setLoading(false);
+//       // navigate("/RewardHistory")
+//   }); 
+// }, [])
 
 
   let msisdn;
@@ -64,7 +63,6 @@ useEffect(() => {
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} setLoading={setLoading} loading={loading} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn} setLoading={setLoading} loading={loading}/>} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
-        <Route path="/claimRewardModal" element={<ClaimRewardModal appToWeb={appToWeb}/>}/>
       </Routes>
     </Router>
     </>

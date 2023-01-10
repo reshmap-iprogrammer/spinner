@@ -12,17 +12,21 @@ import DummyModal from './DummyModal';
 function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues, msisdn, parentMsisdn, loading, setLoading }) {
   const [appToWeb, setappToWeb] = useState();
   const [rewardTypeFlag, setrewardTypeFlag] = useState()
-  const [flag, setFlag] = useState(false)
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   document.addEventListener("message", function (data) {
-  //       alert(data.data)
-  //     setappToWeb(data.data);
-  //     setLoading(false);
-  //       navigate("/RewardHistory")
-  //   }); 
-  // }, [])
+  useEffect(() => {
+    document.addEventListener("message", function (data) {
+        // alert(data.data)
+        const appData = data?.data
+        if(appData !== undefined){
+          // setappToWeb(appData);
+          localStorage.setItem("dummy", appData)
+          alert(appToWeb)
+        }
+      setLoading(false);
+        navigate("/RewardHistory")
+    }); 
+  }, [])
 
   const rewartTypeData = () => {
     setrewardTypeFlag(spinnerValues?.map((item) => {
