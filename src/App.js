@@ -24,7 +24,7 @@ const [loading, setLoading] = useState(false);
   let linkDatas = document.location.href.split('=')?.[1]
   if(linkDatas){
     let linkData = decodeURIComponent(linkDatas);
-    let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
+    let bytes = CryptoJS.AES.decrypt(linkData, 'SE1LLVNSRUQtRU5DLURFQw==')
       let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
       msisdn = JSON.parse(decryptedData.msisdn)
       parentMsisdn = JSON.parse(decryptedData.parentMsisdn)
@@ -37,7 +37,7 @@ const [loading, setLoading] = useState(false);
       window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
     }
   }
-  useEffect(() => {
+  useEffect(async() => {
     document.addEventListener("message", function (data) {
         setappToWeb(data.data);
     });
@@ -51,13 +51,13 @@ const [loading, setLoading] = useState(false);
       setLoading(true)
       setTimeout(() => {
         alert(appToWeb)
-      }, 7000);
+      }, 3000);
     }
 
 
   return (
     <Router>
-      <button onClick={claimButton} id="btn">{!loading ? 'claim reward' : <Loader />}</button>
+      {/* <button onClick={claimButton} id="btn">{!loading ? 'claim reward' : <Loader />}</button> */}
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />

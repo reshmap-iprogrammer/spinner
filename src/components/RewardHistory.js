@@ -9,7 +9,6 @@ import { route } from '../services/ApiRoutes';
 import emptyRewardIcon from '../Assets/images/box-empty-request.svg'
 import moment from 'moment';
 import ClaimRewardModal from './ClaimRewardModal';
-import CryptoJS from "crypto-js";
 import ClaimPrizeForm from './ClaimPrizeForm';
 
 
@@ -21,16 +20,6 @@ function RewardHistory({msisdn}) {
     const toggle = () => {
         setModal(!showModal)
     }
-        // let msisdn;
-        // let linkDatas = document.location.href.split('=')?.[1]
-        // alert(linkDatas)
-        // if(linkDatas){
-        //     let linkData = decodeURIComponent(linkDatas);
-        //     let bytes = CryptoJS.AES.decrypt(linkData, 'VE1LLVNFRUQtRU5DLURFQw==')
-        //     let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-        //     alert(decryptedData)
-        //     // msisdn = JSON.parse(decryptedData.msisdn)   
-        // }
 
     useEffect(() => {
         getRewardListApi()
