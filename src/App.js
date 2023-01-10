@@ -18,7 +18,7 @@ import ClaimRewardModal from './components/ClaimRewardModal';
 
 
 function App() {
-const [appToWeb, setappToWeb] = useState()
+const [appToWeb, setappToWeb] = useState({})
 const [loading, setLoading] = useState(false);
 // const navigate = useNavigate();
 
