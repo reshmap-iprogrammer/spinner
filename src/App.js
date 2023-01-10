@@ -26,7 +26,9 @@ useEffect(() => {
   document.addEventListener("message", function (data) {
       alert(data.data)
       const appData = data?.data
+      if(appData){
         setappToWeb(appData);
+      }
     setLoading(false);
       // navigate("/RewardHistory")
   }); 
@@ -45,16 +47,12 @@ useEffect(() => {
       circleId = decryptedData.circleId
   }
 
-  alert('hi')
-  alert(appToWeb)
-
   const btnClick = async () => {
     const rewardResponse = await getRequestData(route["GET_SPIN"]);
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
     }
   }
-
 
   return (
     <>
