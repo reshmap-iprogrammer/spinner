@@ -42,6 +42,7 @@ let dummyData = ''
     document.addEventListener("message", function (data) {
       alert(data.data)
       // localStorage.setItem("data",data.data)
+      alert(4)
         setappToWeb(5);
         dummyData = data.data;
     }, false);
