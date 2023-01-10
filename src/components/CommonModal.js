@@ -48,7 +48,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
     alert(appToWeb)
-    navigate("/RewardHistory")
+    // navigate("/RewardHistory")
   }
 
   const AppToWeb = () => {
