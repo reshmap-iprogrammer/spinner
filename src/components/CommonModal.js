@@ -17,6 +17,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     document.addEventListener("message", function (data) {
       alert(data.data)
       setappToWeb(data.data);
+      alert(1)
     });
   }, [])
 
@@ -48,7 +49,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
     alert(appToWeb)
-    // navigate("/RewardHistory")
+    navigate("/RewardHistory")
   }
 
   const AppToWeb = () => {
