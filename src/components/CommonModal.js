@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn, loading, setLoading }) {
   const [appToWeb, setappToWeb] = useState();
   const [rewardTypeFlag, setrewardTypeFlag] = useState()
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.addEventListener("message", function (data) {
@@ -30,7 +30,6 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     }))
   }
 
-  const navigate = useNavigate();
 
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)

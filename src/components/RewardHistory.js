@@ -18,8 +18,6 @@ function RewardHistory({msisdn}) {
     const [showModal, setModal] = useState(false);
     const [rewardData, setRewardData] = useState()
     const navigate = useNavigate();
-    
-alert(getRewards)
 
     const toggle = () => {
         setModal(!showModal)
