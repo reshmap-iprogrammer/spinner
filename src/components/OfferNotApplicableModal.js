@@ -21,7 +21,7 @@ function OfferNotApplicableModal({offerApplicable, toggle}) {
             <div>
               <p className='text-center offerNotApplicable'>oops! offer not applicable for you as of now!</p>
               <p className='text-center applicableText'>You may recharge again after 48 hours to be eligible for spin the wheel again</p>
-              <div className='backHomeButton' onClick={() => navigate(-1)}>
+              <div className='backHomeButton' onClick={() => navigate(-2)}>
                 <p className='text-center text-white backHomeText p-3'>back home</p>
               </div>
               <Link to="rewardHistory" className='howToPlayText text-center d-block'>reward history</Link>

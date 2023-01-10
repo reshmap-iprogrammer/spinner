@@ -12,7 +12,6 @@ import { route } from './services/ApiRoutes';
 import ClaimPrizeForm from './components/ClaimPrizeForm';
 import CryptoJS from "crypto-js";
 import Loader from './components/Loader';
-import CommonModal from './components/CommonModal';
 
 
 function App() {
@@ -45,24 +44,23 @@ const [loading, setLoading] = useState(false);
   }, [appToWeb])
 
 
-// const btnClick = () => {
-//   setLoading(true);
-//   setTimeout(() => {
-//     alert(appToWeb)
-//     setLoading(false);
-//   }, 3000);
-// }
+const btnClick = () => {
+  setLoading(true);
+  setTimeout(() => {
+    alert(appToWeb)
+    setLoading(false);
+  }, 3000);
+}
     
 
 
   return (
     <Router>
-      {/* <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button> */}
+      <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} appToWeb={appToWeb}/>} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
-        <Route  path='/commonModal' element={<CommonModal appToWeb={appToWeb} />}/>
       </Routes>
     </Router>
   );
