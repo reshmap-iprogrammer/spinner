@@ -16,6 +16,14 @@ function RewardHistory({msisdn}) {
     const [getRewards, setRewards] = useState();
     const [showModal, setModal] = useState(false);
     const [rewardData, setRewardData] = useState()
+    const [appToWeb, setappToWeb] = useState();
+
+    useEffect(() => {
+        document.addEventListener("message", function (data) {
+          alert(data.data)
+          setappToWeb(data.data);
+        });
+      }, [])
 
     const toggle = () => {
         setModal(!showModal)

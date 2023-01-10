@@ -13,13 +13,6 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const [appToWeb, setappToWeb] = useState();
   const [rewardTypeFlag, setrewardTypeFlag] = useState()
 
-  useEffect(() => {
-    document.addEventListener("message", function (data) {
-      alert(data.data)
-      alert(1)
-      setappToWeb(data.data);
-    });
-  }, [])
 
   const rewartTypeData = () => {
     setrewardTypeFlag(spinnerValues?.map((item) => {
@@ -46,9 +39,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     if (window.ReactNativeWebView) {
         window.ReactNativeWebView.postMessage(encodeToken);
     }
-    alert(appToWeb)
     navigate("/RewardHistory")
   }
+
 
   const AppToWeb = () => {
     // setLoading(true);
