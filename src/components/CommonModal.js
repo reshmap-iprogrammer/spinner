@@ -20,7 +20,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
           localStorage.setItem("dummy", appData)
         }
       setLoading(false);
-      if(localStorage.setItem("dummy")){
+      if(localStorage.getItem("dummy")){
         navigate("/RewardHistory")
       }
     }); 
