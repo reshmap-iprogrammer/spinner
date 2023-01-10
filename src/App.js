@@ -43,23 +43,20 @@ const [loading, setLoading] = useState(false);
     });
   }, [appToWeb])
 
-    // document.addEventListener("message", function (data) {
-    //     setappToWeb(data.data);
-    // });
 
 const btnClick = () => {
   setLoading(true);
   setTimeout(() => {
     alert(appToWeb)
   }, 3000);
-  // setLoading(false);
+  setLoading(false);
 }
     
 
 
   return (
     <Router>
-      <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button>
+      {/* <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button> */}
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />

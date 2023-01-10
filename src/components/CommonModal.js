@@ -12,24 +12,13 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const [loading, setLoading] = useState(false);
   const [appToWeb, setappToWeb] = useState();
   const [rewardFlag, setRewardFlag] = useState(false)
-
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   document.addEventListener("message", function (data) {
-  //     setTimeout(() => {
-  //       setappToWeb(data.data);
-  //     }, 3000);
-  //   });
-  // }, [])
-
-  // useEffect(() => {
-  //   document.addEventListener("message", function (data) {
-  //     setTimeout(() => {
-  //       alert(data.data);
-  //     }, 3000);
-  //   });
-  // }, [])
+  useEffect(() => {
+    document.addEventListener("message", function (data) {
+       return setappToWeb(data.data);
+    });
+  }, [appToWeb])
 
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
@@ -51,14 +40,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   const AppToWeb = () => {
     setLoading(true);
-    // document.addEventListener("message", function (data) {
-    //   alert(data.data);
-    //   if(data){
-    //     setTimeout(() => {
-    //       alert(data.data);
-    //     }, 3000);
-    //   }
-    // });
+    setTimeout(() => {
+      alert(appToWeb)
+    }, 3000);
     setLoading(false);
   }
   
