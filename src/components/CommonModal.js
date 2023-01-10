@@ -15,7 +15,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
   useEffect(() => {
     document.addEventListener("message", function (data) {
-        alert(data.data);
+      setappToWeb(data.data);
     });
   }, [])
 
@@ -28,19 +28,6 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   }
 
   const navigate = useNavigate();
-
-  useEffect(() => {  
-      document.addEventListener("message", function (data) {
-        setappToWeb(data.data);
-    });
-  }, [appToWeb])
-  
-
-  // useEffect(() => {
-  //   document.addEventListener("message", function (data) {
-  //       setappToWeb(data.data);
-  //   });
-  // }, [appToWeb])
 
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let newArr = data?.filter((item) => item !== null)
@@ -59,6 +46,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
       // window.ReactNativeWebView.postMessage(JSON.stringify(obj1));
       // window.ReactNativeWebView.postMessage(benefit[0]?.props?.children?.props?.children)
     }
+    alert(appToWeb)
     navigate("/RewardHistory")
   }
 
