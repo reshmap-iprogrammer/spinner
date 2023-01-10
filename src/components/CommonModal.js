@@ -34,7 +34,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
   const claimReaward = () => {
     // setRewardFlag(true);
     // const obj1 = Object.assign({}, newArr);
-    // setLoading(true);
+    setLoading(true);
     if (window.ReactNativeWebView) {
         window.ReactNativeWebView.postMessage(encodeToken);
     }
