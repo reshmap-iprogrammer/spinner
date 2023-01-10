@@ -40,14 +40,13 @@ const [loading, setLoading] = useState(false);
   useEffect(() => {
   }, [])
   
-  const buttonId = document.getElementById("btn")
+  var buttonId = document.getElementById("btn")
 
   const aapData = (data) => {
     alert(data.data)
   } 
-if(buttonId){
-  buttonId.addEventListener("click",aapData, false);
-}
+
+  buttonId?.addEventListener("click",aapData, false);
 
     // const claimButton = () => {
     //   setLoading(true)
