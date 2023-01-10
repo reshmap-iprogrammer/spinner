@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, benefit, spinnerValues, msisdn, parentMsisdn }) {
   const [loading, setLoading] = useState(false);
   const [appToWeb, setappToWeb] = useState();
-  const [rewardFlag, setRewardFlag] = useState(false)
+  // const [rewardFlag, setRewardFlag] = useState(false)
 
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
 
   const claimReaward = () => {
-    setRewardFlag(true);
+    // setRewardFlag(true);
     // const obj1 = Object.assign({}, newArr);
     if (window.ReactNativeWebView) {
       window.ReactNativeWebView.postMessage(encodeToken);
@@ -90,7 +90,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
 
           {flagData === 0 ? <><div className='backHomeButton' onClick={()=>{AppToWeb();
             claimReaward()}}>
-            <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : <Loader />}</p>
+            <p className='text-center text-white p-3 backHomeText'>claim reward</p>
           </div></> : <>
             <div className='backHomeButton'  onClick={() => navigate(-2)}>
               <p className='text-center text-white p-3 backHomeText'>back home</p>
