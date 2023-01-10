@@ -12,11 +12,13 @@ import ClaimRewardModal from './ClaimRewardModal';
 import ClaimPrizeForm from './ClaimPrizeForm';
 
 
+
 function RewardHistory({msisdn, loading, setLoading}) {
     const [getRewards, setRewards] = useState();
     const [showModal, setModal] = useState(false);
     const [rewardData, setRewardData] = useState()
     const [appToWeb, setappToWeb] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         document.addEventListener("message", function (data) {
@@ -24,6 +26,7 @@ function RewardHistory({msisdn, loading, setLoading}) {
           setappToWeb(data.data);
         });
         setLoading(false);
+        navigate("/RewardHistory")
       }, [])
 
     const toggle = () => {
@@ -54,7 +57,6 @@ function RewardHistory({msisdn, loading, setLoading}) {
         toggle();
     }
     
-    const navigate = useNavigate();
     return (
         <>
             <Container className='rewardHistoryWrapper'>
