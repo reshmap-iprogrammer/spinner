@@ -12,6 +12,7 @@ import { route } from './services/ApiRoutes';
 import ClaimPrizeForm from './components/ClaimPrizeForm';
 import CryptoJS from "crypto-js";
 import Loader from './components/Loader';
+import CommonModal from './components/CommonModal';
 
 
 function App() {
@@ -37,11 +38,11 @@ const [loading, setLoading] = useState(false);
   //     window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
   //   }
   // }
-  // useEffect(() => {
-  //   document.addEventListener("message", function (data) {
-  //       setappToWeb(data.data);
-  //   });
-  // }, [appToWeb])
+  useEffect(() => {
+    document.addEventListener("message", function (data) {
+        setappToWeb(data.data);
+    });
+  }, [appToWeb])
 
 
 // const btnClick = () => {
@@ -58,9 +59,10 @@ const [loading, setLoading] = useState(false);
     <Router>
       {/* <button onClick={btnClick} id="btn">{!loading ? 'claim reward' : <Loader />}</button> */}
       <Routes>
-        <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
+        <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} appToWeb={appToWeb}/>} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
         <Route path='/claimRewardForm' element={<ClaimPrizeForm />}/>
+        <Route  path='/commonModal' element={<CommonModal appToWeb={appToWeb} />}/>
       </Routes>
     </Router>
   );
