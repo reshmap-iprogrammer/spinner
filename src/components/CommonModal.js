@@ -38,7 +38,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     if (window.ReactNativeWebView) {
         window.ReactNativeWebView.postMessage(encodeToken);
     }
-    // navigate("/RewardHistory")
+    navigate("/RewardHistory")
   }
 
 
