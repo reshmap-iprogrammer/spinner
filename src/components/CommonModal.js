@@ -17,9 +17,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, rewardDesc, be
     document.addEventListener("message", function (data) {
         alert(data.data)
       setappToWeb(data.data);
+      setLoading(false);
+      navigate("/RewardHistory")
     });
-    setLoading(false);
-    navigate("/RewardHistory")
   }, [])
 
   const rewartTypeData = () => {
