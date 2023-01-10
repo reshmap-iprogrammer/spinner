@@ -13,11 +13,22 @@ import ClaimPrizeForm from './components/ClaimPrizeForm';
 import CryptoJS from "crypto-js";
 import Loader from './components/Loader';
 import CommonModal from './components/CommonModal';
+import { useNavigate } from 'react-router-dom';
 
 
 function App() {
 const [appToWeb, setappToWeb] = useState()
 const [loading, setLoading] = useState(false);
+const navigate = useNavigate();
+
+useEffect(() => {
+  document.addEventListener("message", function (data) {
+      alert(data.data)
+    setappToWeb(data.data);
+    setLoading(false);
+      navigate("/RewardHistory")
+  }); 
+}, [])
 
   let msisdn;
   let parentMsisdn;

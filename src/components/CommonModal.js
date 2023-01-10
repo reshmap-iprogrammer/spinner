@@ -15,14 +15,14 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
   const [flag, setFlag] = useState(false)
   const navigate = useNavigate();
 
-  useEffect(() => {
-    document.addEventListener("message", function (data) {
-        alert(data.data)
-      setappToWeb(data.data);
-      setLoading(false);
-        navigate("/RewardHistory")
-    }); 
-  }, [])
+  // useEffect(() => {
+  //   document.addEventListener("message", function (data) {
+  //       alert(data.data)
+  //     setappToWeb(data.data);
+  //     setLoading(false);
+  //       navigate("/RewardHistory")
+  //   }); 
+  // }, [])
 
   const rewartTypeData = () => {
     setrewardTypeFlag(spinnerValues?.map((item) => {
