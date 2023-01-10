@@ -51,7 +51,7 @@ const [loading, setLoading] = useState(false);
       setLoading(true)
       setTimeout(() => {
       //  const value = localStorage.getItem("data")
-       alert(appToWeb)
+      alert(appToWeb)
       }, 3000);
     }
 
