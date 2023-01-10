@@ -38,15 +38,16 @@ const [loading, setLoading] = useState(false);
     }
   }
   useEffect(() => {
-    document.addEventListener("message", function (data) {
-      alert(data.data)
-        // setappToWeb(data.data);
-    });
   }, [])
+  
+  const buttonId = document.getElementById("btn")
 
-    // document.addEventListener("message", function (data) {
-    //     setappToWeb(data.data);
-    // });
+  const aapData = (data) => {
+    alert(data.data)
+  } 
+if(buttonId){
+  buttonId.addEventListener("click",aapData, false);
+}
 
     // const claimButton = () => {
     //   setLoading(true)
@@ -58,7 +59,7 @@ const [loading, setLoading] = useState(false);
 
   return (
     <Router>
-      {/* <button onClick={claimButton} id="btn">{!loading ? 'claim reward' : <Loader />}</button> */}
+      <button id="btn">{!loading ? 'claim reward' : <Loader />}</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
