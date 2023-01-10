@@ -29,12 +29,12 @@ const [appToWeb, setappToWeb] = useState()
       circleId = decryptedData.circleId
   }
 
-  const btnClick = async () => {
-    const rewardResponse = await getRequestData(route["GET_SPIN"]);
-    if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
-    }
-  }
+  // const btnClick = async () => {
+  //   const rewardResponse = await getRequestData(route["GET_SPIN"]);
+  //   if (window.ReactNativeWebView) {
+  //     window.ReactNativeWebView.postMessage(JSON.stringify(rewardResponse?.data?.SpinWheelCouponData[0]))
+  //   }
+  // }
   useEffect(() => {
     document.addEventListener("message", function (data) {
        return setappToWeb(data.data);
@@ -44,13 +44,16 @@ const [appToWeb, setappToWeb] = useState()
     // document.addEventListener("message", function (data) {
     //     setappToWeb(data.data);
     // });
-
+    
+const btnClick = () => {
+ return appToWeb
+}
     
 
 
   return (
     <Router>
-      <button onClick={()=>alert(appToWeb)} id="btn">Hi</button>
+      <button onClick={btnClick} id="btn">Hi</button>
       <Routes>
         <Route path="/" element={<SpinWheel tagline={''} msisdn={msisdn} parentMsisdn={parentMsisdn} circleId={circleId} />} />
         <Route path="/rewardHistory" element={<RewardHistory  msisdn={msisdn}/>} />
