@@ -305,7 +305,7 @@ function SpinWheel({msisdn, parentMsisdn, circleId, loading, setLoading}) {
         <hr />
         <Link to="rewardHistory" className='howToPlayText'>reward history</Link>
       </Container>
-      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} benefit={benefit} rewardDesc={rewardDesc} image={rewardCount} spinData={spinData} flagData={flagData} spinnerValues={spinnerValues} loading={loading} setLoading={setLoading}/>
+      <CommonModal showModal={showModal} toggle={toggle} spinnerValue={data} benefit={benefit} rewardDesc={rewardDesc} image={rewardCount} spinData={spinData} flagData={flagData} spinnerValues={spinnerValues} loading={loading} setLoading={setLoading} msisdn={msisdn} parentMsisdn={parentMsisdn}/>
       <HowToPlayModal howToPlayModal={howToPlayModal} toggle={playtoggle} />
       <OfferNotApplicableModal offerApplicable={offerApplicable} toggle={offerNotApplicableModal}/>
       <SystemDownErrorModal systemError={systemError} toggle={systemErrorModal} getFlag={getFlag} spinWheelApi={spinWheelApi} getRewardCount={getRewardCount} errorModal={errorModal} selectItem={selectItem} />

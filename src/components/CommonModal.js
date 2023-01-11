@@ -8,8 +8,7 @@ import RewardHistory from './RewardHistory';
 import { useNavigate } from 'react-router-dom';
 
 function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues, msisdn, parentMsisdn, loading, setLoading, props,benefit, rewardDesc }) {
-alert(msisdn)
-alert(parentMsisdn)
+
   const navigate = useNavigate();
 
   const rewardData = spinnerValues?.map((item) => item?.reward_type)
@@ -17,15 +16,16 @@ alert(parentMsisdn)
 // console.log('objectbff', rewardDesc)
 // console.log('objectbff', benefit[0]?.props?.children?.props?.children)
 let dxlclaimStatus;
+let decryptedData
   useEffect(() => {
     document.addEventListener("message", function (data) {
       const appData = data?.data
       let AppData = decodeURIComponent(appData);
       let rewardBytes = CryptoJS.AES.decrypt(AppData, "SE1LLVNSRUQtRU5DLURFQw==")
-      let decryptedData = JSON.parse(rewardBytes.toString(CryptoJS.enc.Utf8))
-      if(decryptedData !== undefined){
+       decryptedData = JSON.parse(rewardBytes.toString(CryptoJS.enc.Utf8))
+      // if(decryptedData !== undefined){
       dxlclaimStatus = localStorage.setItem("dummy", JSON.stringify(decryptedData))
-      } 
+      // } 
       setLoading(false);
       // if(filterRewardHistoryData){
         navigateRewardHistory();
@@ -33,8 +33,9 @@ let dxlclaimStatus;
     }); 
   }, [])
 
-
   alert(dxlclaimStatus);
+  alert(1)
+  alert(decryptedData)
 
   const navigateRewardHistory = () => {
     if(localStorage.getItem("dummy")){
