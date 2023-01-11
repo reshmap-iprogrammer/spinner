@@ -23,6 +23,7 @@ let decryptedData
       let AppData = decodeURIComponent(appData);
       let rewardBytes = CryptoJS.AES.decrypt(AppData, "SE1LLVNSRUQtRU5DLURFQw==")
        decryptedData = JSON.parse(rewardBytes.toString(CryptoJS.enc.Utf8))
+       alert(JSON.stringify(decryptedData))
       // if(decryptedData !== undefined){
       dxlclaimStatus = localStorage.setItem("dummy", JSON.stringify(decryptedData))
       // } 
