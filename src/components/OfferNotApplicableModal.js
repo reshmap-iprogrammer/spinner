@@ -8,6 +8,12 @@ import { useNavigate } from 'react-router-dom';
 function OfferNotApplicableModal({offerApplicable, toggle}) {
   const navigate = useNavigate();
 
+  const backToAppDashboard  = () => {
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage('dashboard');
+  }
+  }
+
   return (
     <div>
        <Modal className='modalWrapper' isOpen={offerApplicable} toggle={toggle}>
@@ -21,7 +27,7 @@ function OfferNotApplicableModal({offerApplicable, toggle}) {
             <div>
               <p className='text-center offerNotApplicable'>oops! offer not applicable for you as of now!</p>
               <p className='text-center applicableText'>You may recharge again after 48 hours to be eligible for spin the wheel again</p>
-              <div className='backHomeButton' onClick={() => navigate(-1)}>
+              <div className='backHomeButton' onClick={backToAppDashboard}>
                 <p className='text-center text-white backHomeText p-3'>back home</p>
               </div>
               <Link to="rewardHistory" className='howToPlayText text-center d-block'>reward history</Link>
