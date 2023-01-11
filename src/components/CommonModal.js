@@ -53,17 +53,17 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
 		benifitId: 'F68FE6AA294C5C8',
     rewardType: '1'
 		} 
-
+// console.log('data', objData)
   const cipherText = CryptoJS.AES.encrypt(JSON.stringify(objData), 'SE1LLVNSRUQtRU5DLURFQw==').toString();
   let encodeToken = encodeURIComponent(cipherText);
   // console.log('object', JSON.stringify(newArr))
 
 
   const claimReaward = () => {
-    const obj1 = Object.assign({}, encodeToken);
+    // const obj1 = Object.assign({}, encodeToken);
     if(filterRewardHistoryData){
       if (window.ReactNativeWebView) {
-          window.ReactNativeWebView.postMessage(obj1);
+          window.ReactNativeWebView.postMessage(encodeToken);
       }
     }
     setLoading(true);
