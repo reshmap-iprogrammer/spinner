@@ -33,6 +33,9 @@ function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
     toggle();
   }
 
+  alert(claimReward)
+  alert(claimStatus)
+
   const navigate = useNavigate();
 
   return (
