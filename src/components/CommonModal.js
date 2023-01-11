@@ -65,6 +65,12 @@ let decryptedData
     setLoading(true);
   }
 
+  const backToAppDashboard  = () => {
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage('dashboard');
+  }
+  }
+
   return (
     <div>
         <Modal className='modalWrapper' isOpen={showModal} toggle={toggle} backdrop="static">
@@ -96,7 +102,7 @@ let decryptedData
           {flagData === 0 ? <><div className='backHomeButton' onClick={claimReaward}>
             <p className='text-center text-white p-3 backHomeText'>{!loading ? 'claim reward' : <Loader />}</p>
           </div></> : <>
-            <div className='backHomeButton'  onClick={() => navigate(-2)}>
+            <div className='backHomeButton'  onClick={backToAppDashboard}>
               <p className='text-center text-white p-3 backHomeText'>back home</p>
             </div>
           </>}

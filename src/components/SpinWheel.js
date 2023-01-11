@@ -240,10 +240,16 @@ function SpinWheel({msisdn, parentMsisdn, circleId, loading, setLoading}) {
   };
   const spinning = selectedItem !== null ? "spinning" : "";
 
+  const backToAppDashboard  = () => {
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage('dashboard');
+  }
+  }
+
   return (
     <Container>
       <div className='spinToWinHeader'>
-        <img src={backIcon} height={25} className="backIconImage" onClick={() => navigate(-1)} />
+        <img src={backIcon} height={25} className="backIconImage" onClick={backToAppDashboard} />
         <p className='spinToWinHeaderText'>spin to win</p>
       </div>
       <div className={flagData === 1 ? 'WheelWrapperdisableSpinner position-relative' : 'disableSpinner position-relative'}>

@@ -33,10 +33,15 @@ function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
     toggle();
   }
 
-  alert(claimReward)
-  alert(claimStatus)
 
   const navigate = useNavigate();
+
+  const backToAppDashboard  = () => {
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage('dashboard');
+  }
+  }
+
 
   return (
     <div>
@@ -52,17 +57,17 @@ function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
       }} className="rewardModalHeader">hey there</ModalHeader>
       <ModalBody>
         <div>
-          {claimReward === 0 ? <p className='text-center'>here is your reward</p> : <p className='text-center justify-content-center d-flex rewardProceed'>your reward was processed on <p className='fw-bold rewardHistoryDate'> {moment(getRewards?.created_at).format('DD MMM YYYY')}</p></p>}
+          {getRewards?.claim_status === 0 ? <p className='text-center'>here is your reward</p> : <p className='text-center justify-content-center d-flex rewardProceed'>your reward was processed on <p className='fw-bold rewardHistoryDate'> {moment(getRewards?.created_at).format('DD MMM YYYY')}</p></p>}
           <div className='data'>
           <div className='dataTextWrapper'>
             <img src={giftIcon} height={100} className="giftIcon"/>
           </div>
           <h5 style={{ textAlign: 'center' }}>{getRewards?.description}</h5>
         </div>
-        {claimStatus === 0  ? <><div className='backHomeButton' onClick={claimRewards}>
+        {getRewards?.claim_status === 0  ? <><div className='backHomeButton' onClick={claimRewards}>
             <p className='text-center text-white p-3 backHomeText'>claim reward</p>
           </div></> : <>
-            <div className='backHomeButton' onClick={() => navigate(-2)}>
+            <div className='backHomeButton' onClick={backToAppDashboard}>
               <p className='text-center text-white p-3 backHomeText'>back home</p>
             </div>
           </>}

@@ -6,7 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 function ServerDownModal({serverDown, toggle}) {
   const navigate = useNavigate();
-
+  const backToAppDashboard  = () => {
+    if (window.ReactNativeWebView) {
+      window.ReactNativeWebView.postMessage('dashboard');
+  }
+  }
   return (
     <div>
        <Modal className='modalWrapper' isOpen={serverDown} toggle={toggle} backdrop="static">
@@ -20,7 +24,7 @@ function ServerDownModal({serverDown, toggle}) {
             <div>
               <p className='text-center serverDownText'>looks like our servers are down</p>
               <p className='text-center retryText'>Please retry in sometime to spin the wheel</p>
-              <div className='backHomeButton'  onClick={() => navigate(-2)}>
+              <div className='backHomeButton'  onClick={backToAppDashboard}>
                 <p className='text-center text-white backHomeText closeBtn p-3'>close</p>
               </div>
             </div>
