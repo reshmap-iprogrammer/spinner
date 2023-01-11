@@ -29,6 +29,7 @@ function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
         console.log('object', error)
       }
     }
+    toggle();
   }
 
   const navigate = useNavigate();
