@@ -27,9 +27,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
       } 
       // alert(JSON.stringify(decryptedData))
       setLoading(false);
-      if(filterRewardHistoryData){
+      // if(filterRewardHistoryData){
         navigateRewardHistory();
-      }
+      // }
     }); 
   }, [])
 
