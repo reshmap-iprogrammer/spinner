@@ -14,7 +14,7 @@ function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
   let localStorageData = localStorage.getItem("dummy")
   
   const claimRewards =async () => {
-    alert(localStorageData)
+    alert(localStorageData.claim_status)
     if(localStorageData?.claim_status === 1){
       const claimRewardResponse = await getRequestData(
         `${route["CLAIM_REWARDS"]}?id=${getRewards?.id}`
@@ -29,6 +29,7 @@ function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
         console.log('object', error)
       }
     }
+    toggle();
   }
 
   const navigate = useNavigate();
@@ -47,14 +48,14 @@ function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
       }} className="rewardModalHeader">hey there</ModalHeader>
       <ModalBody>
         <div>
-          {getRewards?.claim_status === 0 ? <p className='text-center'>here is your reward</p> : <p className='text-center justify-content-center d-flex rewardProceed'>your reward was processed on <p className='fw-bold rewardHistoryDate'> {moment(getRewards?.created_at).format('DD MMM YYYY')}</p></p>}
+          {claimReward === 0 ? <p className='text-center'>here is your reward</p> : <p className='text-center justify-content-center d-flex rewardProceed'>your reward was processed on <p className='fw-bold rewardHistoryDate'> {moment(getRewards?.created_at).format('DD MMM YYYY')}</p></p>}
           <div className='data'>
           <div className='dataTextWrapper'>
             <img src={giftIcon} height={100} className="giftIcon"/>
           </div>
           <h5 style={{ textAlign: 'center' }}>{getRewards?.description}</h5>
         </div>
-        {getRewards?.claim_status === 0  ? <><div className='backHomeButton' onClick={claimRewards}>
+        {claimReward === 0  ? <><div className='backHomeButton' onClick={claimRewards}>
             <p className='text-center text-white p-3 backHomeText'>claim reward</p>
           </div></> : <>
             <div className='backHomeButton' onClick={() => navigate(-2)}>

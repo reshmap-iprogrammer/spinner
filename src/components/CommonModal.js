@@ -22,9 +22,8 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
       let AppData = decodeURIComponent(appData);
       let rewardBytes = CryptoJS.AES.decrypt(AppData, "SE1LLVNSRUQtRU5DLURFQw==")
       let decryptedData = JSON.parse(rewardBytes.toString(CryptoJS.enc.Utf8))
-      alert(JSON.stringify(decryptedData))
       if(decryptedData !== undefined){
-        localStorage.setItem("dummy", decryptedData)
+        localStorage.setItem("dummy", JSON.stringify(decryptedData))
       } 
       // alert(JSON.stringify(decryptedData))
       setLoading(false);
