@@ -11,11 +11,12 @@ import { useNavigate } from 'react-router-dom';
 
 function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
   const [claimReward, setClaimReward] = useState('')
+
+  
+
   const claimRewards =async () => {
     let localStorageData = localStorage.getItem("dummy")
-    alert(localStorageData)
-    alert(localStorageData?.claim_status)
-    if(localStorageData?.claim_status === 1){
+    // if(localStorageData?.claim_status === 1){
       const claimRewardResponse = await getRequestData(
         `${route["CLAIM_REWARDS"]}?id=${getRewards?.id}`
       );
@@ -28,8 +29,8 @@ function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
       } catch (error) {
         console.log('object', error)
       }
-    }
-    toggle();
+    // }
+    // toggle();
   }
 
   const navigate = useNavigate();
