@@ -36,7 +36,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
     if(localStorage.getItem("dummy")){
       setTimeout(() => {
         navigate("/RewardHistory")
-      }, 2000);
+      }, 1000);
     }
   }
 
