@@ -25,7 +25,6 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
       if(decryptedData !== undefined){
         localStorage.setItem("dummy", JSON.stringify(decryptedData))
       } 
-      // alert(JSON.stringify(decryptedData))
       setLoading(false);
       // if(filterRewardHistoryData){
         navigateRewardHistory();
