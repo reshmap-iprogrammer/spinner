@@ -18,9 +18,12 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
 
   useEffect(() => {
     document.addEventListener("message", function (data) {
+      alert(data.data)
       const appData = data?.data
       let rewardBytes = CryptoJS.AES.decrypt(appData, "SE1LLVNSRUQtRU5DLURFQw==")
+      alert(rewardBytes)
       let decryptedData = JSON.parse(rewardBytes.toString(CryptoJS.enc.Utf8))
+      alert(decryptedData)
       if(decryptedData !== undefined){
         localStorage.setItem("dummy", decryptedData)
       } 
