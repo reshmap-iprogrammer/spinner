@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 
 function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
   const [claimReward, setClaimReward] = useState('')
-alert(claimReward)
   let localStorageData = localStorage.getItem("dummy")
 
   let claimStatus = JSON.parse(localStorageData)?.claim_status
@@ -33,8 +32,7 @@ alert(claimReward)
     }
     // toggle();
   }
-alert(1)
-alert(claimReward)
+  
   const navigate = useNavigate();
 
   return (
