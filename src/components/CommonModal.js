@@ -27,8 +27,6 @@ let decryptedData
       // if(decryptedData !== undefined){
       localStorage.setItem("dummy", JSON.stringify(decryptedData))
       dxlclaimStatus = localStorage.getItem("dummy")
-      // alert(dxlclaimStatus)
-      // } 
       setLoading(false);
       // if(filterRewardHistoryData){
         navigateRewardHistory();
