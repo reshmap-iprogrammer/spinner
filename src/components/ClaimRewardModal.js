@@ -14,8 +14,10 @@ function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
 
   let localStorageData = localStorage.getItem("dummy")
 
+  let claimStatus = JSON.parse(localStorageData)?.claim_status
+
   const claimRewards =async () => {
-    if(JSON.parse(localStorageData)?.claim_status === 1){
+    if(claimStatus === 1){
       const claimRewardResponse = await getRequestData(
         `${route["CLAIM_REWARDS"]}?id=${getRewards?.id}`
       );
@@ -55,7 +57,7 @@ function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
           </div>
           <h5 style={{ textAlign: 'center' }}>{getRewards?.description}</h5>
         </div>
-        {claimReward === 0  ? <><div className='backHomeButton' onClick={claimRewards}>
+        {claimStatus === 0  ? <><div className='backHomeButton' onClick={claimRewards}>
             <p className='text-center text-white p-3 backHomeText'>claim reward</p>
           </div></> : <>
             <div className='backHomeButton' onClick={() => navigate(-2)}>
