@@ -23,9 +23,9 @@ let decryptedData
       let AppData = decodeURIComponent(appData);
       let rewardBytes = CryptoJS.AES.decrypt(AppData, "SE1LLVNSRUQtRU5DLURFQw==")
        decryptedData = JSON.parse(rewardBytes.toString(CryptoJS.enc.Utf8))
-       alert(JSON.stringify(decryptedData))
       // if(decryptedData !== undefined){
       dxlclaimStatus = localStorage.setItem("dummy", JSON.stringify(decryptedData))
+      alert(dxlclaimStatus)
       // } 
       setLoading(false);
       // if(filterRewardHistoryData){
@@ -34,15 +34,11 @@ let decryptedData
     }); 
   }, [])
 
-  alert(dxlclaimStatus);
-  alert(1)
-  alert(decryptedData)
-
   const navigateRewardHistory = () => {
     if(localStorage.getItem("dummy")){
       setTimeout(() => {
         navigate("/RewardHistory")
-      }, 100);
+      }, 500);
     }
   }
 
@@ -75,10 +71,6 @@ let decryptedData
       }
     }
     setLoading(true);
-    // props.history.push(`/RewardHistory`);
-    // if(localStorage.getItem("dummy")){
-    //   navigate("/RewardHistory")
-    // }
   }
 
   return (

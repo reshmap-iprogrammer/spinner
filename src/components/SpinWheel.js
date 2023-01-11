@@ -17,6 +17,7 @@ import CryptoJS from "crypto-js";
 import OfferNotApplicableModal from './OfferNotApplicableModal';
 import SystemDownErrorModal from './SystemDownErrorModal';
 import ServerDownModal from './ServerDownModal';
+import moment from 'moment';
 
 
 function SpinWheel({msisdn, parentMsisdn, circleId, loading, setLoading}) {
@@ -157,7 +158,7 @@ function SpinWheel({msisdn, parentMsisdn, circleId, loading, setLoading}) {
             <div className='d-flex justify-content-between overlayWrapper'>
               <div>
                 <p className='descriptionText mb-1'>{item?.coupon_code}</p>
-                <p className='deatilsText'>valid till {item?.expiry_date}</p>
+                <p className='deatilsText'>valid till {moment(item?.expiry_date).format('DD MMM YYYY')}</p>
               </div>
               <div className='cursor-pointer' >
                 <div className='d-flex justify-content-center'>
