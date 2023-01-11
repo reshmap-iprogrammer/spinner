@@ -25,7 +25,7 @@ let decryptedData
        decryptedData = JSON.parse(rewardBytes.toString(CryptoJS.enc.Utf8))
        alert(typeof(decryptedData))
       // if(decryptedData !== undefined){
-      dxlclaimStatus = localStorage.setItem("dummy", JSON.stringify(decryptedData))
+      localStorage.setItem("dummy", JSON.stringify(decryptedData))
       // } 
       setLoading(false);
       // if(filterRewardHistoryData){
