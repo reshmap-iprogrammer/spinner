@@ -23,7 +23,6 @@ let decryptedData
       let AppData = decodeURIComponent(appData);
       let rewardBytes = CryptoJS.AES.decrypt(AppData, "SE1LLVNSRUQtRU5DLURFQw==")
        decryptedData = JSON.parse(rewardBytes.toString(CryptoJS.enc.Utf8))
-      //  alert(typeof(decryptedData))
       // if(decryptedData !== undefined){
       localStorage.setItem("dummy", JSON.stringify(decryptedData))
       dxlclaimStatus = localStorage.getItem("dummy")
@@ -42,9 +41,6 @@ let decryptedData
     }
   }
 
-  
-
-
   let data = spinnerValues?.map((item) => item?.benefit_id)
   let rewardTypeData = spinnerValues?.map((item) => item?.reward_type)
   // setRewardType(rewardTypeData);
@@ -57,14 +53,10 @@ let decryptedData
 		benifitId: 'F68FE6AA294C5C8',
     rewardType: '1'
 		} 
-// console.log('data', objData)
   const cipherText = CryptoJS.AES.encrypt(JSON.stringify(objData), 'SE1LLVNSRUQtRU5DLURFQw==').toString();
   let encodeToken = encodeURIComponent(cipherText);
-  // console.log('object', JSON.stringify(newArr))
-
 
   const claimReaward = () => {
-    // const obj1 = Object.assign({}, encodeToken);
     if(filterRewardHistoryData){
       if (window.ReactNativeWebView) {
           window.ReactNativeWebView.postMessage(encodeToken);
