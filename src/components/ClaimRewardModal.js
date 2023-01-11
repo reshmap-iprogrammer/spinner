@@ -16,6 +16,7 @@ function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
 
   const claimRewards =async () => {
     let localStorageData = localStorage.getItem("dummy")
+    alert(localStorageData)
     // if(localStorageData?.claim_status === 1){
       const claimRewardResponse = await getRequestData(
         `${route["CLAIM_REWARDS"]}?id=${getRewards?.id}`
