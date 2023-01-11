@@ -12,12 +12,12 @@ import { useNavigate } from 'react-router-dom';
 function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
   const [claimReward, setClaimReward] = useState('')
 
+  let localStorageData = localStorage.getItem("dummy")
   
+  alert(1)
+  alert(localStorageData)
 
   const claimRewards =async () => {
-    let localStorageData = localStorage.getItem("dummy")
-    alert(1)
-    alert(localStorageData)
     // if(localStorageData?.claim_status === 1){
       const claimRewardResponse = await getRequestData(
         `${route["CLAIM_REWARDS"]}?id=${getRewards?.id}`
