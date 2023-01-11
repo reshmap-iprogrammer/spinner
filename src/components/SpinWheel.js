@@ -175,11 +175,11 @@ function SpinWheel({msisdn, parentMsisdn, circleId, loading, setLoading}) {
       setRewardDesc(filteredItem?.map((item, i) => { 
         return (
           <>
-            <p>{item?.description}</p>
+            <p>{item?.benefit_id}</p>
           </>
         )
       }))
-      setBenefit(spinnerValues?.map((item, i) => { 
+      setBenefit(filteredItem?.map((item, i) => { 
         return (
           <>
             <p>{item?.benefit_id}</p>

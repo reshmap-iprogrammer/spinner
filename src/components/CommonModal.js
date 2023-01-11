@@ -7,26 +7,28 @@ import CryptoJS from "crypto-js";
 import RewardHistory from './RewardHistory';
 import { useNavigate } from 'react-router-dom';
 
-function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues, msisdn, parentMsisdn, loading, setLoading, props }) {
+function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues, msisdn, parentMsisdn, loading, setLoading, props,benefit, rewardDesc }) {
 
   const navigate = useNavigate();
 
-  let rewardTypeData = spinnerValues?.map((item) => item?.reward_type)
-
-  
+  const rewardData = spinnerValues?.map((item) => item?.reward_type)
+  const filterRewardHistoryData = rewardData?.filter((item) => item === '2'|| item === '1')
+// console.log('objectbff', rewardDesc)
+// console.log('objectbff', benefit[0]?.props?.children?.props?.children)
 
   useEffect(() => {
     document.addEventListener("message", function (data) {
       const appData = data?.data
       let rewardBytes = CryptoJS.AES.decrypt(appData, "SE1LLVNSRUQtRU5DLURFQw==")
       let decryptedData = JSON.parse(rewardBytes.toString(CryptoJS.enc.Utf8))
-      alert(decryptedData)
       if(decryptedData !== undefined){
         localStorage.setItem("dummy", decryptedData)
       } 
       // alert(JSON.stringify(decryptedData))
       setLoading(false);
-      navigateRewardHistory();
+      if(filterRewardHistoryData){
+        navigateRewardHistory();
+      }
     }); 
   }, [])
 
@@ -40,6 +42,7 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
 
 
   let data = spinnerValues?.map((item) => item?.benefit_id)
+  let rewardTypeData = spinnerValues?.map((item) => item?.reward_type)
   // setRewardType(rewardTypeData);
   // console.log('object', rewardType)
   // console.log('object', rewardTypeData)
@@ -47,11 +50,9 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
   const benifitIdObj = Object.assign({}, newArr);
   const rewardTypeObj = Object.assign({}, rewardTypeData)
  let objData = {
-		benifitId: newArr,
-    rewardType: rewardTypeData
+		benifitId: 'F68FE6AA294C5C8',
+    rewardType: '1'
 		} 
-
-    console.log('object', JSON.stringify(objData))
 
   const cipherText = CryptoJS.AES.encrypt(JSON.stringify(objData), 'SE1LLVNSRUQtRU5DLURFQw==').toString();
   let encodeToken = encodeURIComponent(cipherText);
@@ -60,8 +61,10 @@ function CommonModal({ showModal, toggle, spinnerValue, flagData, spinnerValues,
 
   const claimReaward = () => {
     const obj1 = Object.assign({}, encodeToken);
-    if (window.ReactNativeWebView) {
-        window.ReactNativeWebView.postMessage(obj1);
+    if(filterRewardHistoryData){
+      if (window.ReactNativeWebView) {
+          window.ReactNativeWebView.postMessage(obj1);
+      }
     }
     setLoading(true);
     // props.history.push(`/RewardHistory`);
