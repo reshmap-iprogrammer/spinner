@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 function ClaimRewardModal({showModal, toggle, getRewards, appToWeb}) {
   const [claimReward, setClaimReward] = useState('')
   let localStorageData = localStorage.getItem("dummy")
-  alert(localStorageData)
+  alert(localStorageData?.claim_status)
   const claimRewards =async () => {
     alert(localStorageData)
     if(localStorageData?.claim_status === 1){
